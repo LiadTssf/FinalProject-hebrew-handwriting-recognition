@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #111827;
+  color: white;
+}
+/* Add this to your index.css */
+body {
+  color: #1f2937; /* This is gray-800 in Tailwind */
+}
+
+/* Or if you're using Tailwind directives */
+@layer base {
+  body {
+    @apply text-gray-800;
+  }
+}
+/* Additional custom styles here */
