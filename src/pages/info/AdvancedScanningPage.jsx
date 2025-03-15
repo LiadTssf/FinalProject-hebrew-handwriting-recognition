@@ -1,10 +1,8 @@
-
-
 import React, { useState } from 'react';
 import ComparisonModal from '../../components/info/ComparisonModal';
 import { InfoPageLayout, FadeInSection, InfoCard } from '../../components/info/InfoPageLayout';
 
-const LogicalCorrectionsPage = () => {
+const AdvancedScanningPage = () => {
   const [showFullImage, setShowFullImage] = useState(false);
   const [showComparisonModal, setShowComparisonModal] = useState(false);
   return (
@@ -321,4 +319,5 @@ const LogicalCorrectionsPage = () => {
     </InfoPageLayout>
   );
 };
-export default LogicalCorrectionsPage;
+
+export default AdvancedScanningPage;

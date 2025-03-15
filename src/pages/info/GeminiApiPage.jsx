@@ -4,8 +4,8 @@ import { InfoPageLayout, FadeInSection } from '../../components/info/InfoPageLay
 const GeminiApiPage = () => {
   return (
     <InfoPageLayout
-      title="Gemini API Integration"
-      subtitle="Enhancing text recognition with Google's Gemini AI"
+      title="Gemini AI Integration"
+      subtitle="Making handwriting recognition smarter with Google's large language model"
       icon={
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -15,12 +15,9 @@ const GeminiApiPage = () => {
     >
       <div className="space-y-10">
         <FadeInSection>
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Google Gemini AI Integration</h2>
-          <p className="text-lg text-gray-700 mb-6">
-            Our platform leverages Google's powerful Gemini AI model to enhance handwriting recognition, particularly for challenging text and complex language structures.
-          </p>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">What is Gemini?</h2>
           
-          <div className="bg-gradient-to-r from-yellow-50 to-amber-50 p-6 rounded-xl border border-yellow-200 my-8">
+          <div className="bg-gradient-to-r from-yellow-50 to-amber-50 p-6 rounded-xl border border-yellow-200 my-6">
             <div className="flex items-start">
               <div className="mr-4 flex-shrink-0">
                 <svg className="w-12 h-12 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -28,122 +25,187 @@ const GeminiApiPage = () => {
                 </svg>
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-yellow-800 mb-2">What is Gemini?</h3>
-                <p className="text-yellow-700">
-                  Gemini is Google's most advanced AI model family, particularly effective at understanding context, reasoning about text, and interpreting complex language structures. By integrating Gemini into our recognition pipeline, we can handle cases that would challenge traditional OCR systems.
+                <p className="text-yellow-800 text-lg">
+                  Gemini is Google's smartest AI that understands language like humans do. 
                 </p>
+                <p className="text-yellow-700 mt-2">
+                  It helps our handwriting recognition system work better by understanding the meaning of words, not just the shapes of letters.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+            <div className="bg-white rounded-lg border border-gray-200 p-5">
+              <h3 className="font-medium text-gray-900 mb-2">Without Gemini</h3>
+              <p className="text-gray-600 text-sm mb-3">Our system would only look at letter shapes</p>
+              <div className="bg-gray-50 p-3 rounded-lg border border-gray-200">
+                <p className="text-gray-800">If handwriting is messy, it might mistake similar-looking letters.</p>
+              </div>
+            </div>
+            
+            <div className="bg-white rounded-lg border border-gray-200 p-5">
+              <h3 className="font-medium text-gray-900 mb-2">With Gemini</h3>
+              <p className="text-gray-600 text-sm mb-3">The system understands context and meaning</p>
+              <div className="bg-green-50 p-3 rounded-lg border border-green-200">
+                <p className="text-gray-800">Even with messy handwriting, it can figure out the right word based on what makes sense.</p>
               </div>
             </div>
           </div>
         </FadeInSection>
         
         <FadeInSection delay={0.2}>
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">How Gemini Enhances Our Platform</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">How Gemini Makes Our System Better</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-8">
-            <div className="bg-white rounded-lg border border-gray-200 shadow-sm p-6 hover:shadow-md transition-shadow duration-300">
-              <div className="flex items-center mb-4">
-                <div className="p-2 bg-amber-100 rounded-full mr-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+            <div className="bg-white rounded-lg border border-gray-200 shadow-sm p-5 hover:shadow-md transition-shadow duration-300">
+              <div className="flex items-center mb-3">
+                <div className="p-2 bg-amber-100 rounded-full mr-3">
                   <svg className="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-medium text-gray-900">Context-Aware Recognition</h3>
+                <h3 className="text-lg font-medium text-gray-900">Fixes Recognition Errors</h3>
               </div>
               <p className="text-gray-700">
-                Gemini can understand text in context, helping to correctly interpret words that might be ambiguous when viewed in isolation. This is particularly valuable for Hebrew where context is crucial for correct interpretation.
+                Like a human reading doctor's handwriting, Gemini uses context to understand what words make sense. 
+              </p>
+              <p className="text-gray-700 mt-2">
+                If "אכא" (not a real word) is recognized, Gemini might correct it to "אבא" (father) based on the surrounding words.
               </p>
             </div>
             
-            <div className="bg-white rounded-lg border border-gray-200 shadow-sm p-6 hover:shadow-md transition-shadow duration-300">
-              <div className="flex items-center mb-4">
-                <div className="p-2 bg-amber-100 rounded-full mr-4">
+            <div className="bg-white rounded-lg border border-gray-200 shadow-sm p-5 hover:shadow-md transition-shadow duration-300">
+              <div className="flex items-center mb-3">
+                <div className="p-2 bg-amber-100 rounded-full mr-3">
                   <svg className="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16l2.879-2.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242zM21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-medium text-gray-900">Handling Ambiguities</h3>
+                <h3 className="text-lg font-medium text-gray-900">Adds Helpful Features</h3>
               </div>
               <p className="text-gray-700">
-                When characters are unclear or ambiguous, Gemini analyzes the semantic meaning of the surrounding content to make intelligent inferences about what the text should be.
+                Gemini can take your document further - summarizing long texts, translating to English, and fixing text structure.
+              </p>
+              <p className="text-gray-700 mt-2">
+                Think of it as having an expert editor who perfectly understands Hebrew working on your document.
               </p>
             </div>
             
-            <div className="bg-white rounded-lg border border-gray-200 shadow-sm p-6 hover:shadow-md transition-shadow duration-300">
-              <div className="flex items-center mb-4">
-                <div className="p-2 bg-amber-100 rounded-full mr-4">
-                  <svg className="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-medium text-gray-900">Multi-Modal Understanding</h3>
-              </div>
-              <p className="text-gray-700">
-                Gemini can process both text and visual information together, allowing our system to interpret the visual characteristics of handwriting alongside textual context.
-              </p>
-            </div>
-            
-            <div className="bg-white rounded-lg border border-gray-200 shadow-sm p-6 hover:shadow-md transition-shadow duration-300">
-              <div className="flex items-center mb-4">
-                <div className="p-2 bg-amber-100 rounded-full mr-4">
+            <div className="bg-white rounded-lg border border-gray-200 shadow-sm p-5 hover:shadow-md transition-shadow duration-300">
+              <div className="flex items-center mb-3">
+                <div className="p-2 bg-amber-100 rounded-full mr-3">
                   <svg className="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-medium text-gray-900">Domain Adaptation</h3>
+                <h3 className="text-lg font-medium text-gray-900">Knows Special Terminology</h3>
               </div>
               <p className="text-gray-700">
-                The API can be fine-tuned to understand specialized vocabulary and domain-specific language patterns common in Hebrew texts from different fields.
+                Whether you're working with legal documents, medical notes, or religious texts, Gemini recognizes specialized Hebrew terms.
+              </p>
+              <p className="text-gray-700 mt-2">
+                It's like having experts from different fields helping with your documents.
+              </p>
+            </div>
+            
+            <div className="bg-white rounded-lg border border-gray-200 shadow-sm p-5 hover:shadow-md transition-shadow duration-300">
+              <div className="flex items-center mb-3">
+                <div className="p-2 bg-amber-100 rounded-full mr-3">
+                  <svg className="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-medium text-gray-900">Smart Without Being Complex</h3>
+              </div>
+              <p className="text-gray-700">
+                Instead of building complicated custom language systems, we connect to Google's ready-made expertise.
+              </p>
+              <p className="text-gray-700 mt-2">
+                It's like having a super-smart assistant that's already trained and ready to help, without the headaches of setting up complex technology.
               </p>
             </div>
           </div>
         </FadeInSection>
         
         <FadeInSection delay={0.4}>
-          <div className="relative h-96 bg-white rounded-lg border border-gray-200 shadow-md overflow-hidden my-10">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <img 
-                src="/api/placeholder/800/500" 
-                alt="Gemini Integration Architecture"
-                className="max-w-full max-h-full object-contain" 
-              />
-            </div>
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-white to-transparent p-4 text-center">
-              <p className="text-sm text-gray-600">Diagram: Gemini API integration within our processing pipeline</p>
-            </div>
-          </div>
-        </FadeInSection>
-        
-        <FadeInSection delay={0.6}>
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Privacy and Security</h2>
-          <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-            <div className="flex items-start">
-              <div className="flex-shrink-0 mr-4">
-                <svg className="w-10 h-10 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                </svg>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">How It Works - The Simple Version</h2>
+          
+          <div className="bg-white rounded-xl overflow-hidden border border-gray-200 p-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="bg-blue-50 rounded-xl p-4 border border-blue-100 flex flex-col items-center text-center">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-3">
+                  <span className="text-xl font-bold text-blue-700">1</span>
+                </div>
+                <h3 className="font-medium text-blue-800 mb-2">First Look</h3>
+                <div className="flex-grow">
+                  <p className="text-sm text-gray-700">
+                    Our system looks at your handwritten document and tries to identify each letter shape.
+                  </p>
+                </div>
+                <div className="mt-3">
+                  <svg className="w-6 h-6 text-blue-400 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
               </div>
-              <div>
-                <h3 className="text-lg font-medium text-gray-900 mb-2">Data Protection</h3>
-                <p className="text-gray-700">
-                  All data sent to the Gemini API is encrypted and processed in accordance with strict privacy standards. Your documents are never stored or used for training Gemini's models without explicit consent.
-                </p>
-                <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="bg-blue-50 p-3 rounded border border-blue-100">
-                    <h4 className="font-medium text-blue-800 text-sm mb-1">Data Processing</h4>
-                    <p className="text-sm text-blue-700">
-                      Only the minimal necessary data is sent to the API, and all processing is done in accordance with GDPR and other privacy regulations.
-                    </p>
-                  </div>
-                  <div className="bg-blue-50 p-3 rounded border border-blue-100">
-                    <h4 className="font-medium text-blue-800 text-sm mb-1">Data Retention</h4>
-                    <p className="text-sm text-blue-700">
-                      By default, data is not retained after processing. Enterprise users can specify custom data retention policies.
-                    </p>
-                  </div>
+              
+              <div className="bg-yellow-50 rounded-xl p-4 border border-yellow-100 flex flex-col items-center text-center">
+                <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mb-3">
+                  <span className="text-xl font-bold text-yellow-700">2</span>
+                </div>
+                <h3 className="font-medium text-yellow-800 mb-2">Gemini Check</h3>
+                <div className="flex-grow">
+                  <p className="text-sm text-gray-700">
+                    Gemini looks at the whole text to understand context and meaning, fixing mistakes using its knowledge of Hebrew.
+                  </p>
+                </div>
+                <div className="mt-3">
+                  <svg className="w-6 h-6 text-yellow-400 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
+              
+              <div className="bg-green-50 rounded-xl p-4 border border-green-100 flex flex-col items-center text-center">
+                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-3">
+                  <span className="text-xl font-bold text-green-700">3</span>
+                </div>
+                <h3 className="font-medium text-green-800 mb-2">Final Result</h3>
+                <div className="flex-grow">
+                  <p className="text-sm text-gray-700">
+                    You get accurate digital text, plus optional features like summaries or translations if you want them.
+                  </p>
+                </div>
+                <div className="mt-3">
+                  <svg className="w-6 h-6 text-green-400 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
                 </div>
               </div>
             </div>
+            
+            <div className="mt-6 bg-gray-50 p-4 rounded-lg border border-gray-200">
+              <div className="flex items-start">
+                <div className="flex-shrink-0 mr-3">
+                  <svg className="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <p className="text-sm text-gray-700">
+                  <span className="font-medium">Fun fact:</span> This process is similar to how you read messy handwriting. First you try to see what letters look like, then you use what you know about language to figure out what words make sense in context.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="flex justify-center mt-6">
+            <button className="bg-yellow-600 hover:bg-yellow-700 text-white font-medium py-2 px-6 rounded-lg transition-colors duration-200 flex items-center">
+              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+              </svg>
+              Try Gemini-Enhanced Recognition
+            </button>
           </div>
         </FadeInSection>
       </div>
