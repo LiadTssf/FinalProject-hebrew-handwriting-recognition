@@ -4,73 +4,53 @@ import { motion } from 'framer-motion';
 
 const ProcessingOptionsPage = () => {
   const [activeOption, setActiveOption] = useState(null);
+  const [summaryLength, setSummaryLength] = useState(20);
 
   const processingOptions = [
     {
-      id: 'lang-detection',
-      title: 'Language Detection',
-      description: 'Automatically detects the language of the handwritten text to optimize recognition accuracy.',
+      id: 'basic-advanced',
+      title: 'Scanning Mode',
+      description: 'Choose between Basic Scanning (faster) or Advanced Scanning (more accurate with AI enhancement).',
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
         </svg>
       ),
       color: 'bg-blue-500'
     },
+  
     {
-      id: 'noise-reduction',
-      title: 'Noise Reduction',
-      description: 'Removes background noise and artifacts from the scanned document to improve text clarity.',
+      id: 'summarization',
+      title: 'Text Summarization',
+      description: 'Generate concise summaries of your documents with adjustable length from 5% to 50% of the original text.',
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-        </svg>
-      ),
-      color: 'bg-green-500'
-    },
-    {
-      id: 'auto-correction',
-      title: 'AI Text Correction',
-      description: 'Uses AI algorithms to correct recognition errors based on context and language patterns.',
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h8m-8 6h16" />
         </svg>
       ),
       color: 'bg-purple-500'
     },
     {
-      id: 'deskew',
-      title: 'Auto-Rotation & Deskew',
-      description: 'Automatically rotates and straightens the document to ensure optimal text recognition.',
+      id: 'translation',
+      title: 'Translation Options',
+      description: 'Translate your digitized Hebrew text into English with context-aware neural translation.',
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
         </svg>
       ),
       color: 'bg-yellow-500'
     },
     {
-      id: 'layout-analysis',
-      title: 'Layout Analysis',
-      description: 'Identifies and preserves document structure including paragraphs, columns, and text flow.',
+      id: 'enhancement',
+      title: 'Text Enhancement',
+      description: 'Improve your text with spelling correction and structure improvements.',
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
         </svg>
       ),
       color: 'bg-red-500'
-    },
-    {
-      id: 'custom-dictionary',
-      title: 'Custom Dictionary',
-      description: 'Applies user-defined dictionaries to improve recognition of specialized terminology.',
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-        </svg>
-      ),
-      color: 'bg-indigo-500'
     }
   ];
 
@@ -83,6 +63,20 @@ const ProcessingOptionsPage = () => {
 
   // Find the currently active option
   const currentOption = processingOptions.find(option => option.id === activeOption);
+
+  const handleSliderChange = (e) => {
+    const value = Number(e.target.value);
+    setSummaryLength(value);
+  };
+
+  // Get the appropriate percent display value for summary
+  const getClosestSummaryPercentage = (value) => {
+    const percentages = [5, 20, 35, 50];
+    return percentages.reduce((prev, curr) => 
+      Math.abs(curr - value) < Math.abs(prev - value) ? curr : prev
+    );
+  };
+  const displayPercentage = getClosestSummaryPercentage(summaryLength);
 
   return (
     <div className="flex h-screen bg-gray-100">
@@ -161,78 +155,182 @@ const ProcessingOptionsPage = () => {
                     <div className="bg-gray-50 rounded-lg p-6 mb-6">
                       <h3 className="text-lg font-medium text-gray-900 mb-4">Settings</h3>
                       
-                      {currentOption.id === 'lang-detection' && (
-                        <div className="space-y-4">
-                          <div className="flex items-center justify-between">
-                            <span className="text-gray-700">Enable automatic language detection</span>
-                            <div className="relative inline-block w-12 h-6 rounded-full bg-gray-200 cursor-pointer transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                              <span className="absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform duration-200 transform translate-x-6"></span>
+                      {currentOption.id === 'basic-advanced' && (
+                        <div className="space-y-6">
+                          <div className="bg-white p-4 rounded-lg border border-gray-200">
+                            <div className="flex items-center mb-2">
+                              <input id="basic-scanning" name="scanning-mode" type="radio" className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300" defaultChecked />
+                              <label htmlFor="basic-scanning" className="ml-2 block text-sm font-medium text-gray-700">Basic Scanning</label>
                             </div>
+                            <p className="text-sm text-gray-500 ml-6">Faster processing with 75-79% accuracy. Best for clear handwriting and when speed is important.</p>
                           </div>
-                          <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">
-                              Default Language
-                            </label>
-                            <select className="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
-                              <option value="hebrew">Hebrew</option>
-                              <option value="english">English</option>
-                              <option value="mixed">Mixed (Hebrew & English)</option>
-                            </select>
+                          
+                          <div className="bg-white p-4 rounded-lg border border-gray-200">
+                            <div className="flex items-center mb-2">
+                              <input id="advanced-scanning" name="scanning-mode" type="radio" className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300" />
+                              <label htmlFor="advanced-scanning" className="ml-2 block text-sm font-medium text-gray-700">Advanced Scanning</label>
+                            </div>
+                            <p className="text-sm text-gray-500 ml-6">Uses AI to enhance recognition with 90% accuracy. Better for difficult handwriting but takes slightly longer.</p>
+                          </div>
+                          
+                          <div className="mt-4">
+                            <p className="text-sm text-gray-500 italic">Advanced Scanning is required for additional features like summarization, translation, and text enhancement.</p>
                           </div>
                         </div>
                       )}
                       
-                      {currentOption.id === 'auto-correction' && (
-                        <div className="space-y-4">
+                      
+                      {currentOption.id === 'summarization' && (
+                        <div className="space-y-6">
                           <div className="flex items-center justify-between">
-                            <span className="text-gray-700">Apply contextual corrections</span>
-                            <div className="relative inline-block w-12 h-6 rounded-full bg-blue-500 cursor-pointer transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                              <span className="absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform duration-200 transform translate-x-6"></span>
-                            </div>
-                          </div>
-                          <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">
-                              Correction Aggressiveness
+                            <span className="text-gray-700">Enable text summarization</span>
+                            <label className="relative inline-flex items-center cursor-pointer">
+                              <input type="checkbox" value="" className="sr-only peer" />
+                              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-purple-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-purple-600"></div>
                             </label>
-                            <input 
-                              type="range" 
-                              min="1" 
-                              max="10" 
-                              className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" 
-                              defaultValue="7"
+                          </div>
+                          
+                          <div>
+                            <div className="flex justify-between items-center mb-2">
+                              <span className="text-sm text-gray-600">Summary Length</span>
+                              <span className="text-sm font-medium text-purple-700">{displayPercentage}%</span>
+                            </div>
+                            <input
+                              type="range"
+                              min="5"
+                              max="50"
+                              value={summaryLength}
+                              onChange={handleSliderChange}
+                              className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
                             />
                             <div className="flex justify-between text-xs text-gray-500 mt-1">
-                              <span>Conservative</span>
-                              <span>Balanced</span>
-                              <span>Aggressive</span>
+                              <span>Very Concise (5%)</span>
+                              <span>Detailed (50%)</span>
+                            </div>
+                            
+                            {/* Slider markers for specific percentages */}
+                            <div className="relative h-4 mt-1">
+                              {[5, 20, 35, 50].map(percent => (
+                                <div 
+                                  key={percent} 
+                                  className={`absolute transform -translate-x-1/2 cursor-pointer ${percent === displayPercentage ? 'text-purple-600 font-medium' : 'text-gray-400'}`}
+                                  style={{ left: `${(percent - 5) / 45 * 100}%` }}
+                                  onClick={() => setSummaryLength(percent)}
+                                >
+                                  <div className={`h-2 w-1 mx-auto mb-1 ${percent === displayPercentage ? 'bg-purple-600' : 'bg-gray-300'}`}></div>
+                                  <span className="text-xs">{percent}%</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                          
+                          <div className="bg-purple-50 p-4 rounded-lg border border-purple-100">
+                            <h4 className="text-sm font-medium text-purple-800 mb-2">Summary Preview</h4>
+                            <p className="text-xs text-gray-600">
+                              {displayPercentage === 5 && "An ultra-concise summary with just the essential points (5% of original)."}
+                              {displayPercentage === 20 && "A brief summary highlighting key information (20% of original)."}
+                              {displayPercentage === 35 && "A balanced summary with moderate detail (35% of original)."}
+                              {displayPercentage === 50 && "A comprehensive summary with most important details preserved (50% of original)."}
+                            </p>
+                          </div>
+                        </div>
+                      )}
+                      
+                      {currentOption.id === 'translation' && (
+                        <div className="space-y-4">
+                          <div className="flex items-center justify-between">
+                            <span className="text-gray-700">Enable translation to English</span>
+                            <label className="relative inline-flex items-center cursor-pointer">
+                              <input type="checkbox" value="" className="sr-only peer" />
+                              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-yellow-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-yellow-500"></div>
+                            </label>
+                          </div>
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">
+                              Translation Style
+                            </label>
+                            <select className="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm rounded-md">
+                              <option value="literal">Literal (Word-for-word)</option>
+                              <option value="natural" selected>Natural (Fluent English)</option>
+                              <option value="formal">Formal/Academic</option>
+                            </select>
+                          </div>
+                          <div className="mt-4">
+                            <div className="flex items-start">
+                              <div className="flex items-center h-5">
+                                <input id="side-by-side" name="side-by-side" type="checkbox" className="focus:ring-yellow-500 h-4 w-4 text-yellow-600 border-gray-300 rounded" defaultChecked />
+                              </div>
+                              <div className="ml-3 text-sm">
+                                <label htmlFor="side-by-side" className="font-medium text-gray-700">Display side-by-side view</label>
+                                <p className="text-gray-500">Show both Hebrew original and English translation together</p>
+                              </div>
                             </div>
                           </div>
                         </div>
                       )}
                       
-                      {/* Similar settings sections for other options */}
-                      {['noise-reduction', 'deskew', 'layout-analysis', 'custom-dictionary'].includes(currentOption.id) && (
-                        <div className="text-gray-500 italic">
-                          Settings for {currentOption.title} would appear here.
+                      {currentOption.id === 'enhancement' && (
+                        <div className="space-y-4">
+                          <div className="space-y-2">
+                            <div className="flex items-start">
+                              <div className="flex items-center h-5">
+                                <input id="spelling-correction" name="spelling-correction" type="checkbox" className="focus:ring-red-500 h-4 w-4 text-red-600 border-gray-300 rounded" defaultChecked />
+                              </div>
+                              <div className="ml-3 text-sm">
+                                <label htmlFor="spelling-correction" className="font-medium text-gray-700">Spelling correction</label>
+                                <p className="text-gray-500">Fix misspellings and typos in the original text</p>
+                              </div>
+                            </div>
+                            <div className="flex items-start">
+                              <div className="flex items-center h-5">
+                                <input id="text-structure" name="text-structure" type="checkbox" className="focus:ring-red-500 h-4 w-4 text-red-600 border-gray-300 rounded" />
+                              </div>
+                              <div className="ml-3 text-sm">
+                                <label htmlFor="text-structure" className="font-medium text-gray-700">Text restructuring</label>
+                                <p className="text-gray-500">Improve sentence structure and paragraph organization</p>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div className="">
+                            <div className="flex items-start">
+                              <div className="flex items-center h-5">
+                                <input id="track-changes" name="track-changes" type="checkbox" className="focus:ring-red-500 h-4 w-4 text-red-600 border-gray-300 rounded" defaultChecked />
+                              </div>
+                              <div className="ml-3 text-sm">
+                                <label htmlFor="track-changes" className="font-medium text-gray-700">Track changes</label>
+                                <p className="text-gray-500">Highlight corrections for review</p>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       )}
                     </div>
                     
-                    <div className="bg-blue-50 rounded-lg p-6">
-                      <h3 className="text-lg font-medium text-blue-900 mb-2">Pro Tip</h3>
-                      <p className="text-blue-700">
+                    <div className={`bg-${currentOption.color.split('-')[1]}-50 rounded-lg p-6`}>
+                      <h3 className={`text-lg font-medium text-${currentOption.color.split('-')[1]}-900 mb-2`}>Pro Tip</h3>
+                      <p className={`text-${currentOption.color.split('-')[1]}-700`}>
+                        {currentOption.id === 'basic-advanced' && "Advanced Scanning works best for messy handwriting, while Basic Scanning is faster for clear, neat writing. Use Advanced Scanning if you plan to use features like summarization or translation."}
                         {currentOption.id === 'lang-detection' && "For documents with mixed languages, select 'Mixed' and our AI will detect language transitions automatically."}
-                        {currentOption.id === 'noise-reduction' && "Noise reduction works best on documents with consistent background texture. Adjust based on your source material quality."}
-                        {currentOption.id === 'auto-correction' && "Higher correction levels work well for standard text, but use conservative settings for specialized terminology or names."}
-                        {currentOption.id === 'deskew' && "This feature is particularly helpful for documents photographed at an angle rather than scanned flat."}
-                        {currentOption.id === 'layout-analysis' && "Layout analysis preserves the original document structure in your digitized output, including paragraph breaks and indentation."}
-                        {currentOption.id === 'custom-dictionary' && "Upload domain-specific word lists to significantly improve recognition accuracy for technical or specialized content."}
+                        {currentOption.id === 'summarization' && "Shorter summaries (5-20%) are perfect for getting the main points quickly, while longer summaries (35-50%) preserve more details and supporting information."}
+                        {currentOption.id === 'translation' && "The 'Natural' translation style produces the most readable English text, while 'Literal' preserves the original sentence structure more closely."}
+                        {currentOption.id === 'enhancement' && "For important documents, use the 'Track changes' option to review all corrections before finalizing."}
+                        {currentOption.id === 'image-processing' && "If your document was photographed rather than scanned, enable all three options for best results."}
                       </p>
                     </div>
                   </div>
                 </motion.div>
               )}
             </div>
+          </div>
+          
+          <div className="mt-8 flex justify-end">
+            <button 
+              type="button" 
+              className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            >
+              Save Settings
+            </button>
           </div>
         </div>
       </main>
