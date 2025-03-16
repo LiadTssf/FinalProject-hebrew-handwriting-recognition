@@ -8,14 +8,14 @@ const EnhancedFeaturesPage = () => {
 
   return (
     <InfoPageLayout
-      title="Enhanced Features"
+      title="Extra Features"
       subtitle="Optional AI-powered enhancements for your digitized text"
       icon={
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       }
-      color="purple"
+      color="green"
     >
       <div className="space-y-10">
         <FadeInSection>
@@ -104,13 +104,13 @@ const EnhancedFeaturesPage = () => {
             Our summarization feature uses advanced AI to condense your text while preserving the most important information. You control the summary length with a simple slider, allowing for anything from a brief overview to a comprehensive digest.
           </p>
           
-          <div className="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl p-6 border border-purple-100 mb-6">
-            <h3 className="text-xl font-semibold text-purple-800 mb-3">How Summarization Works</h3>
+          <div className="bg-gradient-to-r from-green-100 to-emerald-100 rounded-xl p-6 border border-green-200 mb-6">
+            <h3 className="text-xl font-semibold text-green-800 mb-3">How Summarization Works</h3>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               <div className="bg-white rounded-lg p-4 shadow-sm">
                 <div className="text-center mb-3">
-                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-purple-100 text-purple-600 text-lg font-bold mb-2">1</div>
-                  <h4 className="font-medium text-purple-800">Analysis</h4>
+                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-green-100 text-green-600 text-lg font-bold mb-2">1</div>
+                  <h4 className="font-medium text-green-800">Analysis</h4>
                 </div>
                 <p className="text-sm text-gray-600">
                   The AI reads and analyzes the entire text to identify key topics, important information, and the overall structure.
@@ -118,8 +118,8 @@ const EnhancedFeaturesPage = () => {
               </div>
               <div className="bg-white rounded-lg p-4 shadow-sm">
                 <div className="text-center mb-3">
-                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-purple-100 text-purple-600 text-lg font-bold mb-2">2</div>
-                  <h4 className="font-medium text-purple-800">Extraction</h4>
+                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-green-100 text-green-600 text-lg font-bold mb-2">2</div>
+                  <h4 className="font-medium text-green-800">Extraction</h4>
                 </div>
                 <p className="text-sm text-gray-600">
                   Based on your chosen summary length, the system extracts the most important sentences and concepts from the document.
@@ -127,8 +127,8 @@ const EnhancedFeaturesPage = () => {
               </div>
               <div className="bg-white rounded-lg p-4 shadow-sm">
                 <div className="text-center mb-3">
-                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-purple-100 text-purple-600 text-lg font-bold mb-2">3</div>
-                  <h4 className="font-medium text-purple-800">Generation</h4>
+                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-green-100 text-green-600 text-lg font-bold mb-2">3</div>
+                  <h4 className="font-medium text-green-800">Generation</h4>
                 </div>
                 <p className="text-sm text-gray-600">
                   The extracted information is rewritten into a coherent, flowing summary that maintains the original meaning and key points.
@@ -144,7 +144,7 @@ const EnhancedFeaturesPage = () => {
         <FadeInSection delay={0.4}>
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Spelling Correction & Text Restructuring</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-gradient-to-r from-green-50 to-teal-50 rounded-xl p-6 border border-green-100">
+            <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-6 border border-green-100">
               <h3 className="text-lg font-semibold text-green-800 mb-3">Spelling Correction</h3>
               <p className="text-gray-700 mb-4">
                 Our spelling correction goes beyond fixing simple recognition errors to address misspellings in the original handwritten text:
@@ -245,7 +245,7 @@ const EnhancedFeaturesPage = () => {
                   onClick={() => setActiveDemoTab('summary')}
                   className={`px-6 py-3 border-b-2 font-medium text-sm ${
                     activeDemoTab === 'summary'
-                      ? 'border-purple-500 text-purple-600'
+                      ? 'border-green-500 text-green-600'
                       : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                   }`}
                 >
@@ -255,7 +255,7 @@ const EnhancedFeaturesPage = () => {
                   onClick={() => setActiveDemoTab('translation')}
                   className={`px-6 py-3 border-b-2 font-medium text-sm ${
                     activeDemoTab === 'translation'
-                      ? 'border-purple-500 text-purple-600'
+                      ? 'border-green-500 text-green-600'
                       : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                   }`}
                 >
@@ -265,7 +265,7 @@ const EnhancedFeaturesPage = () => {
                   onClick={() => setActiveDemoTab('spelling')}
                   className={`px-6 py-3 border-b-2 font-medium text-sm ${
                     activeDemoTab === 'spelling'
-                      ? 'border-purple-500 text-purple-600'
+                      ? 'border-green-500 text-green-600'
                       : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                   }`}
                 >
@@ -280,32 +280,32 @@ const EnhancedFeaturesPage = () => {
                   <h3 className="text-lg font-medium text-gray-900">Using Summarization</h3>
                   <ol className="space-y-4">
                     <li className="flex">
-                      <div className="flex-shrink-0 h-6 w-6 rounded-full bg-purple-100 flex items-center justify-center mr-3 mt-0.5">
-                        <span className="text-sm font-medium text-purple-800">1</span>
+                      <div className="flex-shrink-0 h-6 w-6 rounded-full bg-green-100 flex items-center justify-center mr-3 mt-0.5">
+                        <span className="text-sm font-medium text-green-800">1</span>
                       </div>
                       <div>
                         <p className="text-gray-700">Upload and process your document using Basic or Advanced Scanning</p>
                       </div>
                     </li>
                     <li className="flex">
-                      <div className="flex-shrink-0 h-6 w-6 rounded-full bg-purple-100 flex items-center justify-center mr-3 mt-0.5">
-                        <span className="text-sm font-medium text-purple-800">2</span>
+                      <div className="flex-shrink-0 h-6 w-6 rounded-full bg-green-100 flex items-center justify-center mr-3 mt-0.5">
+                        <span className="text-sm font-medium text-green-800">2</span>
                       </div>
                       <div>
                         <p className="text-gray-700">In the processing options panel, enable "Summarization"</p>
                       </div>
                     </li>
                     <li className="flex">
-                      <div className="flex-shrink-0 h-6 w-6 rounded-full bg-purple-100 flex items-center justify-center mr-3 mt-0.5">
-                        <span className="text-sm font-medium text-purple-800">3</span>
+                      <div className="flex-shrink-0 h-6 w-6 rounded-full bg-green-100 flex items-center justify-center mr-3 mt-0.5">
+                        <span className="text-sm font-medium text-green-800">3</span>
                       </div>
                       <div>
                         <p className="text-gray-700">Adjust the summary length slider from 5% (very concise) to 50% (detailed)</p>
                       </div>
                     </li>
                     <li className="flex">
-                      <div className="flex-shrink-0 h-6 w-6 rounded-full bg-purple-100 flex items-center justify-center mr-3 mt-0.5">
-                        <span className="text-sm font-medium text-purple-800">4</span>
+                      <div className="flex-shrink-0 h-6 w-6 rounded-full bg-green-100 flex items-center justify-center mr-3 mt-0.5">
+                        <span className="text-sm font-medium text-green-800">4</span>
                       </div>
                       <div>
                         <p className="text-gray-700">Process the document to receive both the full text and the summary</p>
@@ -320,32 +320,32 @@ const EnhancedFeaturesPage = () => {
                   <h3 className="text-lg font-medium text-gray-900">Using Translation</h3>
                   <ol className="space-y-4">
                     <li className="flex">
-                      <div className="flex-shrink-0 h-6 w-6 rounded-full bg-purple-100 flex items-center justify-center mr-3 mt-0.5">
-                        <span className="text-sm font-medium text-purple-800">1</span>
+                      <div className="flex-shrink-0 h-6 w-6 rounded-full bg-green-100 flex items-center justify-center mr-3 mt-0.5">
+                        <span className="text-sm font-medium text-green-800">1</span>
                       </div>
                       <div>
                         <p className="text-gray-700">Upload and process your document using Basic or Advanced Scanning</p>
                       </div>
                     </li>
                     <li className="flex">
-                      <div className="flex-shrink-0 h-6 w-6 rounded-full bg-purple-100 flex items-center justify-center mr-3 mt-0.5">
-                        <span className="text-sm font-medium text-purple-800">2</span>
+                      <div className="flex-shrink-0 h-6 w-6 rounded-full bg-green-100 flex items-center justify-center mr-3 mt-0.5">
+                        <span className="text-sm font-medium text-green-800">2</span>
                       </div>
                       <div>
                         <p className="text-gray-700">In the processing options panel, toggle on "Translation (Hebrew → English)"</p>
                       </div>
                     </li>
                     <li className="flex">
-                      <div className="flex-shrink-0 h-6 w-6 rounded-full bg-purple-100 flex items-center justify-center mr-3 mt-0.5">
-                        <span className="text-sm font-medium text-purple-800">3</span>
+                      <div className="flex-shrink-0 h-6 w-6 rounded-full bg-green-100 flex items-center justify-center mr-3 mt-0.5">
+                        <span className="text-sm font-medium text-green-800">3</span>
                       </div>
                       <div>
                         <p className="text-gray-700">Process the document to see side-by-side Hebrew and English versions</p>
                       </div>
                     </li>
                     <li className="flex">
-                      <div className="flex-shrink-0 h-6 w-6 rounded-full bg-purple-100 flex items-center justify-center mr-3 mt-0.5">
-                        <span className="text-sm font-medium text-purple-800">4</span>
+                      <div className="flex-shrink-0 h-6 w-6 rounded-full bg-green-100 flex items-center justify-center mr-3 mt-0.5">
+                        <span className="text-sm font-medium text-green-800">4</span>
                       </div>
                       <div>
                         <p className="text-gray-700">Export either or both versions in your preferred format</p>
@@ -360,32 +360,32 @@ const EnhancedFeaturesPage = () => {
                   <h3 className="text-lg font-medium text-gray-900">Using Spelling Correction & Text Restructuring</h3>
                   <ol className="space-y-4">
                     <li className="flex">
-                      <div className="flex-shrink-0 h-6 w-6 rounded-full bg-purple-100 flex items-center justify-center mr-3 mt-0.5">
-                        <span className="text-sm font-medium text-purple-800">1</span>
+                      <div className="flex-shrink-0 h-6 w-6 rounded-full bg-green-100 flex items-center justify-center mr-3 mt-0.5">
+                        <span className="text-sm font-medium text-green-800">1</span>
                       </div>
                       <div>
                         <p className="text-gray-700">Upload and process your document using Advanced Scanning (required)</p>
                       </div>
                     </li>
                     <li className="flex">
-                      <div className="flex-shrink-0 h-6 w-6 rounded-full bg-purple-100 flex items-center justify-center mr-3 mt-0.5">
-                        <span className="text-sm font-medium text-purple-800">2</span>
+                      <div className="flex-shrink-0 h-6 w-6 rounded-full bg-green-100 flex items-center justify-center mr-3 mt-0.5">
+                        <span className="text-sm font-medium text-green-800">2</span>
                       </div>
                       <div>
                         <p className="text-gray-700">In the processing options panel, enable "Spelling Correction" and/or "Text Restructuring"</p>
                       </div>
                     </li>
                     <li className="flex">
-                      <div className="flex-shrink-0 h-6 w-6 rounded-full bg-purple-100 flex items-center justify-center mr-3 mt-0.5">
-                        <span className="text-sm font-medium text-purple-800">3</span>
+                      <div className="flex-shrink-0 h-6 w-6 rounded-full bg-green-100 flex items-center justify-center mr-3 mt-0.5">
+                        <span className="text-sm font-medium text-green-800">3</span>
                       </div>
                       <div>
                         <p className="text-gray-700">Process the document to see the enhanced text with corrections highlighted</p>
                       </div>
                     </li>
                     <li className="flex">
-                      <div className="flex-shrink-0 h-6 w-6 rounded-full bg-purple-100 flex items-center justify-center mr-3 mt-0.5">
-                        <span className="text-sm font-medium text-purple-800">4</span>
+                      <div className="flex-shrink-0 h-6 w-6 rounded-full bg-green-100 flex items-center justify-center mr-3 mt-0.5">
+                        <span className="text-sm font-medium text-green-800">4</span>
                       </div>
                       <div>
                         <p className="text-gray-700">Review and accept/reject individual changes as needed before exporting</p>
@@ -398,7 +398,7 @@ const EnhancedFeaturesPage = () => {
           </div>
           
           <div className="flex justify-center">
-            <button className="bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-6 rounded-lg transition-colors duration-200 flex items-center">
+            <button className="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg transition-colors duration-200 flex items-center">
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>

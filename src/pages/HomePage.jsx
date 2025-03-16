@@ -12,7 +12,29 @@ const HomePage = () => {
       
       <main className="flex-1 p-6 overflow-auto">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-3xl font-bold mb-8 text-center">Upload Document</h1>
+          <div className="text-center mb-8">
+            <h1 className="text-3xl font-bold mb-2">Upload Document</h1>
+            <h2 className="text-xl text-blue-600 font-semibold mb-3">Hebrew Handwriting to Digital Text</h2>
+            <p className="text-gray-600 max-w-3xl mx-auto">
+              Digi-Ktav transforms your handwritten Hebrew documents into editable digital text using AI. 
+              Simply upload your document, choose your processing options, and get accurate results in seconds.
+            </p>
+          </div>
+          
+          <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200 mb-6">
+            <div className="flex items-center text-blue-700 mb-4">
+              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span className="font-medium">How it works:</span>
+            </div>
+            <ol className="space-y-1 text-sm text-gray-600 ml-7 list-decimal mb-2">
+              <li>Upload your handwritten Hebrew document</li>
+              <li>Choose your Processing Options (Basic or Advanced Scanning)</li>
+              <li>Our AI analyzes and recognizes your handwriting</li>
+              <li>Review and download the digitized text</li>
+            </ol>
+          </div>
           
           <div className="relative">
             <UploadSection />

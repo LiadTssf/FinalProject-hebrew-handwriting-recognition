@@ -41,7 +41,7 @@ const InteractiveSummarySlider = () => {
         <div className="mb-4">
           <div className="flex justify-between items-center mb-2">
             <span className="text-sm text-gray-600">Summary Length</span>
-            <span className="text-sm font-medium text-purple-700">{displayPercentage}%</span>
+            <span className="text-sm font-medium text-amber-700">{displayPercentage}%</span>
           </div>
           <input
             type="range"
@@ -52,7 +52,7 @@ const InteractiveSummarySlider = () => {
             onChange={handleSliderChange}
             className="w-full h-2 bg-gray-200 rounded-full appearance-none cursor-pointer"
             style={{
-              background: `linear-gradient(to right, #9333ea ${summaryLength}%, #e5e7eb ${summaryLength*2}%)`
+              background: `linear-gradient(to right, #f59e0b ${summaryLength}%, #e5e7eb ${summaryLength*2}%)`
             }}
           />
           <div className="flex justify-between text-xs text-gray-500 mt-1">
@@ -65,11 +65,11 @@ const InteractiveSummarySlider = () => {
             {[5, 20, 35, 50].map(percent => (
               <div 
                 key={percent} 
-                className={`absolute transform -translate-x-1/2 cursor-pointer ${percent === displayPercentage ? 'text-purple-600 font-medium' : 'text-gray-400'}`}
+                className={`absolute transform -translate-x-1/2 cursor-pointer ${percent === displayPercentage ? 'text-amber-600 font-medium' : 'text-gray-400'}`}
                 style={{ left: `${(percent - 5) / 45 * 100}%` }}
                 onClick={() => setSummaryLength(percent)}
               >
-                <div className={`h-2 w-1 mx-auto mb-1 ${percent === displayPercentage ? 'bg-purple-600' : 'bg-gray-300'}`}></div>
+                <div className={`h-2 w-1 mx-auto mb-1 ${percent === displayPercentage ? 'bg-amber-600' : 'bg-gray-300'}`}></div>
                 <span className="text-xs">{percent}%</span>
               </div>
             ))}
@@ -83,8 +83,8 @@ const InteractiveSummarySlider = () => {
               {originalText}
             </p>
           </div>
-          <div className="bg-purple-50 p-4 rounded border border-purple-100">
-            <h4 className="text-sm font-medium text-purple-700 mb-2">{displayPercentage}% Summary</h4>
+          <div className="bg-gradient-to-r from-amber-50 to-yellow-50 p-4 rounded border border-amber-200">
+            <h4 className="text-sm font-medium text-amber-700 mb-2">{displayPercentage}% Summary</h4>
             <p className="text-xs text-gray-600">
               {currentSummary}
             </p>
