@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { InfoPageLayout, FadeInSection } from '../../components/info/InfoPageLayout';
 import { Link } from 'react-router-dom';
 
 const ModelsDescriptionPage = () => {
+  const [showFullImage, setShowFullImage] = useState(false);
+  
   const modelCards = [
-    {
+          {
       title: "Basic Scanning",
-      description: "Core handwriting recognition using CNN technology",
+      description: "Turns handwriting into text using computer vision technology",
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -16,19 +18,19 @@ const ModelsDescriptionPage = () => {
       link: "/info/basic-scanning"
     },
     {
-      title: "Logical Corrections",
-      description: "AI-powered contextual error correction",
+      title: "Advanced Scanning",
+      description: "Uses AI to correct errors and improve accuracy",
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
         </svg>
       ),
       color: "purple",
-      link: "/info/logical-corrections"
+      link: "/info/advanced-scanning"
     },
     {
-      title: "Gemini API",
-      description: "Advanced language understanding with Google's Gemini",
+      title: "Gemini Helper",
+      description: "Google's smart AI that understands language like humans do",
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -38,21 +40,21 @@ const ModelsDescriptionPage = () => {
       link: "/info/gemini-api"
     },
     {
-      title: "Personal Calibration",
-      description: "Tailored recognition for your handwriting style",
+      title: "Extra Features",
+      description: "Summarize, translate, and improve your text",
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       ),
       color: "green",
-      link: "/info/personal-calibration"
+      link: "/info/extra-features"
     }
   ];
 
   return (
     <InfoPageLayout
-      title="Model Architecture"
+      title="The Technologies"
       subtitle="The technology behind Digi-Ktav's advanced handwriting recognition"
       icon={
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -65,21 +67,56 @@ const ModelsDescriptionPage = () => {
         <FadeInSection>
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Recognition Technology</h2>
           <p className="text-lg text-gray-700 mb-6">
-            Digi-Ktav combines multiple AI models and technologies to achieve exceptional handwriting recognition accuracy, particularly for Hebrew text. Our system architecture is designed as a pipeline of specialized components working together.
+            Digi-Ktav makes handwritten Hebrew texts digital using smart technology that works like a human reader - but faster and available anytime. Our system combines several tools that work together like a well-rehearsed team to turn your handwriting into accurate digital text.
           </p>
           
-          <div className="relative h-80 bg-gray-50 rounded-xl overflow-hidden my-8 border border-gray-200">
+          <div 
+            className="relative h-80 bg-gray-50 rounded-xl overflow-hidden my-8 border border-gray-200 cursor-pointer" 
+            onClick={() => setShowFullImage(true)}
+          >
             <div className="absolute inset-0 flex items-center justify-center">
               <img 
-                src="/api/placeholder/800/400" 
+                src="/images/3-phase-architecture.png" 
                 alt="System Architecture" 
                 className="max-w-full max-h-full object-contain"
               />
+              <div className="absolute top-2 right-2 bg-white bg-opacity-70 rounded-full p-1 shadow-sm">
+                <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                </svg>
+              </div>
             </div>
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-gray-100 to-transparent p-4 text-center">
-              <p className="text-sm text-gray-600">Diagram: Digi-Ktav's modular recognition architecture</p>
+              <p className="text-sm text-gray-600">Diagram: Digi-Ktav's modular recognition architecture (Click to enlarge)</p>
             </div>
           </div>
+          
+          {/* Image Modal/Popup */}
+          {showFullImage && (
+            <div 
+              className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center p-4" 
+              onClick={() => setShowFullImage(false)}
+            >
+              <div className="relative max-w-5xl max-h-screen">
+                <button 
+                  className="absolute top-2 right-2 bg-white rounded-full p-1 shadow-md"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setShowFullImage(false);
+                  }}
+                >
+                  <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+                <img 
+                  src="/images/3-phase-architecture.png"
+                  alt="System Architecture (Enlarged)" 
+                  className="max-w-full max-h-[90vh] object-contain"
+                />
+              </div>
+            </div>
+          )}
         </FadeInSection>
         
         <FadeInSection delay={0.2}>
@@ -125,7 +162,7 @@ const ModelsDescriptionPage = () => {
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">The Recognition Pipeline</h3>
                 <p className="text-gray-700">
-                  Our models work in sequence to transform your handwritten document into accurate digital text:
+                  Our step-by-step process transforms your handwritten documents into digital text:
                 </p>
               </div>
               
@@ -136,9 +173,9 @@ const ModelsDescriptionPage = () => {
                   <div className="absolute left-4 -translate-x-1/2 w-7 h-7 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold">
                     1
                   </div>
-                  <h4 className="text-lg font-medium text-gray-900">Document Acquisition</h4>
+                  <h4 className="text-lg font-medium text-gray-900">Personal Calibration (Optional)</h4>
                   <p className="mt-1 text-gray-600">
-                    Your document is captured via scan or photo and preprocessed to optimize for recognition.
+                    For better results, you can train a personalized model that learns your unique handwriting style. Like teaching a friend to read your handwriting, this significantly improves accuracy for your documents.
                   </p>
                 </div>
                 
@@ -146,9 +183,9 @@ const ModelsDescriptionPage = () => {
                   <div className="absolute left-4 -translate-x-1/2 w-7 h-7 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold">
                     2
                   </div>
-                  <h4 className="text-lg font-medium text-gray-900">Basic Recognition</h4>
+                  <h4 className="text-lg font-medium text-gray-900">Document Upload</h4>
                   <p className="mt-1 text-gray-600">
-                    The Basic Scanning CNN model recognizes individual characters and words in the document.
+                    Upload one or multiple pages of handwritten content - our system handles documents of any length, from a quick note to a full manuscript.
                   </p>
                 </div>
                 
@@ -156,9 +193,9 @@ const ModelsDescriptionPage = () => {
                   <div className="absolute left-4 -translate-x-1/2 w-7 h-7 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold">
                     3
                   </div>
-                  <h4 className="text-lg font-medium text-gray-900">Logical Correction</h4>
+                  <h4 className="text-lg font-medium text-gray-900">Image Preparation & Letter Detection</h4>
                   <p className="mt-1 text-gray-600">
-                    The output is analyzed for potential errors, and context-aware corrections are applied.
+                    We clean up the image and identify each letter, similar to how you might trace over words to make them clearer before reading.
                   </p>
                 </div>
                 
@@ -166,9 +203,9 @@ const ModelsDescriptionPage = () => {
                   <div className="absolute left-4 -translate-x-1/2 w-7 h-7 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold">
                     4
                   </div>
-                  <h4 className="text-lg font-medium text-gray-900">Gemini Integration</h4>
+                  <h4 className="text-lg font-medium text-gray-900">Smart Letter Recognition</h4>
                   <p className="mt-1 text-gray-600">
-                    For complex or ambiguous content, Gemini AI provides additional language understanding.
+                    Our computer vision system (what experts call a "CNN") examines each letter and identifies it - like having a digital expert who's studied thousands of handwriting samples.
                   </p>
                 </div>
                 
@@ -176,9 +213,9 @@ const ModelsDescriptionPage = () => {
                   <div className="absolute left-4 -translate-x-1/2 w-7 h-7 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold">
                     5
                   </div>
-                  <h4 className="text-lg font-medium text-gray-900">Personal Calibration</h4>
+                  <h4 className="text-lg font-medium text-gray-900">Language Understanding & Correction</h4>
                   <p className="mt-1 text-gray-600">
-                    If enabled, your personal handwriting profile is applied to further improve accuracy.
+                    The Gemini AI reads through the text and fixes mistakes, just like how a human editor would catch and correct errors by understanding the context of what you're trying to say.
                   </p>
                 </div>
               </div>
@@ -195,13 +232,30 @@ const ModelsDescriptionPage = () => {
                 </svg>
               </div>
               <div className="md:w-3/4 md:pl-8">
-                <h2 className="text-2xl font-bold text-blue-900 mb-4">Continuous Improvement</h2>
+                <h2 className="text-2xl font-bold text-blue-900 mb-4">Technical Architecture</h2>
                 <p className="text-blue-700 mb-4">
-                  Our models are continuously evolving and improving. With each document processed and each correction made, the system becomes more accurate for all users.
+                  Our three-stage architecture combines advanced technologies to tackle the unique challenges of Hebrew handwriting recognition:
                 </p>
-                <p className="text-blue-700">
-                  Explore each component in detail to understand how our technology transforms handwritten Hebrew text into accurate digital content with unprecedented precision.
-                </p>
+                <div className="space-y-3">
+                  <div className="flex">
+                    <div className="flex-shrink-0 h-6 w-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm font-bold mr-3 mt-0.5">1</div>
+                    <p className="text-blue-700"><span className="font-semibold">Preprocessing:</span> OpenCV enhances document quality through noise reduction, adaptive thresholding for binarization, and aspect ratio-preserving resizing—crucial for maintaining Hebrew character proportions.</p>
+                  </div>
+                  <div className="flex">
+                    <div className="flex-shrink-0 h-6 w-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm font-bold mr-3 mt-0.5">2</div>
+                    <p className="text-blue-700"><span className="font-semibold">Recognition:</span> Custom CNN models built with TensorFlow/Keras identify characters by extracting spatial features. For complex cursive text, we implement lightweight Transformer models to capture character relationships while maintaining computational efficiency.</p>
+                  </div>
+                  <div className="flex">
+                    <div className="flex-shrink-0 h-6 w-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm font-bold mr-3 mt-0.5">3</div>
+                    <p className="text-blue-700"><span className="font-semibold">Contextual Refinement:</span> Google's Gemini API interprets context to correct ambiguities—particularly critical for Hebrew text, which typically lacks vowel markings (diacritics) and can have multiple interpretations.</p>
+                  </div>
+                </div>
+                <div className="mt-4 bg-white bg-opacity-50 p-3 rounded-lg border border-blue-200">
+                  <h3 className="font-semibold text-blue-800 mb-2">Adaptive Learning</h3>
+                  <p className="text-blue-700 text-sm">
+                    Our unique personalization system allows the model to calibrate to your handwriting style. By collecting samples through calibration sheets, we enhance accuracy by either oversampling your data during training or applying higher loss penalties to errors in your specific handwriting patterns.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
