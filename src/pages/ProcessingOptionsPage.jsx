@@ -88,7 +88,7 @@ const ProcessingOptionsPage = () => {
     <div className="flex h-screen bg-gray-100 overflow-hidden">
       <Sidebar />
       
-      <main className="flex-1 overflow-auto bg-white">
+      <main className="flex-1 overflow-auto">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-8">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -133,7 +133,7 @@ const ProcessingOptionsPage = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="bg-white rounded-xl shadow-md overflow-hidden"
+                className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200"
               >
                 <ul className="divide-y divide-gray-200">
                   {processingOptions.map((option, index) => (
@@ -177,7 +177,7 @@ const ProcessingOptionsPage = () => {
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5 }}
-                  className="bg-white rounded-xl shadow-md overflow-hidden h-full"
+                  className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 h-full"
                 >
                   <div className={`h-2 ${currentOption.color}`}></div>
                   <div className="p-4 md:p-6">

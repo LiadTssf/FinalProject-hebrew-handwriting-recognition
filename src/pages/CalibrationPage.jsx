@@ -207,7 +207,7 @@ const CalibrationPage = () => {
     return (
       <div className="h-full transform-gpu">
         <motion.div 
-          className="h-full border rounded-lg p-5 bg-white shadow-sm transition-all duration-200"
+          className="h-full border border-gray-200 rounded-lg p-5 bg-white shadow-sm transition-all duration-200"
           whileHover={{ 
             boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
             borderColor: "rgb(180, 198, 252)",
@@ -308,7 +308,7 @@ const CalibrationPage = () => {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.4, delay: 0.1 }}
-            className="bg-white rounded-lg shadow-lg p-6 overflow-hidden border border-gray-100"
+            className="bg-white rounded-lg shadow-lg p-6 overflow-hidden border border-gray-200"
           >
             <div className="flex mb-10 px-6">
               {[1, 2, 3].map(step => (
@@ -555,11 +555,11 @@ const CalibrationPage = () => {
                             animate={{ y: 0, opacity: 1 }}
                             transition={{ duration: 0.3, delay: 0.1 }}
                           >
-                            <p className="text-green-700 font-medium">File Selected</p>
-                            <p className="mt-1 text-green-600 font-medium max-w-full truncate">
+                            <p className="text-file-info font-medium">File Selected</p>
+                            <p className="mt-1 text-file-info font-medium max-w-full truncate">
                               {selectedFile.name}
                             </p>
-                            <p className="mt-1 text-green-600 text-sm">
+                            <p className="mt-1 text-file-info text-sm">
                               {(selectedFile.size / 1024).toFixed(1)} KB
                             </p>
                           </motion.div>

@@ -630,3 +630,160 @@
   [data-theme='dark'] svg.text-purple-500 {
     color: #a855f7 !important;
   }
+
+
+.text-file-info {
+  color: #11bb3c !important; /* This is the green-700 color value */
+}
+
+/* Fix for InfoCard icons in dark mode */
+[data-theme='dark'] .InfoCard svg,
+[data-theme='dark'] .w-8.h-8 {
+  stroke: #60a5fa !important; /* Light blue color for better visibility */
+}
+
+/* Fix for the purple/indigo gradient section text */
+[data-theme='dark'] .bg-gradient-to-r.from-purple-50.to-indigo-50 h3.text-purple-800 {
+  color: #d8b4fe !important; /* Brighter purple for headings */
+}
+
+[data-theme='dark'] .bg-gradient-to-r.from-purple-50.to-indigo-50 p.text-gray-700,
+[data-theme='dark'] .bg-gradient-to-r.from-purple-50.to-indigo-50 ul.text-gray-700 li span {
+  color: #e2e8f0 !important; /* Light gray for better visibility */
+}
+
+/* Fix for text in blue gradient sections */
+[data-theme='dark'] .bg-gradient-to-r.from-blue-50.to-indigo-50 h3.text-blue-800 {
+  color: #93c5fd !important; /* Light blue for headings */
+}
+
+[data-theme='dark'] .bg-gradient-to-r.from-blue-50.to-indigo-50 ul.space-y-2.text-blue-700 li,
+[data-theme='dark'] .bg-gradient-to-r.from-blue-50.to-indigo-50 ul.space-y-2.text-blue-700 li span {
+  color: #93c5fd !important; /* Light blue for list items */
+}
+
+/* Fix for "Ideal For" section text */
+[data-theme='dark'] .bg-gradient-to-r.from-blue-50.to-indigo-50 h3.text-blue-800 {
+  color: #93c5fd !important; /* Bright blue for headings */
+}
+
+[data-theme='dark'] .bg-gradient-to-r.from-blue-50.to-indigo-50 ul li,
+[data-theme='dark'] .bg-gradient-to-r.from-blue-50.to-indigo-50 ul li span,
+[data-theme='dark'] .bg-gradient-to-r.from-blue-50.to-indigo-50 ul li strong {
+  color: #93c5fd !important; /* Light blue for list text */
+}
+
+/* More specific override for "Solving the Curved Text Challenge" section */
+[data-theme='dark'] .bg-gradient-to-r.from-purple-50.to-indigo-50 h3,
+[data-theme='dark'] .bg-gradient-to-r.from-purple-50.to-indigo-50 p,
+[data-theme='dark'] .bg-gradient-to-r.from-purple-50.to-indigo-50 li,
+[data-theme='dark'] .bg-gradient-to-r.from-purple-50.to-indigo-50 span,
+[data-theme='dark'] .bg-gradient-to-r.from-purple-50.to-indigo-50 strong {
+  color: #e2e8f0 !important; /* Light gray for better visibility */
+}
+
+[data-theme='dark'] .bg-gradient-to-r.from-purple-50.to-indigo-50 h3 {
+  color: #d8b4fe !important; /* Light purple for headings */
+}
+
+[data-theme='dark'] .bg-gradient-to-r.from-purple-50.to-indigo-50 strong {
+  color: #f5f5f5 !important; /* Brighter white for strong text */
+}
+
+/* Ensure any remaining SVG icons have better visibility */
+[data-theme='dark'] svg.w-5.h-5.text-purple-500,
+[data-theme='dark'] svg.w-5.h-5.text-blue-500 {
+  color: #60a5fa !important; /* Light blue for icons */
+}
+
+/* Fix background colors for gradient sections to ensure better contrast */
+[data-theme='dark'] .bg-gradient-to-r.from-purple-50.to-indigo-50 {
+  background: linear-gradient(to right, rgba(147, 51, 234, 0.2), rgba(79, 70, 229, 0.2)) !important;
+  border-color: rgba(147, 51, 234, 0.4) !important;
+}
+
+/* Ultra-specific selector for Technical Specifications text with !important to force override */
+[data-theme='dark'] .bg-gradient-to-r.from-blue-50.to-indigo-50 ul.space-y-2.text-blue-700 li,
+[data-theme='dark'] .bg-gradient-to-r.from-blue-50.to-indigo-50 ul.space-y-2.text-blue-700 li span {
+  color: #ffffff !important; /* Pure white for maximum contrast */
+}
+
+/* Make sure SVG icons in the technical specs section stay colored */
+[data-theme='dark'] .bg-gradient-to-r.from-blue-50.to-indigo-50 ul.space-y-2.text-blue-700 li svg {
+  color: #60a5fa !important;
+}
+
+/* Extra specificity to target this exact section */
+[data-theme='dark'] h3.text-xl.font-semibold.text-blue-800 + ul.space-y-2.text-blue-700 li {
+  color: #ffffff !important; 
+}
+
+/* Add a more pronounced background for the blue sections */
+[data-theme='dark'] .bg-gradient-to-r.from-blue-50.to-indigo-50 {
+  background: linear-gradient(to right, rgba(30, 58, 138, 0.6), rgba(55, 48, 163, 0.6)) !important; /* Much darker blue gradient */
+  border-color: rgba(96, 165, 250, 0.6) !important; /* Brighter border */
+}
+
+/* Fix for "Ideal For" section - keep headings as they are but make descriptions more visible */
+[data-theme='dark'] .grid.grid-cols-1.md\:grid-cols-2.gap-4.text-blue-700 li span {
+  color: #f1f5f9 !important; /* Light gray-blue for regular text */
+}
+
+[data-theme='dark'] .grid.grid-cols-1.md\:grid-cols-2.gap-4.text-blue-700 li span strong {
+  color: #bfdbfe !important; /* Keep the bold headings light blue */
+  font-weight: bold;
+}
+
+/* Enhance the background contrast for blue sections */
+[data-theme='dark'] .bg-gradient-to-r.from-blue-50.to-indigo-50 {
+  background: linear-gradient(to right, rgba(30, 64, 175, 0.4), rgba(67, 56, 202, 0.4)) !important; /* Darker blue gradient */
+  border-color: rgba(59, 130, 246, 0.5) !important;
+}
+
+/* Very specific selectors for that exact image container */
+[data-theme='dark'] .relative.h-80.bg-gray-50,
+[data-theme='dark'] .relative.h-64.bg-gray-50,
+[data-theme='dark'] div[className*="relative h-80"],
+[data-theme='dark'] div[className*="h-80 bg-gray-50"],
+[data-theme='dark'] .h-80.bg-gray-50.rounded-xl.overflow-hidden,
+[data-theme='dark'] .h-80.bg-gray-50.rounded-xl {
+  background-color: #414652 !important; /* Lighter gray with just a hint of blue */
+  border: 1px solid rgba(180, 180, 190, 0.4) !important; /* Subtle border */
+}
+
+/* Target the diagram container directly */
+[data-theme='dark'] div.relative.h-80:has(img[alt*="OCR Process"]),
+[data-theme='dark'] div.relative.h-80:has(img[alt*="Diagram"]),
+[data-theme='dark'] div.relative.h-80:has(p:contains("Diagram:")),
+[data-theme='dark'] div:has(> div.absolute.inset-0:has(> img + div:contains("Diagram"))),
+[data-theme='dark'] .my-8 {
+  background-color: #414652 !important;
+}
+
+/* Extremely specific selector using the caption text */
+[data-theme='dark'] div:has(+ div p:contains("Diagram: End-to-end handwriting recognition workflow")),
+[data-theme='dark'] div:has(div p:contains("Diagram: End-to-end handwriting recognition workflow")) {
+  background-color: #414652 !important;
+}
+
+/* Last resort - apply to ALL images in this style of container */
+[data-theme='dark'] div.relative:has(> div.absolute.inset-0:has(> img)) {
+  background-color: #414652 !important;
+}
+
+/* Force the child absolute container to inherit background */
+[data-theme='dark'] .absolute.inset-0 {
+  background-color: inherit;
+}
+
+/* Extra styling for the zoom icon to make it visible */
+[data-theme='dark'] .absolute.top-2.right-2 {
+  background-color: rgba(50, 50, 55, 0.9) !important;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .absolute.top-2.right-2 svg {
+  color: #e5e5e8 !important; /* Very light gray for the icon */
+}
+
