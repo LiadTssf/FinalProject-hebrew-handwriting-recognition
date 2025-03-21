@@ -1,27 +1,35 @@
+//homepage.jsx
 import React, { useState } from 'react';
+import { useAuth } from '../contexts/AuthContext';  // or wherever your context is
 import Sidebar from '../components/layout/Sidebar';
 import UploadSection from '../components/home/UploadSection';
 import ProcessingOptionsModal from '../components/home/ProcessingOptionsModal';
 
 const HomePage = () => {
   const [showProcessingOptions, setShowProcessingOptions] = useState(false);
-  
-  return (
-    <div className="flex h-screen bg-gray-100">
-      <Sidebar />
-      
-      <main className="flex-1 p-6 overflow-auto">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold mb-2">Upload Document</h1>
-            <h2 className="text-xl text-blue-600 font-semibold mb-3">Hebrew Handwriting to Digital Text</h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">
-              Digi-Ktav transforms your handwritten Hebrew documents into editable digital text using AI. 
-              Simply upload your document, choose your processing options, and get accurate results in seconds.
-            </p>
-          </div>
-          
-          <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200 mb-6">
+  const { currentUser } = useAuth();  // <-- get the user
+
+  // Check if user is logged in
+  const isGuest = !currentUser;
+  function GuestHomeSection() {
+    return (
+      <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+        <p className="text-gray-700">
+          You’re using Digi-Ktav as a guest. You can upload your document for basic recognition, but advanced features like calibration require an account.
+        </p>
+        {/* basic upload? or link to a "guest upload" route? */}
+        <div className="mt-4">
+          <UploadSection />
+        </div>
+      </div>
+    );
+  };
+
+  function MemberHomeSection({ showProcessingOptions, setShowProcessingOptions }) {
+    return (
+      <>
+        
+        <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200 mb-6">
             <div className="flex items-center text-blue-700 mb-4">
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -35,7 +43,7 @@ const HomePage = () => {
               <li>Review and download the digitized text</li>
             </ol>
           </div>
-          
+  
           <div className="relative">
             <UploadSection />
             
@@ -50,10 +58,41 @@ const HomePage = () => {
               </svg>
             </button>
           </div>
+      </>
+    );
+  }
+  
+  return (
+    <div className="flex h-screen bg-gray-100">
+      <Sidebar />
+
+      <main className="flex-1 p-6 overflow-auto">
+        <div className="max-w-4xl mx-auto">
+
+          {/* Always show some heading/text */}
+          <div className="text-center mb-8">
+            <h1 className="text-3xl font-bold mb-2">Upload Document</h1>
+            <h2 className="text-xl text-blue-600 font-semibold mb-3">Hebrew Handwriting to Digital Text</h2>
+            <p className="text-gray-600 max-w-3xl mx-auto">
+              Digi-Ktav transforms your handwritten Hebrew documents into editable digital text using AI. 
+              Simply upload your document, choose your processing options, and get accurate results in seconds.
+            </p>
+          </div>
+
+          {/* If this is a guest, maybe show a simplified interface */}
+          {isGuest ? (
+            <GuestHomeSection />
+          ) : (
+            <MemberHomeSection 
+              showProcessingOptions={showProcessingOptions}
+              setShowProcessingOptions={setShowProcessingOptions}
+            />
+          )}
         </div>
       </main>
-      
-      {showProcessingOptions && (
+
+      {/* If using a modal approach for advanced scanning */}
+      {!isGuest && showProcessingOptions && (
         <ProcessingOptionsModal onClose={() => setShowProcessingOptions(false)} />
       )}
     </div>

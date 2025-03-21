@@ -2,13 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import ThemeToggle from '../common/ThemeToggle';
 import { useTheme } from '../../contexts/ThemeContext';
-
+import LogoutButton from '../auth/LogOutButton'; 
+import { useAuth } from '../../contexts/AuthContext';
 const Sidebar = () => {
   const location = useLocation();
   const [infoExpanded, setInfoExpanded] = useState(true);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { theme } = useTheme();
-  
+  const { currentUser } = useAuth();  // get the logged-in user from context
+  const isGuest = !currentUser;
+
+
+
   // Close sidebar when route changes on mobile
   useEffect(() => {
     setSidebarOpen(false);
@@ -80,7 +85,15 @@ const Sidebar = () => {
       )
     }
   ];
-  
+
+  const filteredNavigationItems = isGuest
+  ? navigationItems.filter(item =>
+      item.title !== 'Calibrate Model' &&
+      item.title !== 'Calibrated Models' &&
+      item.title !== 'My Documents'
+    )
+  : navigationItems;
+
   const infoItems = [
     {
       title: 'Basic Scanning',
@@ -215,7 +228,7 @@ const Sidebar = () => {
         
         <nav className="flex-1 py-2 overflow-y-auto">
           <ul className="space-y-1">
-            {navigationItems.map(renderNavItem)}
+            {filteredNavigationItems.map(renderNavItem)}
           </ul>
           
           <div className="mx-4 my-3 border-t border-gray-700 opacity-70"></div>
@@ -249,7 +262,7 @@ const Sidebar = () => {
             )}
           </div>
         </nav>
-        
+        {/*
         <div className="border-t border-gray-700 p-4">
           <div className="flex items-center mb-4">
             <div className="w-8 h-8 bg-gray-600 rounded-full overflow-hidden mr-3">
@@ -262,7 +275,22 @@ const Sidebar = () => {
               <p className="text-xs text-gray-400">Profile Settings</p>
             </div>
           </div>
-          
+          */}
+
+          <div className="flex items-center mb-4">
+            <div className="w-8 h-8 bg-gray-600 rounded-full overflow-hidden mr-3">
+              <svg className="w-full h-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+            </div>
+            <div>
+              <p className="text-sm font-medium">
+                {isGuest ? "Guest" : (currentUser?.displayName || "Unknown User")}
+              </p>
+              <p className="text-xs text-gray-400">Profile Settings</p>
+            </div>
+          </div>
+
           <div className="border-t border-gray-700 pt-3 space-y-1">
             <div className="flex items-center px-2 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white rounded-md">
               <ThemeToggle />
@@ -279,18 +307,16 @@ const Sidebar = () => {
               </svg>
               Settings
             </Link>
-            <Link
+            
+           {/* <Link
               to="/auth"
-              className="flex items-center px-2 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white rounded-md"
-            >
-              <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-              </svg>
+              className="flex items-center px-2 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white rounded-md">
               Log out
-            </Link>
+            </Link>*/}
+              <LogoutButton />
           </div>
         </div>
-      </div>
+      
       
       {/* Main content padding for mobile */}
       <div className="md:hidden h-16"></div>
