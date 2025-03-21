@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import './styles/theme.css';
 import { ThemeProvider } from './contexts/ThemeContext';
 import AuthPage from './pages/AuthPage';
+import LoginPage from './pages/LoginPage';
+import SignUpPage from './pages/SignUpPage';
 import HomePage from './pages/HomePage';
 import CalibrationPage from './pages/CalibrationPage';
 import CalibrationProcessPage from './pages/CalibrationProcessPage';
@@ -19,13 +21,15 @@ function App() {
     <ThemeProvider>
       <Router>
         <Routes>
-          <Route path="/" element={<Navigate replace to="/auth" />} />
-          <Route path="/auth" element={<AuthPage />} />
+          <Route path="/" element={<Navigate replace to="/login" />} />
+          {/*<Route path="/auth" element={<AuthPage />} />*/}
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/documents" element={<MyDocumentsPage />} />
           <Route path="/calibration" element={<CalibrationPage />} />
           <Route path="/calibration/process" element={<CalibrationProcessPage />} />
-          <Route path="/processing-options" element={<ProcessingOptionsPage />} />
+          <Route path="/processing-options" element={<ProcessingOptionsPage />} />r
           
           {/* Info pages */}
           <Route path="/info/models-description" element={<ModelsDescriptionPage />} />

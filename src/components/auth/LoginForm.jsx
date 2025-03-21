@@ -1,26 +1,40 @@
+//LoginForm
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+// 1) Import auth + signInWithEmailAndPassword:
+import { auth } from '../../lib/firebase/firebaseinit'; // adjust the path
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 const LoginForm = () => {
-  const [username, setUsername] = useState('');
+  // 2) rename "username" to "email":
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // For now, just navigate to home page regardless of credentials
-    navigate('/home');
+    try {
+      
+      await signInWithEmailAndPassword(auth, email, password);
+      
+      navigate('/home');
+    } catch (error) {
+      // If error (bad password, no user found, etc.):
+      alert(error.message);
+    }
   };
 
   return (
     <form onSubmit={handleSubmit} className="w-full space-y-6">
       <div>
-        <label htmlFor="username" className="block text-white text-sm font-medium mb-2">Username</label>
+      <label htmlFor="email" className="block text-white text-sm font-medium mb-2">
+          Email
+        </label>
         <input 
-          type="text" 
-          id="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          type="email"
+          id="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           placeholder="example@digitizeme.io"
           className="w-full p-3 rounded-md bg-gray-700 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
