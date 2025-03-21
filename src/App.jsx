@@ -24,6 +24,7 @@ function App() {
           <Route path="/" element={<Navigate replace to="/login" />} />
           {/*<Route path="/auth" element={<AuthPage />} />*/}
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/logout" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/documents" element={<MyDocumentsPage />} />
