@@ -1,175 +1,176 @@
-/* src/styles/theme.css */
+/* src/styles/theme.css - Cleaned version */
 :root {
-    /* Light theme (default) */
-    --bg-primary: #ffffff;
-    --bg-secondary: #f5f7fa;
-    --bg-tertiary: #edf2f7;
-    
-    --text-primary: #1a202c;
-    --text-secondary: #4a5568;
-    --text-tertiary: #718096;
-    
-    --accent-primary: #3182ce;
-    --accent-secondary: #63b3ed;
-    
-    --border-color: #e2e8f0;
-    --shadow-color: rgba(0, 0, 0, 0.1);
-    
-    --error: #e53e3e;
-    --success: #38a169;
-    --warning: #dd6b20;
-    --info: #3182ce;
+  /* Light theme (default) */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f7fa;
+  --bg-tertiary: #edf2f7;
   
-    /* Transition for smooth theme switching */
-    --transition-speed: 0.3s;
-  }
+  --text-primary: #1a202c;
+  --text-secondary: #4a5568;
+  --text-tertiary: #718096;
   
-  /* Dark theme */
-  [data-theme='dark'] {
-    --bg-primary: #1a202c;
-    --bg-secondary: #2d3748;
-    --bg-tertiary: #4a5568;
-    
-    --text-primary: #f7fafc;
-    --text-secondary: #e2e8f0;
-    --text-tertiary: #a0aec0;
-    
-    --accent-primary: #63b3ed;
-    --accent-secondary: #4299e1;
-    
-    --border-color: #4a5568;
-    --shadow-color: rgba(0, 0, 0, 0.3);
-    
-    --error: #fc8181;
-    --success: #68d391;
-    --warning: #f6ad55;
-    --info: #63b3ed;
-  }
+  --accent-primary: #3182ce;
+  --accent-secondary: #63b3ed;
   
-  /* For Tailwind compatibility */
-  .light-mode {
-    --bg-primary: #ffffff;
-    --bg-secondary: #f5f7fa;
-    --bg-tertiary: #edf2f7;
-    --text-primary: #1a202c;
-    --text-secondary: #4a5568;
-    --text-tertiary: #718096;
-    --border-color: #e2e8f0;
-  }
+  --border-color: #e2e8f0;
+  --shadow-color: rgba(0, 0, 0, 0.1);
   
-  .dark-mode {
-    --bg-primary: #1a202c;
-    --bg-secondary: #2d3748;
-    --bg-tertiary: #4a5568;
-    --text-primary: #f7fafc;
-    --text-secondary: #e2e8f0;
-    --text-tertiary: #a0aec0;
-    --border-color: #4a5568;
-  }
+  --error: #e53e3e;
+  --success: #38a169;
+  --warning: #dd6b20;
+  --info: #3182ce;
+
+  /* Transition for smooth theme switching */
+  --transition-speed: 0.3s;
+}
+
+/* Dark theme */
+[data-theme='dark'] {
+  --bg-primary: #1a202c;
+  --bg-secondary: #2d3748;
+  --bg-tertiary: #4a5568;
   
-  /* Apply theme variables to body and all elements */
-  body {
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    transition: background-color var(--transition-speed), color var(--transition-speed);
-  }
+  --text-primary: #f7fafc;
+  --text-secondary: #e2e8f0;
+  --text-tertiary: #a0aec0;
   
-  /* Basic elements styling with theme variables */
-  input, textarea, select, button {
-    background-color: var(--bg-secondary);
-    color: var(--text-primary);
-    border-color: var(--border-color);
-    transition: all var(--transition-speed);
-  }
+  --accent-primary: #63b3ed;
+  --accent-secondary: #4299e1;
   
-  a {
-    color: var(--accent-primary);
-    transition: color var(--transition-speed);
-  }
+  --border-color: #4a5568;
+  --shadow-color: rgba(0, 0, 0, 0.3);
   
-  /* Style for the theme toggle button */
-  .theme-toggle {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem;
-    border-radius: 50%;
-    color: var(--text-primary);
-    transition: background-color var(--transition-speed);
-  }
-  
-  .theme-toggle:hover {
-    background-color: var(--bg-tertiary);
-  }
-  
-  /* Sidebar theme-specific styles */
-  .sidebar {
-    background-color: var(--bg-secondary);
-    color: var(--text-primary);
-    border-color: var(--border-color);
-  }
-  
-  /* Theme-specific overrides for sidebar components */
-  [data-theme='dark'] .sidebar {
-    background-color: #2d3748;
-  }
-  
-  [data-theme='dark'] .sidebar a, 
-  [data-theme='dark'] .sidebar button,
-  [data-theme='dark'] .sidebar .text-gray-300,
-  [data-theme='dark'] .sidebar .text-gray-400 {
-    color: #e2e8f0;
-  }
-  
-  [data-theme='dark'] .sidebar .border-gray-700 {
-    border-color: #4a5568;
-  }
-  
-  [data-theme='dark'] .sidebar .bg-gray-700,
-  [data-theme='dark'] .sidebar .hover\:bg-gray-700:hover {
-    background-color: #4a5568;
-  }
-  
-  [data-theme='dark'] .sidebar .bg-gray-600 {
-    background-color: #718096;
-  }
-  
-  [data-theme='dark'] .sidebar .bg-gray-800 {
-    background-color: #1a202c;
-  }
-  
-  [data-theme='light'] .sidebar {
-    background-color: #f8fafc;
-  }
-  
-  [data-theme='light'] .sidebar a, 
-  [data-theme='light'] .sidebar button,
-  [data-theme='light'] .sidebar .text-gray-300,
-  [data-theme='light'] .sidebar .text-gray-400 {
-    color: #4a5568;
-  }
-  
-  [data-theme='light'] .sidebar .border-gray-700 {
-    border-color: #e2e8f0;
-  }
-  
-  [data-theme='light'] .sidebar .bg-gray-700,
-  [data-theme='light'] .sidebar .hover\:bg-gray-700:hover {
-    background-color: #e2e8f0;
-  }
-  
-  [data-theme='light'] .sidebar .bg-gray-600 {
-    background-color: #cbd5e0;
-  }
-  
-  [data-theme='light'] .sidebar .bg-gray-800 {
-    background-color: #f8fafc;
-  }
-  
-  /* Sidebar text color overrides for light mode */
+  --error: #fc8181;
+  --success: #68d391;
+  --warning: #f6ad55;
+  --info: #63b3ed;
+}
+
+/* For Tailwind compatibility */
+.light-mode {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f7fa;
+  --bg-tertiary: #edf2f7;
+  --text-primary: #1a202c;
+  --text-secondary: #4a5568;
+  --text-tertiary: #718096;
+  --border-color: #e2e8f0;
+}
+
+.dark-mode {
+  --bg-primary: #1a202c;
+  --bg-secondary: #2d3748;
+  --bg-tertiary: #4a5568;
+  --text-primary: #f7fafc;
+  --text-secondary: #e2e8f0;
+  --text-tertiary: #a0aec0;
+  --border-color: #4a5568;
+}
+
+/* Apply theme variables to body and all elements */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+/* Basic elements styling with theme variables */
+input, textarea, select, button {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+  transition: all var(--transition-speed);
+}
+
+a {
+  color: var(--accent-primary);
+  transition: color var(--transition-speed);
+}
+
+/* Style for the theme toggle button */
+.theme-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 50%;
+  color: var(--text-primary);
+  transition: background-color var(--transition-speed);
+}
+
+.theme-toggle:hover {
+  background-color: var(--bg-tertiary);
+}
+
+/* ===== SIDEBAR STYLES ===== */
+/* Sidebar theme-specific styles */
+.sidebar {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+/* Theme-specific overrides for sidebar components */
+[data-theme='dark'] .sidebar {
+  background-color: #2d3748;
+}
+
+[data-theme='dark'] .sidebar a, 
+[data-theme='dark'] .sidebar button,
+[data-theme='dark'] .sidebar .text-gray-300,
+[data-theme='dark'] .sidebar .text-gray-400 {
+  color: #e2e8f0;
+}
+
+[data-theme='dark'] .sidebar .border-gray-700 {
+  border-color: #4a5568;
+}
+
+[data-theme='dark'] .sidebar .bg-gray-700,
+[data-theme='dark'] .sidebar .hover\:bg-gray-700:hover {
+  background-color: #4a5568;
+}
+
+[data-theme='dark'] .sidebar .bg-gray-600 {
+  background-color: #718096;
+}
+
+[data-theme='dark'] .sidebar .bg-gray-800 {
+  background-color: #1a202c;
+}
+
+[data-theme='light'] .sidebar {
+  background-color: #f8fafc;
+}
+
+[data-theme='light'] .sidebar a, 
+[data-theme='light'] .sidebar button,
+[data-theme='light'] .sidebar .text-gray-300,
+[data-theme='light'] .sidebar .text-gray-400 {
+  color: #4a5568;
+}
+
+[data-theme='light'] .sidebar .border-gray-700 {
+  border-color: #e2e8f0;
+}
+
+[data-theme='light'] .sidebar .bg-gray-700,
+[data-theme='light'] .sidebar .hover\:bg-gray-700:hover {
+  background-color: #e2e8f0;
+}
+
+[data-theme='light'] .sidebar .bg-gray-600 {
+  background-color: #cbd5e0;
+}
+
+[data-theme='light'] .sidebar .bg-gray-800 {
+  background-color: #f8fafc;
+}
+
+/* Sidebar text color overrides for light mode */
 [data-theme='light'] .sidebar h1.text-xl,
 [data-theme='light'] .sidebar .text-white,
 [data-theme='light'] .sidebar p.text-sm.font-medium {
@@ -203,7 +204,8 @@
 }
 
 
-/* HomePage theme styles */
+/* ===== GENERAL DARK MODE STYLES ===== */
+/* Common HomePage theme styles */
 [data-theme='dark'] .bg-gray-100 {
   background-color: var(--bg-primary);
 }
@@ -283,6 +285,7 @@
   color: var(--text-primary);
 }
 
+/* Blue color overrides */
 [data-theme='dark'] .text-blue-600,
 [data-theme='dark'] .text-blue-700 {
   color: var(--accent-primary);
@@ -344,11 +347,7 @@
 }
 
 /* Additional specific classes for modal components */
-[data-theme='dark'] .bg-white.p-3.rounded-lg.border.border-gray-200 {
-  background-color: var(--bg-secondary);
-  border-color: var(--border-color);
-}
-
+[data-theme='dark'] .bg-white.p-3.rounded-lg.border.border-gray-200,
 [data-theme='dark'] .bg-white.p-4.rounded-lg.border.border-gray-200 {
   background-color: var(--bg-secondary);
   border-color: var(--border-color);
@@ -379,261 +378,301 @@
 
 /* Fix for "Drag and drop your file here" text in dark mode */
 [data-theme='dark'] [role="button"] p {
-    color: var(--text-secondary) !important;
-  }
-  
-  /* Fix for the gear icon in dark mode */
-  [data-theme='dark'] main button.absolute.top-4.right-4 {
-    background-color: var(--bg-tertiary);
-  }
-  
-  [data-theme='dark'] main button.absolute.top-4.right-4 svg {
-    stroke: var(--text-primary);
-  }
-  
-  /* Additional helper rules to ensure text visibility in dark mode */
-  [data-theme='dark'] .bg-gray-100,
-  [data-theme='dark'] .bg-gray-200,
-  [data-theme='dark'] .bg-gray-300 {
-    background-color: var(--bg-primary);
-  }
-  
-  [data-theme='dark'] .bg-white {
-    background-color: var(--bg-secondary);
-  }
-  
-  /* Fix for any potential dark on dark text issues */
-  [data-theme='dark'] p, 
-  [data-theme='dark'] span, 
-  [data-theme='dark'] label, 
-  [data-theme='dark'] div {
-    color: var(--text-primary);
-  }
-  
-  /* Use more specific selectors for text meant to be less prominent */
-  [data-theme='dark'] .text-gray-400,
-  [data-theme='dark'] .text-gray-500,
-  [data-theme='dark'] .text-gray-600 {
-    color: var(--text-secondary);
-  }
+  color: var(--text-secondary) !important;
+}
 
-  /* Colored backgrounds in dark mode - preserve color identity */
+/* Fix for the gear icon in dark mode */
+[data-theme='dark'] main button.absolute.top-4.right-4 {
+  background-color: var(--bg-tertiary);
+}
+
+[data-theme='dark'] main button.absolute.top-4.right-4 svg {
+  stroke: var(--text-primary);
+}
+
+/* Additional helper rules to ensure text visibility in dark mode */
+[data-theme='dark'] .bg-gray-100,
+[data-theme='dark'] .bg-gray-200,
+[data-theme='dark'] .bg-gray-300 {
+  background-color: var(--bg-primary);
+}
+
+/* Fix for any potential dark on dark text issues */
+[data-theme='dark'] p, 
+[data-theme='dark'] span, 
+[data-theme='dark'] label, 
+[data-theme='dark'] div {
+  color: var(--text-primary);
+}
+
+/* Use more specific selectors for text meant to be less prominent */
+[data-theme='dark'] .text-gray-400,
+[data-theme='dark'] .text-gray-500,
+[data-theme='dark'] .text-gray-600 {
+  color: var(--text-secondary);
+}
+
+/* ===== COLORED BACKGROUNDS IN DARK MODE ===== */
+/* Basic colored backgrounds */
 [data-theme='dark'] .bg-blue-50 {
-    background-color: rgba(59, 130, 246, 0.15); /* Dark blue */
-    border: 1px solid rgba(59, 130, 246, 0.2);
-  }
-  
-  [data-theme='dark'] .bg-purple-50 {
-    background-color: rgba(147, 51, 234, 0.15); /* Dark purple */
-    border: 1px solid rgba(147, 51, 234, 0.2);
-  }
-  
-  [data-theme='dark'] .bg-yellow-50 {
-    background-color: rgba(234, 179, 8, 0.15); /* Dark yellow */
-    border: 1px solid rgba(234, 179, 8, 0.2);
-  }
-  
-  [data-theme='dark'] .bg-red-50 {
-    background-color: rgba(239, 68, 68, 0.15); /* Dark red */
-    border: 1px solid rgba(239, 68, 68, 0.2);
-  }
-  
-  /* ----- TEXT COLORS ----- */
-  /* Headings in colored sections */
-  [data-theme='dark'] .text-blue-800,
-  [data-theme='dark'] .text-blue-900 {
-    color: #93c5fd !important; /* Bright blue */
-  }
-  
-  [data-theme='dark'] .text-purple-800,
-  [data-theme='dark'] .text-purple-900 {
-    color: #d8b4fe !important; /* Bright purple */
-  }
-  
-  [data-theme='dark'] .text-yellow-800,
-  [data-theme='dark'] .text-yellow-900 {
-    color: #fef08a !important; /* Bright yellow */
-  }
-  
-  [data-theme='dark'] .text-red-800,
-  [data-theme='dark'] .text-red-900 {
-    color: #fca5a5 !important; /* Bright red */
-  }
-  
-  /* Paragraphs in colored sections */
-  [data-theme='dark'] .text-blue-700 {
-    color: #60a5fa !important; /* Visible blue */
-  }
-  
-  [data-theme='dark'] .text-purple-700 {
-    color: #c084fc !important; /* Visible purple */
-  }
-  
-  [data-theme='dark'] .text-yellow-700 {
-    color: #fde047 !important; /* Visible yellow */
-  }
-  
-  [data-theme='dark'] .text-red-700 {
-    color: #f87171 !important; /* Visible red */
-  }
-  
-  /* ----- TOGGLE SWITCHES ----- */
-  /* Ensure toggle switches have good colors in dark mode */
-  [data-theme='dark'] .peer-checked\:bg-purple-600:checked {
-    background-color: #9333ea !important; /* Purple for toggle */
-  }
-  
-  [data-theme='dark'] .peer-checked\:bg-yellow-500:checked {
-    background-color: #eab308 !important; /* Yellow for toggle */
-  }
-  
-  [data-theme='dark'] .peer-checked\:bg-red-600:checked {
-    background-color: #dc2626 !important; /* Red for toggle */
-  }
-  
-  [data-theme='dark'] .peer-checked\:bg-blue-600:checked {
-    background-color: #2563eb !important; /* Blue for toggle */
-  }
-  
-  /* ----- FOCUS RINGS ----- */
-  /* Color-specific focus rings */
-  [data-theme='dark'] .focus\:ring-blue-500:focus {
-    --tw-ring-color: rgba(59, 130, 246, 0.5) !important;
-  }
-  
-  [data-theme='dark'] .focus\:ring-purple-500:focus {
-    --tw-ring-color: rgba(147, 51, 234, 0.5) !important;
-  }
-  
-  [data-theme='dark'] .focus\:ring-yellow-500:focus {
-    --tw-ring-color: rgba(234, 179, 8, 0.5) !important;
-  }
-  
-  [data-theme='dark'] .focus\:ring-red-500:focus {
-    --tw-ring-color: rgba(239, 68, 68, 0.5) !important;
-  }
+  background-color: rgba(59, 130, 246, 0.15); /* Dark blue */
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
 
-  /* Green gradient backgrounds and text - for "How It Works" section */
+[data-theme='dark'] .bg-purple-50 {
+  background-color: rgba(147, 51, 234, 0.15); /* Dark purple */
+  border: 1px solid rgba(147, 51, 234, 0.2);
+}
+
+[data-theme='dark'] .bg-yellow-50 {
+  background-color: rgba(234, 179, 8, 0.15); /* Dark yellow */
+  border: 1px solid rgba(234, 179, 8, 0.2);
+}
+
+[data-theme='dark'] .bg-red-50 {
+  background-color: rgba(239, 68, 68, 0.15); /* Dark red */
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+/* ===== TEXT COLORS ===== */
+/* Headings in colored sections */
+[data-theme='dark'] .text-blue-800,
+[data-theme='dark'] .text-blue-900 {
+  color: #93c5fd !important; /* Bright blue */
+}
+
+[data-theme='dark'] .text-purple-800,
+[data-theme='dark'] .text-purple-900 {
+  color: #d8b4fe !important; /* Bright purple */
+}
+
+[data-theme='dark'] .text-yellow-800,
+[data-theme='dark'] .text-yellow-900 {
+  color: #fef08a !important; /* Bright yellow */
+}
+
+[data-theme='dark'] .text-red-800,
+[data-theme='dark'] .text-red-900 {
+  color: #fca5a5 !important; /* Bright red */
+}
+
+/* Paragraphs in colored sections */
+[data-theme='dark'] .text-blue-700 {
+  color: #60a5fa !important; /* Visible blue */
+}
+
+[data-theme='dark'] .text-purple-700 {
+  color: #c084fc !important; /* Visible purple */
+}
+
+[data-theme='dark'] .text-yellow-700 {
+  color: #fde047 !important; /* Visible yellow */
+}
+
+[data-theme='dark'] .text-red-700 {
+  color: #f87171 !important; /* Visible red */
+}
+
+/* ----- TOGGLE SWITCHES ----- */
+/* Ensure toggle switches have good colors in dark mode */
+[data-theme='dark'] .peer-checked\:bg-purple-600:checked {
+  background-color: #9333ea !important; /* Purple for toggle */
+}
+
+[data-theme='dark'] .peer-checked\:bg-yellow-500:checked {
+  background-color: #eab308 !important; /* Yellow for toggle */
+}
+
+[data-theme='dark'] .peer-checked\:bg-red-600:checked {
+  background-color: #dc2626 !important; /* Red for toggle */
+}
+
+[data-theme='dark'] .peer-checked\:bg-blue-600:checked {
+  background-color: #2563eb !important; /* Blue for toggle */
+}
+
+/* ----- FOCUS RINGS ----- */
+/* Color-specific focus rings */
+[data-theme='dark'] .focus\:ring-blue-500:focus {
+  --tw-ring-color: rgba(59, 130, 246, 0.5) !important;
+}
+
+[data-theme='dark'] .focus\:ring-purple-500:focus {
+  --tw-ring-color: rgba(147, 51, 234, 0.5) !important;
+}
+
+[data-theme='dark'] .focus\:ring-yellow-500:focus {
+  --tw-ring-color: rgba(234, 179, 8, 0.5) !important;
+}
+
+[data-theme='dark'] .focus\:ring-red-500:focus {
+  --tw-ring-color: rgba(239, 68, 68, 0.5) !important;
+}
+
+/* ===== SPECIFIC COMPONENT STYLES ===== */
+/* Green gradient backgrounds and text - for "How It Works" section */
 [data-theme='dark'] .bg-gradient-to-r.from-green-50.to-teal-50 {
-    background: linear-gradient(to right, rgba(16, 185, 129, 0.15), rgba(20, 184, 166, 0.15)) !important;
-    border-color: rgba(16, 185, 129, 0.3) !important;
-  }
-  
-  [data-theme='dark'] .text-green-800 {
-    color: #86efac !important; /* Light green for headings */
-  }
-  
-  [data-theme='dark'] .text-green-700 {
-    color: #4ade80 !important; /* Visible green for text */
-  }
-  
-  [data-theme='dark'] .text-green-500 {
-    color: #22c55e !important; /* Brighter green for icons */
-  }
-  
-  /* Amber/Yellow gradient backgrounds and text - for "Limitations" section */
-  [data-theme='dark'] .bg-gradient-to-r.from-amber-50.to-yellow-50 {
-    background: linear-gradient(to right, rgba(245, 158, 11, 0.15), rgba(234, 179, 8, 0.15)) !important;
-    border-color: rgba(245, 158, 11, 0.3) !important;
-  }
-  
-  [data-theme='dark'] .text-amber-800 {
-    color: #fde68a !important; /* Light amber for headings */
-  }
-  
-  [data-theme='dark'] .text-amber-700 {
-    color: #fbbf24 !important; /* Visible amber for text */
-  }
-  
-  [data-theme='dark'] .text-amber-500 {
-    color: #f59e0b !important; /* Brighter amber for icons */
-  }
-  
-  /* Fix borders for colored sections */
-  [data-theme='dark'] .border-green-100 {
-    border-color: rgba(16, 185, 129, 0.3) !important;
-  }
-  
-  [data-theme='dark'] .border-amber-100 {
-    border-color: rgba(245, 158, 11, 0.3) !important;
-  }
-  
-  /* Fix for list items within colored sections */
-  [data-theme='dark'] ul.space-y-3.text-green-700 li span,
-  [data-theme='dark'] ul.space-y-3.text-amber-700 li span {
-    color: inherit !important; /* Preserve the colored text */
-  }
-  
-  /* Fix for checkmark icons in lists */
-  [data-theme='dark'] .flex-shrink-0.w-6.h-6 svg.text-green-500,
-  [data-theme='dark'] .flex-shrink-0.w-6.h-6 svg.text-amber-500 {
-    color: currentColor !important;
-  }
-  
-  /* Fix for the "Ideal For" section */
-  [data-theme='dark'] .grid.grid-cols-1.md\:grid-cols-2.gap-4.text-blue-700 li {
-    color: #93c5fd !important; /* Light blue text */
-  }
-  
-  [data-theme='dark'] .grid.grid-cols-1.md\:grid-cols-2.gap-4.text-blue-700 li strong {
-    color: #bfdbfe !important; /* Even lighter blue for emphasis */
-    font-weight: bold;
-  }
-  
-  /* Image gallery fixes */
-  [data-theme='dark'] .bg-white.bg-opacity-70.rounded-full {
-    background-color: rgba(45, 55, 72, 0.7) !important;
-  }
-  
-  [data-theme='dark'] .bg-white.rounded-full {
-    background-color: var(--bg-secondary) !important;
-  }
-  
-  [data-theme='dark'] .bg-white.rounded-full svg.text-gray-700 {
-    color: var(--text-primary) !important;
-  }
-  
-  /* Image container backgrounds */
-  [data-theme='dark'] .relative.h-80.bg-gray-50,
-  [data-theme='dark'] .relative.h-64.bg-gray-50 {
-    background-color: var(--bg-secondary) !important;
-  }
-  
-  /* Image overlay gradient */
-  [data-theme='dark'] .bg-gradient-to-t.from-gray-100.to-transparent {
-    background: linear-gradient(to top, var(--bg-secondary), transparent) !important;
-  }
-  
-  /* Video placeholder */
-  [data-theme='dark'] .text-white.text-center svg.text-gray-400 {
-    color: #94a3b8 !important;
-  }
-  
-  /* Strong text in all colored sections */
-  [data-theme='dark'] ul li span strong {
-    color: var(--text-primary) !important;
-  }
-  
-  /* Ensure all SVG icons have proper colors */
-  [data-theme='dark'] svg.text-green-500 {
-    color: #22c55e !important;
-  }
-  
-  [data-theme='dark'] svg.text-amber-500 {
-    color: #f59e0b !important;
-  }
-  
-  [data-theme='dark'] svg.text-blue-500 {
-    color: #3b82f6 !important;
-  }
-  
-  [data-theme='dark'] svg.text-purple-500 {
-    color: #a855f7 !important;
-  }
+  background: linear-gradient(to right, rgba(16, 185, 129, 0.2), rgba(20, 184, 166, 0.2)) !important;
+  border-color: rgba(16, 185, 129, 0.3) !important;
+}
 
+[data-theme='dark'] .text-green-800 {
+  color: #86efac !important; /* Light green for headings */
+}
 
-.text-file-info {
-  color: #11bb3c !important; /* This is the green-700 color value */
+[data-theme='dark'] .text-green-700 {
+  color: #4ade80 !important; /* Visible green for text */
+}
+
+[data-theme='dark'] .text-green-500 {
+  color: #22c55e !important; /* Brighter green for icons */
+}
+
+/* Amber/Yellow gradient backgrounds and text */
+[data-theme='dark'] .bg-gradient-to-r.from-amber-50.to-yellow-50 {
+  background: linear-gradient(to right, rgba(253, 224, 71, 0.2), rgba(250, 204, 21, 0.25)) !important; /* Brighter yellow gradient */
+  border-color: rgba(253, 224, 71, 0.4) !important;
+}
+
+[data-theme='dark'] .text-amber-800 {
+  color: #fef08a !important; /* Brighter yellow for headings */
+}
+
+[data-theme='dark'] .text-amber-700 {
+  color: #facc15 !important; /* More yellow, less brown for text */
+}
+
+[data-theme='dark'] .text-amber-500 {
+  color: #eab308 !important; /* Brighter yellow for icons */
+}
+
+[data-theme='dark'] .border-amber-100 {
+  border-color: rgba(250, 204, 21, 0.4) !important;
+}
+
+/* Enhanced Features section in dark mode */
+[data-theme='dark'] .bg-gradient-to-r.from-violet-50.to-indigo-50 {
+  background: linear-gradient(to right, rgba(139, 92, 246, 0.2), rgba(99, 102, 241, 0.2)) !important;
+  border-color: rgba(139, 92, 246, 0.4) !important;
+}
+
+/* Make the heading more visible */
+[data-theme='dark'] .bg-gradient-to-r.from-violet-50.to-indigo-50 h3.text-indigo-800 {
+  color: #c4b5fd !important; /* Bright violet for heading */
+}
+
+/* Make paragraph text more visible */
+[data-theme='dark'] .bg-gradient-to-r.from-violet-50.to-indigo-50 p.text-gray-700 {
+  color: #f3f4f6 !important; /* Light gray for paragraph text */
+}
+
+/* Fix text in the grid items */
+[data-theme='dark'] .bg-gradient-to-r.from-violet-50.to-indigo-50 ul.text-indigo-700 {
+  color: #c4b5fd !important; /* Brighter indigo for list */
+}
+
+/* Make span elements within list items visible */
+[data-theme='dark'] .bg-gradient-to-r.from-violet-50.to-indigo-50 ul.text-indigo-700 li span.font-medium {
+  color: #ddd6fe !important; /* Bright violet for feature names */
+  font-weight: 600;
+}
+
+/* Make the descriptive text visible */
+[data-theme='dark'] .bg-gradient-to-r.from-violet-50.to-indigo-50 ul.text-indigo-700 li span.text-sm {
+  color: #e2e8f0 !important; /* Light gray for descriptions */
+}
+
+/* Make check icons visible */
+[data-theme='dark'] .bg-gradient-to-r.from-violet-50.to-indigo-50 .text-indigo-500 {
+  color: #a5b4fc !important; /* Bright indigo for icons */
+}
+
+/* Background for the rounded checkmarks */
+[data-theme='dark'] .bg-gradient-to-r.from-violet-50.to-indigo-50 .bg-indigo-100 {
+  background-color: rgba(129, 140, 248, 0.3) !important; /* Semi-transparent indigo */
+}
+
+/* Fix borders for colored sections */
+[data-theme='dark'] .border-green-100 {
+  border-color: rgba(16, 185, 129, 0.3) !important;
+}
+
+/* Fix for list items within colored sections */
+[data-theme='dark'] ul.space-y-3.text-green-700 li span,
+[data-theme='dark'] ul.space-y-3.text-amber-700 li span {
+  color: inherit !important; /* Preserve the colored text */
+}
+
+/* Fix for checkmark icons in lists */
+[data-theme='dark'] .flex-shrink-0.w-6.h-6 svg.text-green-500,
+[data-theme='dark'] .flex-shrink-0.w-6.h-6 svg.text-amber-500 {
+  color: currentColor !important;
+}
+
+/* Fix for the "Ideal For" section */
+[data-theme='dark'] .grid.grid-cols-1.md\:grid-cols-2.gap-4.text-blue-700 li {
+  color: #93c5fd !important; /* Light blue text */
+}
+
+[data-theme='dark'] .grid.grid-cols-1.md\:grid-cols-2.gap-4.text-blue-700 li strong {
+  color: #bfdbfe !important; /* Even lighter blue for emphasis */
+  font-weight: bold;
+}
+
+/* Image gallery fixes */
+[data-theme='dark'] .bg-white.bg-opacity-70.rounded-full {
+  background-color: rgba(45, 55, 72, 0.7) !important;
+}
+
+[data-theme='dark'] .bg-white.rounded-full {
+  background-color: var(--bg-secondary) !important;
+}
+
+[data-theme='dark'] .bg-white.rounded-full svg.text-gray-700 {
+  color: var(--text-primary) !important;
+}
+
+/* Image container backgrounds */
+[data-theme='dark'] .relative.h-80.bg-gray-50,
+[data-theme='dark'] .relative.h-64.bg-gray-50,
+[data-theme='dark'] div[className*="relative h-80"],
+[data-theme='dark'] div[className*="h-80 bg-gray-50"],
+[data-theme='dark'] .h-80.bg-gray-50.rounded-xl.overflow-hidden,
+[data-theme='dark'] .h-80.bg-gray-50.rounded-xl {
+  background-color: #414652 !important; /* Lighter gray with just a hint of blue */
+  border: 1px solid rgba(180, 180, 190, 0.4) !important; /* Subtle border */
+}
+
+/* Image overlay gradient */
+[data-theme='dark'] .bg-gradient-to-t.from-gray-100.to-transparent {
+  background: linear-gradient(to top, var(--bg-secondary), transparent) !important;
+}
+
+/* Video placeholder */
+[data-theme='dark'] .text-white.text-center svg.text-gray-400 {
+  color: #94a3b8 !important;
+}
+
+/* Strong text in all colored sections */
+[data-theme='dark'] ul li span strong {
+  color: var(--text-primary) !important;
+}
+
+/* Ensure all SVG icons have proper colors */
+[data-theme='dark'] svg.text-green-500 {
+  color: #4ade80 !important; /* Brighter green for checkmarks */
+}
+
+[data-theme='dark'] svg.text-amber-500 {
+  color: #f59e0b !important;
+}
+
+[data-theme='dark'] svg.text-blue-500 {
+  color: #3b82f6 !important;
+}
+
+[data-theme='dark'] svg.text-purple-500 {
+  color: #a855f7 !important;
 }
 
 /* Fix for InfoCard icons in dark mode */
@@ -652,26 +691,313 @@
   color: #e2e8f0 !important; /* Light gray for better visibility */
 }
 
+[data-theme='dark'] .bg-gradient-to-r.from-purple-50.to-indigo-50 h3 {
+  color: #d8b4fe !important; /* Light purple for headings */
+}
+
+[data-theme='dark'] .bg-gradient-to-r.from-purple-50.to-indigo-50 strong {
+  color: #f5f5f5 !important; /* Brighter white for strong text */
+}
+
 /* Fix for text in blue gradient sections */
+[data-theme='dark'] .bg-gradient-to-r.from-blue-50.to-indigo-50 {
+  background: linear-gradient(to right, rgba(37, 99, 235, 0.2), rgba(79, 70, 229, 0.2)) !important;
+  border-color: rgba(59, 130, 246, 0.4) !important; /* Brighter border */
+}
+
+/* Fix for main heading in Technical Architecture */
 [data-theme='dark'] .bg-gradient-to-r.from-blue-50.to-indigo-50 h3.text-blue-800 {
   color: #93c5fd !important; /* Light blue for headings */
 }
 
 [data-theme='dark'] .bg-gradient-to-r.from-blue-50.to-indigo-50 ul.space-y-2.text-blue-700 li,
 [data-theme='dark'] .bg-gradient-to-r.from-blue-50.to-indigo-50 ul.space-y-2.text-blue-700 li span {
-  color: #93c5fd !important; /* Light blue for list items */
+  color: #ffffff !important; /* Pure white for maximum contrast */
 }
 
-/* Fix for "Ideal For" section text */
-[data-theme='dark'] .bg-gradient-to-r.from-blue-50.to-indigo-50 h3.text-blue-800 {
-  color: #93c5fd !important; /* Bright blue for headings */
+/* Make sure SVG icons in the technical specs section stay colored */
+[data-theme='dark'] .bg-gradient-to-r.from-blue-50.to-indigo-50 ul.space-y-2.text-blue-700 li svg {
+  color: #60a5fa !important;
 }
 
-[data-theme='dark'] .bg-gradient-to-r.from-blue-50.to-indigo-50 ul li,
-[data-theme='dark'] .bg-gradient-to-r.from-blue-50.to-indigo-50 ul li span,
-[data-theme='dark'] .bg-gradient-to-r.from-blue-50.to-indigo-50 ul li strong {
-  color: #93c5fd !important; /* Light blue for list text */
+/* Fix for the description text in Technical Architecture */
+[data-theme='dark'] .bg-gradient-to-r.from-blue-50.to-indigo-50 p.text-blue-700 {
+  color: #dbeafe !important; /* Very light blue for general text */
 }
+
+/* Fix for the number circles in Technical Architecture */
+[data-theme='dark'] .h-6.w-6.rounded-full.bg-blue-600 {
+  background-color: #3b82f6 !important; /* Brighter blue for the circles */
+  box-shadow: 0 0 0 2px rgba(191, 219, 254, 0.3); /* Light glow effect */
+}
+
+/* Fix for text in each point */
+[data-theme='dark'] .flex p.text-blue-700 {
+  color: #e0f2fe !important; /* Light sky blue for better visibility */
+}
+
+/* Fix for bold words in each point */
+[data-theme='dark'] .flex p.text-blue-700 span.font-semibold {
+  color: #bfdbfe !important; /* Slightly brighter blue for emphasized text */
+  font-weight: 600;
+}
+
+/* Fix for "Adaptive Learning" section */
+[data-theme='dark'] .bg-white.bg-opacity-50.p-3.rounded-lg.border.border-blue-200 {
+  background-color: rgba(59, 130, 246, 0.15) !important; /* Darker blue but still translucent */
+  border-color: rgba(96, 165, 250, 0.5) !important; /* More visible border */
+}
+
+[data-theme='dark'] .font-semibold.text-blue-800 {
+  color: #93c5fd !important; /* Light blue for "Adaptive Learning" heading */
+}
+
+[data-theme='dark'] .text-blue-700.text-sm {
+  color: #dbeafe !important; /* Very light blue for small text */
+}
+
+/* Fix for the large icon */
+[data-theme='dark'] svg.w-32.h-32.text-blue-500 {
+  color: #60a5fa !important; /* Brighter blue for the large icon */
+}
+
+/* ===== SPECIFIC PAGE FIXES ===== */
+/* Fix for "How Summarization Works" box and its text */
+[data-theme='dark'] .bg-gradient-to-r.from-green-100.to-emerald-100 {
+  background: linear-gradient(to right, rgba(34, 197, 94, 0.2), rgba(16, 185, 129, 0.2)) !important;
+  border-color: rgba(34, 197, 94, 0.4) !important;
+}
+
+[data-theme='dark'] .bg-gradient-to-r.from-green-100.to-emerald-100 h3.text-green-800 {
+  color: #86efac !important; /* Light green for headings */
+}
+
+/* Fix for the number circles in How Summarization Works */
+[data-theme='dark'] .inline-flex.items-center.justify-center.w-10.h-10.rounded-full.bg-green-100.text-green-600 {
+  background-color: rgba(34, 197, 94, 0.3) !important;
+  color: #ecfdf5 !important; /* Very light green for numbers */
+}
+
+/* Fix for the 20% Summary box - more specific and improved selectors */
+[data-theme='dark'] .bg-amber-50,
+[data-theme='dark'] div[class*="bg-amber-50"],
+[data-theme='dark'] .summary-preview .bg-amber-50,
+[data-theme='dark'] .InteractiveSummarySlider .bg-amber-50 {
+  background-color: rgba(253, 224, 71, 0.3) !important; /* Brighter yellow background */
+  border-color: rgba(253, 224, 71, 0.4) !important;
+}
+
+[data-theme='dark'] .text-amber-900,
+[data-theme='dark'] .summary-preview .text-amber-900,
+[data-theme='dark'] .bg-amber-50 p {
+  color: #fef9c3 !important; /* Very light yellow for better visibility */
+}
+
+/* Fix for Spelling Correction box */
+[data-theme='dark'] .bg-gradient-to-r.from-green-50.to-emerald-50 {
+  background: linear-gradient(to right, rgba(34, 197, 94, 0.25), rgba(16, 185, 129, 0.25)) !important;
+  border-color: rgba(34, 197, 94, 0.4) !important;
+}
+
+[data-theme='dark'] .bg-gradient-to-r.from-green-50.to-emerald-50 h3.text-green-800 {
+  color: #86efac !important; /* Light green for headings */
+}
+
+[data-theme='dark'] .bg-gradient-to-r.from-green-50.to-emerald-50 p.text-gray-700,
+[data-theme='dark'] .bg-gradient-to-r.from-green-50.to-emerald-50 ul.space-y-3.text-green-700 li span {
+  color: #ecfdf5 !important; /* Very light green for text */
+}
+
+/* Fix for How to Use Enhanced Features section number circles */
+[data-theme='dark'] .flex-shrink-0.h-6.w-6.rounded-full.bg-green-100 {
+  background-color: rgba(34, 197, 94, 0.3) !important;
+}
+
+[data-theme='dark'] .text-sm.font-medium.text-green-800 {
+  color: #ecfdf5 !important; /* Very light green for numbers */
+}
+
+/* Fix for text in white card sections */
+[data-theme='dark'] .bg-white.rounded-lg.p-4.shadow-sm h4.font-medium.text-green-800 {
+  color: #86efac !important; /* Light green for headings */
+}
+
+[data-theme='dark'] .bg-white.rounded-lg.p-4.shadow-sm p.text-sm.text-gray-600 {
+  color: #e2e8f0 !important; /* Light gray for text */
+}
+
+/* Fix for the main Gemini yellow/amber gradient section */
+[data-theme='dark'] .bg-gradient-to-r.from-yellow-50.to-amber-50 {
+  background: linear-gradient(to right, rgba(254, 240, 138, 0.2), rgba(251, 191, 36, 0.15)) !important; /* Lighter, warmer yellow gradient */
+  border-color: rgba(252, 211, 77, 0.4) !important; /* More visible yellow border */
+}
+
+/* Make the Gemini section text more visible */
+[data-theme='dark'] .text-yellow-800.text-lg {
+  color: #fef08a !important; /* Bright yellow for main heading */
+  font-weight: 600;
+}
+
+[data-theme='dark'] .text-yellow-700.mt-2 {
+  color: #fef3c7 !important; /* Light cream-yellow for paragraph text */
+}
+
+[data-theme='dark'] .text-yellow-600 {
+  color: #fcd34d !important; /* Medium yellow for icons */
+}
+
+/* Fix the number circles and text in How It Works section */
+[data-theme='dark'] .w-12.h-12.bg-blue-100.rounded-full {
+  background-color: rgba(59, 130, 246, 0.3) !important; /* Blue circles */
+}
+
+[data-theme='dark'] .w-12.h-12.bg-yellow-100.rounded-full {
+  background-color: rgba(253, 224, 71, 0.3) !important; /* Yellow circles */
+}
+
+[data-theme='dark'] .w-12.h-12.bg-green-100.rounded-full {
+  background-color: rgba(34, 197, 94, 0.4) !important; /* Brighter green circle background */
+}
+
+/* Fix the number text colors */
+[data-theme='dark'] .text-xl.font-bold.text-blue-700 {
+  color: #dbeafe !important; /* Light blue for number 1 */
+}
+
+[data-theme='dark'] .text-xl.font-bold.text-yellow-700 {
+  color: #fef3c7 !important; /* Light yellow for number 2 */
+}
+
+[data-theme='dark'] .text-xl.font-bold.text-green-700 {
+  color: #ffffff !important; /* Pure white for number 3 */
+}
+
+/* Fix the step headings */
+[data-theme='dark'] .bg-blue-50.rounded-xl.p-4.border.border-blue-100 {
+  background-color: rgba(59, 130, 246, 0.2) !important; /* Brighter blue background */
+  border-color: rgba(96, 165, 250, 0.5) !important; /* More visible blue border */
+}
+
+[data-theme='dark'] .bg-yellow-50.rounded-xl.p-4.border.border-yellow-100 {
+  background-color: rgba(252, 211, 77, 0.2) !important; /* Brighter gold background */
+  border-color: rgba(252, 211, 77, 0.5) !important; /* More visible gold border */
+}
+
+[data-theme='dark'] .bg-green-50.rounded-xl.p-4.border.border-green-100 {
+  background-color: rgba(16, 185, 129, 0.2) !important; /* Brighter emerald background */
+  border-color: rgba(52, 211, 153, 0.5) !important; /* More visible emerald border */
+}
+
+/* Fix text in the colored boxes */
+[data-theme='dark'] .bg-blue-50 p.text-sm.text-gray-700 {
+  color: #dbeafe !important; /* Very light blue for paragraph text */
+}
+
+[data-theme='dark'] .bg-yellow-50 p.text-sm.text-gray-700 {
+  color: #fef9c3 !important; /* Very light yellow for paragraph text */
+}
+
+[data-theme='dark'] .bg-green-50 p.text-sm.text-gray-700 {
+  color: #d1fae5 !important; /* Very light green for paragraph text */
+}
+
+/* Fix for the Fun fact section */
+[data-theme='dark'] .bg-gray-50.p-4.rounded-lg.border.border-gray-200 p.text-sm.text-gray-700 {
+  color: #f1f5f9 !important; /* Light gray for better contrast */
+}
+
+/* Specific fixes for the green comparison box */
+[data-theme='dark'] .bg-green-50.p-3.rounded-lg.border.border-green-200 {
+  background-color: rgba(16, 185, 129, 0.25) !important; /* Slightly darker emerald for contrast */
+  border-color: rgba(52, 211, 153, 0.6) !important; /* More visible emerald border */
+}
+
+[data-theme='dark'] .bg-green-50.p-3.rounded-lg.border.border-green-200 p.text-gray-800 {
+  color: #ecfdf5 !important; /* Very light mint for text */
+  font-weight: normal; /* Reset to normal weight */
+}
+
+/* Fix for the gray comparison box */
+[data-theme='dark'] .bg-gray-50.p-3.rounded-lg.border.border-gray-200 p.text-gray-800 {
+  color: #f1f5f9 !important; /* Light gray for "Without Gemini" text */
+}
+
+/* Fix for the try button in Gemini page */
+[data-theme='dark'] .bg-yellow-600.hover\:bg-yellow-700 {
+  background-color: #ca8a04 !important; /* Darker yellow */
+}
+
+[data-theme='dark'] .bg-yellow-600.hover\:bg-yellow-700:hover {
+  background-color: #a16207 !important; /* Even darker yellow on hover */
+}
+
+.text-file-info {
+color: #11bb3c !important; /* This is the green-700 color value */
+}
+
+/* Specific fix for Text Restructuring yellow text */
+[data-theme='dark'] .bg-gradient-to-r.from-amber-50.to-yellow-50 p.text-gray-700 {
+color: #fef9c3 !important; /* Bright yellow-white for text */
+}
+
+[data-theme='dark'] .bg-gradient-to-r.from-amber-50.to-yellow-50 ul.space-y-3.text-amber-700 li span {
+color: #fef3c7 !important; /* Very light yellow for list items */
+}
+
+/* Make sure the heading is properly styled */
+[data-theme='dark'] .bg-gradient-to-r.from-amber-50.to-yellow-50 h3.text-amber-800 {
+color: #fef08a !important; /* Brighter yellow for heading */
+}
+
+/* Additional specific selectors to ensure different text colors in various components */
+[data-theme='dark'] p.text-white,
+[data-theme='dark'] span.text-white,
+[data-theme='dark'] div.text-white,
+[data-theme='dark'] h3.text-white {
+color: #ffffff !important; /* Ensure white text stays white */
+}
+
+/* Fix for bright yellow text that might have been assigned generic color */
+[data-theme='dark'] .bright-yellow,
+[data-theme='dark'] .text-yellow {
+color: #fef08a !important; /* Bright yellow */
+}
+
+/* Fix for the translation pro tip text in ProcessingOptionsPage */
+[data-theme='dark'] .bg-yellow-50 .text-yellow-700 {
+color: #fef9c3 !important; /* Very light yellow for better visibility */
+}
+
+/* Fix specifically for the "Solving the Curved Text Challenge" section in BasicScanningPage */
+[data-theme='dark'] .bg-gradient-to-r.from-purple-50.to-indigo-50 h3.text-xl.font-semibold.text-purple-800 {
+color: #d8b4fe !important; /* Bright purple for the section heading */
+}
+
+[data-theme='dark'] .bg-gradient-to-r.from-purple-50.to-indigo-50 p.text-gray-700 {
+color: #e2e8f0 !important; /* Light gray for regular text */
+}
+
+[data-theme='dark'] .bg-gradient-to-r.from-purple-50.to-indigo-50 ul.space-y-3 li {
+color: #e2e8f0 !important; /* Light gray for list items */
+}
+
+[data-theme='dark'] .bg-gradient-to-r.from-purple-50.to-indigo-50 ul li span {
+color: #e2e8f0 !important; /* Light gray for text in list items */
+}
+
+[data-theme='dark'] .bg-gradient-to-r.from-purple-50.to-indigo-50 ul li span strong {
+color: #f5f5f5 !important; /* Brighter white for emphasized text */
+font-weight: bold;
+}
+
+/* Make sure svg icons in this section are visible */
+[data-theme='dark'] .bg-gradient-to-r.from-purple-50.to-indigo-50 svg.text-purple-500 {
+color: #a5b4fc !important; /* Bright indigo for icons */
+}
+
+
+
+
 
 /* More specific override for "Solving the Curved Text Challenge" section */
 [data-theme='dark'] .bg-gradient-to-r.from-purple-50.to-indigo-50 h3,
@@ -724,66 +1050,474 @@
   border-color: rgba(96, 165, 250, 0.6) !important; /* Brighter border */
 }
 
-/* Fix for "Ideal For" section - keep headings as they are but make descriptions more visible */
-[data-theme='dark'] .grid.grid-cols-1.md\:grid-cols-2.gap-4.text-blue-700 li span {
-  color: #f1f5f9 !important; /* Light gray-blue for regular text */
+/* Make the Compare with Basic Scanning button more visible in dark mode */
+[data-theme='dark'] .border.border-indigo-600.text-indigo-600.hover\:bg-indigo-50 {
+  background-color: #4f46e5 !important; /* Indigo background */
+  border-color: #6366f1 !important; /* Slightly lighter indigo border */
+  color: #ffffff !important; /* White text for contrast */
 }
 
-[data-theme='dark'] .grid.grid-cols-1.md\:grid-cols-2.gap-4.text-blue-700 li span strong {
-  color: #bfdbfe !important; /* Keep the bold headings light blue */
-  font-weight: bold;
+[data-theme='dark'] .border.border-indigo-600.text-indigo-600.hover\:bg-indigo-50:hover {
+  background-color: #4338ca !important; /* Darker indigo on hover */
+  border-color: #818cf8 !important; /* Lighter indigo border on hover */
 }
 
-/* Enhance the background contrast for blue sections */
-[data-theme='dark'] .bg-gradient-to-r.from-blue-50.to-indigo-50 {
-  background: linear-gradient(to right, rgba(30, 64, 175, 0.4), rgba(67, 56, 202, 0.4)) !important; /* Darker blue gradient */
-  border-color: rgba(59, 130, 246, 0.5) !important;
+/* Make the icon inside the button visible */
+[data-theme='dark'] .border.border-indigo-600.text-indigo-600.hover\:bg-indigo-50 svg {
+  stroke: #ffffff !important; /* White icon */
 }
 
-/* Very specific selectors for that exact image container */
-[data-theme='dark'] .relative.h-80.bg-gray-50,
-[data-theme='dark'] .relative.h-64.bg-gray-50,
-[data-theme='dark'] div[className*="relative h-80"],
-[data-theme='dark'] div[className*="h-80 bg-gray-50"],
-[data-theme='dark'] .h-80.bg-gray-50.rounded-xl.overflow-hidden,
-[data-theme='dark'] .h-80.bg-gray-50.rounded-xl {
-  background-color: #414652 !important; /* Lighter gray with just a hint of blue */
-  border: 1px solid rgba(180, 180, 190, 0.4) !important; /* Subtle border */
+/* ===== COMPARISON MODAL DARK MODE STYLES ===== */
+
+/* Modal overlay */
+[data-theme='dark'] .fixed.inset-0.bg-black.bg-opacity-75 {
+  background-color: rgba(0, 0, 0, 0.85);
 }
 
-/* Target the diagram container directly */
-[data-theme='dark'] div.relative.h-80:has(img[alt*="OCR Process"]),
-[data-theme='dark'] div.relative.h-80:has(img[alt*="Diagram"]),
-[data-theme='dark'] div.relative.h-80:has(p:contains("Diagram:")),
-[data-theme='dark'] div:has(> div.absolute.inset-0:has(> img + div:contains("Diagram"))),
-[data-theme='dark'] .my-8 {
-  background-color: #414652 !important;
+/* Modal container */
+[data-theme='dark'] .relative.bg-white.rounded-xl.shadow-2xl {
+  background-color: #1a1c23; /* Darker than standard dark background */
+  border: 1px solid var(--border-color);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 0 15px rgba(79, 70, 229, 0.1);
 }
 
-/* Extremely specific selector using the caption text */
-[data-theme='dark'] div:has(+ div p:contains("Diagram: End-to-end handwriting recognition workflow")),
-[data-theme='dark'] div:has(div p:contains("Diagram: End-to-end handwriting recognition workflow")) {
-  background-color: #414652 !important;
+/* Header styling with rich gradient */
+[data-theme='dark'] .bg-gradient-to-r.from-blue-500.to-indigo-600 {
+  background: linear-gradient(to right, #2563eb, #4f46e5);
 }
 
-/* Last resort - apply to ALL images in this style of container */
-[data-theme='dark'] div.relative:has(> div.absolute.inset-0:has(> img)) {
-  background-color: #414652 !important;
+/* Standard text colors */
+[data-theme='dark'] .text-gray-900,
+[data-theme='dark'] .text-gray-800,
+[data-theme='dark'] .text-gray-700 {
+  color: var(--text-primary);
 }
 
-/* Force the child absolute container to inherit background */
-[data-theme='dark'] .absolute.inset-0 {
-  background-color: inherit;
+[data-theme='dark'] .text-gray-600,
+[data-theme='dark'] .text-gray-500 {
+  color: var(--text-secondary);
 }
 
-/* Extra styling for the zoom icon to make it visible */
-[data-theme='dark'] .absolute.top-2.right-2 {
-  background-color: rgba(50, 50, 55, 0.9) !important;
-  border-radius: 50%;
+/* Visual comparison section */
+[data-theme='dark'] .mb-8.bg-gray-50.rounded-xl {
+  background-color: #171923;
+  border: 1px solid var(--border-color);
+}
+
+/* Grid divider colors */
+[data-theme='dark'] .divide-y.md\:divide-y-0.md\:divide-x.divide-gray-200 {
+  --tw-divide-color: var(--border-color);
+}
+
+/* Section title styling */
+[data-theme='dark'] .text-lg.font-semibold.text-blue-900 {
+  color: #bfdbfe; /* Brighter blue */
+  font-weight: 700; /* Bolder */
+}
+
+[data-theme='dark'] .text-lg.font-semibold.text-indigo-900 {
+  color: #c7d2fe; /* Brighter indigo */
+  font-weight: 700; /* Bolder */
+}
+
+/* Section icons */
+[data-theme='dark'] .w-10.h-10.rounded-full.bg-blue-100 {
+  background-color: rgba(37, 99, 235, 0.2);
+}
+
+[data-theme='dark'] .w-10.h-10.rounded-full.bg-indigo-100 {
+  background-color: rgba(79, 70, 229, 0.2);
+}
+
+[data-theme='dark'] .w-6.h-6.text-blue-600 {
+  color: #60a5fa;
+}
+
+[data-theme='dark'] .w-6.h-6.text-indigo-600 {
+  color: #818cf8;
+}
+
+/* Accuracy badges */
+[data-theme='dark'] .px-3.py-1.bg-blue-100.text-blue-800.rounded-full {
+  background-color: rgba(37, 99, 235, 0.35); /* More visible background */
+  color: #ffffff; /* Pure white for maximum contrast */
+  font-weight: 600; /* Semi-bold */
+  box-shadow: 0 0 4px rgba(37, 99, 235, 0.5); /* Subtle glow effect */
+}
+
+[data-theme='dark'] .px-3.py-1.bg-indigo-100.text-indigo-800.rounded-full {
+  background-color: rgba(79, 70, 229, 0.35); /* More visible background */
+  color: #ffffff; /* Pure white for maximum contrast */
+  font-weight: 600; /* Semi-bold */
+  box-shadow: 0 0 4px rgba(79, 70, 229, 0.5); /* Subtle glow effect */
+}
+
+
+/* Handwriting examples */
+[data-theme='dark'] .h-24.bg-gray-50.flex.items-center.justify-center.rounded.border {
+  background-color: #1e1f25; /* Slightly lighter for better contrast */
+  border-color: #6b7280; /* Brighter border */
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); /* Inner shadow for depth */
+}
+
+/* Hebrew text within examples */
+[data-theme='dark'] .h-24.bg-gray-50.flex.items-center.justify-center.rounded p.text-gray-800,
+[data-theme='dark'] .h-24.bg-gray-50.flex.items-center.justify-center.rounded p.text-gray-800.text-lg {
+  color: #ffffff; /* Pure white for the Hebrew text */
+  font-size: 1.25rem; /* Slightly larger */
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.2); /* Subtle text shadow for clarity */
+}
+
+/* Text labels */
+[data-theme='dark'] .text-center.font-semibold.mb-2.text-gray-500 {
+  color: #d1d5db; /* Much brighter gray, almost white */
+  font-weight: 600; /* Make sure the semibold is applied */
+}
+
+/* Error and success indicators */
+[data-theme='dark'] .text-red-500,
+[data-theme='dark'] span.text-red-500 {
+  color: #fca5a5; /* Brighter red */
+  font-weight: 600; /* Make it stand out more */
+}
+
+[data-theme='dark'] .text-green-500,
+[data-theme='dark'] span.text-green-500 {
+  color: #6ee7b7; /* Brighter green */
+  font-weight: 600; /* Make it stand out more */
+}
+
+/* Feature comparison table */
+[data-theme='dark'] .overflow-hidden.rounded-xl.border.border-gray-200 {
+  border-color: #374151;
+}
+
+/* Table header */
+[data-theme='dark'] thead.bg-gray-50 {
+  background-color: #1c1e29; /* Slightly lighter for better contrast */
+  border-bottom: 2px solid #4b5563; /* More defined border */
+}
+
+/* "Feature" header */
+[data-theme='dark'] .px-6.py-3.text-left.text-xs.font-medium.text-gray-500.uppercase {
+  color: #f3f4f6; /* Much brighter, almost white */
+  font-weight: 700; /* Bolder */
+  letter-spacing: 0.1em; /* Better readability for small uppercase text */
+}
+
+[data-theme='dark'] .px-6.py-3.text-left.text-xs.font-medium.text-blue-500.uppercase {
+  color: #93c5fd; /* Brighter blue */
+  font-weight: 700; /* Bolder */
+  letter-spacing: 0.1em; /* Better readability for small uppercase text */
+}
+
+[data-theme='dark'] .px-6.py-3.text-left.text-xs.font-medium.text-indigo-500.uppercase {
+  color: #a5b4fc; /* Brighter indigo */
+  font-weight: 700; /* Bolder */
+  letter-spacing: 0.1em; /* Better readability for small uppercase text */
+}
+
+/* Table rows */
+[data-theme='dark'] tbody.bg-white {
+  background-color: transparent;
+}
+
+[data-theme='dark'] tbody.bg-white.divide-y.divide-gray-200 {
+  --tw-divide-color: #374151;
+}
+
+[data-theme='dark'] tbody.bg-white.divide-y.divide-gray-200 tr {
+  background-color: #1f2028;
+}
+
+[data-theme='dark'] tbody.bg-white.divide-y.divide-gray-200 tr.bg-gray-50 {
+  background-color: #171923;
+}
+
+/* Status indicators */
+[data-theme='dark'] .inline-flex.items-center.px-2\.5.py-0\.5.rounded-full.text-xs.font-medium.bg-red-100.text-red-800 {
+  background-color: rgba(220, 38, 38, 0.15);
+  color: #fca5a5;
+}
+
+[data-theme='dark'] .inline-flex.items-center.px-2\.5.py-0\.5.rounded-full.text-xs.font-medium.bg-green-100.text-green-800 {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: #6ee7b7;
+}
+
+/* Icon colors */
+[data-theme='dark'] svg.w-5.h-5.text-red-500 {
+  color: #ef4444;
+}
+
+[data-theme='dark'] svg.w-5.h-5.text-green-500 {
+  color: #10b981;
+}
+
+/* Recommendation section */
+[data-theme='dark'] .bg-gradient-to-r.from-indigo-50.to-blue-50 {
+  background: linear-gradient(to right, rgba(79, 70, 229, 0.15), rgba(37, 99, 235, 0.15));
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+/* Recommendation heading */
+[data-theme='dark'] .text-lg.font-semibold.text-indigo-900 {
+  color: #a5b4fc;
+}
+
+/* Recommendation subheadings */
+[data-theme='dark'] .font-medium.text-blue-800 {
+  color: #93c5fd;
+}
+
+[data-theme='dark'] .font-medium.text-indigo-800 {
+  color: #a5b4fc;
+}
+
+/* List checkmarks */
+[data-theme='dark'] .w-5.h-5.text-blue-500.mr-1\.5 {
+  color: #3b82f6;
+}
+
+[data-theme='dark'] .w-5.h-5.text-indigo-500.mr-1\.5 {
+  color: #6366f1;
+}
+
+/* Action buttons */
+[data-theme='dark'] .bg-indigo-600.hover\:bg-indigo-700 {
+  background-color: #4f46e5;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
-[data-theme='dark'] .absolute.top-2.right-2 svg {
-  color: #e5e5e8 !important; /* Very light gray for the icon */
+[data-theme='dark'] .bg-indigo-600.hover\:bg-indigo-700:hover {
+  background-color: #4338ca;
+}
+
+[data-theme='dark'] .bg-blue-600.hover\:bg-blue-700 {
+  background-color: #2563eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .bg-blue-600.hover\:bg-blue-700:hover {
+  background-color: #1d4ed8;
+}
+
+/* Close button */
+[data-theme='dark'] button.absolute.top-4.right-4.text-gray-500.hover\:text-gray-700 {
+  color: #9ca3af;
+}
+
+[data-theme='dark'] button.absolute.top-4.right-4.text-gray-500.hover\:text-gray-700:hover {
+  color: #f3f4f6;
+}
+
+/* Core Components Card Icons - Dark Mode Fix */
+[data-theme='dark'] .bg-blue-100 svg {
+  stroke: #1e40af !important; /* darker blue */
+  stroke-width: 2.5px !important; /* make lines bolder */
+}
+
+[data-theme='dark'] .bg-purple-100 svg {
+  stroke: #7e22ce !important; /* darker purple */
+  stroke-width: 2.5px !important; /* make lines bolder */
+}
+
+[data-theme='dark'] .bg-yellow-100 svg {
+  stroke: #a16207 !important; /* darker yellow */
+  stroke-width: 2.5px !important; /* make lines bolder */
+}
+
+[data-theme='dark'] .bg-green-100 svg {
+  stroke: #166534 !important; /* darker green */
+  stroke-width: 2.5px !important; /* make lines bolder */
+}
+
+/* Override the hover state too */
+[data-theme='dark'] .group-hover\:bg-blue-500 svg,
+[data-theme='dark'] .group-hover\:bg-purple-500 svg,
+[data-theme='dark'] .group-hover\:bg-yellow-500 svg,
+[data-theme='dark'] .group-hover\:bg-green-500 svg {
+  stroke: #ffffff !important; /* white on hover */
+}
+
+/* More specific override to target just the core component cards */
+[data-theme='dark'] .group .p-3.rounded-lg svg {
+  stroke-width: 2.5px !important;
+}
+
+[data-theme='dark'] .group .p-3.rounded-lg.bg-blue-100 svg {
+  stroke: #1e40af !important;
+}
+
+[data-theme='dark'] .group .p-3.rounded-lg.bg-purple-100 svg {
+  stroke: #7e22ce !important;
+}
+
+[data-theme='dark'] .group .p-3.rounded-lg.bg-yellow-100 svg {
+  stroke: #a16207 !important;
+}
+
+[data-theme='dark'] .group .p-3.rounded-lg.bg-green-100 svg {
+  stroke: #166534 !important;
+}
+
+/* Number Circles in GuestCalibrationInfo - Dark Mode Fix */
+[data-theme='dark'] .flex-shrink-0 .flex.items-center.justify-center.w-6.h-6.rounded-full.bg-blue-200 {
+  background-color: rgba(30, 64, 175, 0.7) !important; /* Darker blue background */
+  border: 1px solid rgba(96, 165, 250, 0.7) !important; /* Light blue border for definition */
+  box-shadow: 0 0 3px rgba(147, 197, 253, 0.3) !important; /* Subtle glow effect */
+}
+
+
+/* Targeted Pro Tip Sections Fix - Only Purple and Red */
+
+/* Enhanced backgrounds with subtle gradients */
+[data-theme='dark'] .bg-purple-50 {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.18), rgba(79, 70, 229, 0.14)) !important;
+  border: 1px solid rgba(139, 92, 246, 0.25) !important;
+}
+
+[data-theme='dark'] .bg-red-50 {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.18), rgba(185, 28, 28, 0.14)) !important;
+  border: 1px solid rgba(248, 113, 113, 0.25) !important;
+}
+
+/* Pro Tip heading text */
+[data-theme='dark'] .text-purple-900,
+[data-theme='dark'] h3.text-purple-900 {
+  color: rgba(216, 180, 254, 1) !important; /* Bright purple */
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.1);
+  font-weight: 600 !important;
+}
+
+[data-theme='dark'] .text-red-900,
+[data-theme='dark'] h3.text-red-900 {
+  color: rgba(252, 165, 165, 1) !important; /* Bright red */
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.1);
+  font-weight: 600 !important;
+}
+
+/* Pro Tip paragraph text */
+[data-theme='dark'] .text-purple-700,
+[data-theme='dark'] p.text-purple-700 {
+  color: rgba(233, 213, 255, 1) !important; /* Very light purple */
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  line-height: 1.5 !important;
+}
+
+[data-theme='dark'] .text-red-700,
+[data-theme='dark'] p.text-red-700 {
+  color: rgba(254, 202, 202, 1) !important; /* Very light red */
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  line-height: 1.5 !important;
+}
+
+/* Additional enhancement for better text visibility */
+[data-theme='dark'] .bg-purple-50 p,
+[data-theme='dark'] .bg-red-50 p {
+  letter-spacing: 0.01em !important; /* Slightly increase letter spacing */
+  font-weight: 400 !important; /* Ensure font weight is normal, not too thin */
+}
+
+/* CalibrationPage - Dark Mode Fixes */
+
+/* "Remove File" button - make it more visible in dark mode */
+[data-theme='dark'] .bg-red-100.text-red-700.font-medium.rounded-md {
+  background-color: rgba(206, 43, 43, 0.658) !important; /* Darker, more saturated red */
+  color: #ffffff !important; /* Brighter red text */
+  border-color: #ef4444 !important; /* Brighter red border */
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.2) !important; /* Red glow effect */
+  font-weight: 600 !important; /* Make text bolder */
+}
+
+/* Hover state for "Remove File" button */
+[data-theme='dark'] .bg-red-100.text-red-700.font-medium.rounded-md:hover {
+  background-color: rgba(220, 38, 38, 0.6) !important; /* Even darker red on hover */
+  color: #fecaca !important; /* Even brighter text on hover */
+  border-color: #f87171 !important; /* Brighter border on hover */
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.4) !important; /* Enhanced glow on hover */
+}
+
+/* Drop area with file selected (green background) */
+[data-theme='dark'] [class*="border-green-500"][class*="bg-green-50"] {
+  background-color: rgba(27, 121, 63, 0.3) !important; /* Darker green */
+  border-color: #22c55e !important; /* Brighter green border */
+  box-shadow: inset 0 0 10px rgba(34, 197, 94, 0.1) !important; /* Subtle inner glow */
+}
+
+/* File info text in the drop area */
+[data-theme='dark'] .text-file-info {
+  color: #4ade80 !important; /* Bright green that stands out in dark mode */
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.1) !important; /* Subtle text shadow */
+}
+
+/* Dark mode fixes for the calibration info page */
+
+/* Fix for the gradient background section */
+.dark .bg-gradient-to-r.from-purple-50.to-blue-50 {
+  background: linear-gradient(to right, rgba(93, 36, 180, 0.2), rgba(47, 83, 182, 0.2));
+  border-color: rgb(76, 29, 149, 0.3);
+}
+
+/* Fix for text colors in the gradient section */
+.dark .bg-gradient-to-r.from-purple-50.to-blue-50 h2.text-gray-900 {
+  color: rgb(243, 244, 246);
+}
+
+.dark .bg-gradient-to-r.from-purple-50.to-blue-50 p.text-gray-700 {
+  color: rgb(209, 213, 219);
+}
+
+/* Fix for the numbered steps in How It Works section */
+.dark .bg-purple-100 {
+  background-color: rgba(146, 86, 243, 0.411);
+}
+
+.dark .text-purple-700 {
+  color: rgb(167, 139, 250);
+}
+
+
+
+
+/* Fix for text colors in dark mode */
+.dark .text-gray-900 {
+  color: rgb(243, 244, 246);
+}
+
+.dark .text-gray-700 {
+  color: rgb(209, 213, 219);
+}
+
+/* Fix for the blue info box */
+.dark .bg-blue-50 {
+  background-color: rgb(30, 58, 138, 0.2);
+}
+
+.dark .text-blue-700, 
+.dark .text-blue-800 {
+  color: rgb(147, 197, 253);
+}
+
+/* Fix for the final CTA gradient section */
+.dark .bg-gradient-to-r.from-purple-100.to-blue-100 {
+  background: linear-gradient(to right, rgba(93, 36, 180, 0.3), rgba(67, 112, 236, 0.3));
+  border-color: rgb(76, 29, 149, 0.4);
+}
+
+/* Fix for the progress bars in the comparison */
+.dark .bg-gray-200 {
+  background-color: rgb(75, 85, 99);
+}
+
+.dark .bg-gray-500 {
+  background-color: rgb(156, 163, 175);
+}
+
+/* Fix for all core component card icons in dark mode */
+.dark .group .p-3.rounded-lg.bg-purple-100 svg,
+.dark .bg-purple-100 svg {
+  stroke: #d8b4fe !important; /* Much brighter purple */
+  stroke-width: 2.5px !important;
 }
 
