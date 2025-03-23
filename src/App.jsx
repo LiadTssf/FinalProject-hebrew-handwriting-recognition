@@ -15,6 +15,7 @@ import BasicScanningPage from './pages/info/BasicScanningPage';
 import ExtraFeaturesPage from './pages/info/ExtraFeaturesPage';
 import AdvancedScanningPage from './pages/info/AdvancedScanningPage';
 import GeminiApiPage from './pages/info/GeminiApiPage';
+import CalibrationInfoPage from './pages/info/CalibrationInfoPage';
 
 function App() {
   return (
@@ -30,7 +31,7 @@ function App() {
           <Route path="/documents" element={<MyDocumentsPage />} />
           <Route path="/calibration" element={<CalibrationPage />} />
           <Route path="/calibration/process" element={<CalibrationProcessPage />} />
-          <Route path="/processing-options" element={<ProcessingOptionsPage />} />r
+          <Route path="/processing-options" element={<ProcessingOptionsPage />} />
           
           {/* Info pages */}
           <Route path="/info/models-description" element={<ModelsDescriptionPage />} />
@@ -38,6 +39,7 @@ function App() {
           <Route path="/info/extra-features" element={<ExtraFeaturesPage />} />
           <Route path="/info/advanced-scanning" element={<AdvancedScanningPage />} />
           <Route path="/info/gemini-api" element={<GeminiApiPage />} />
+          <Route path="/info/calibration" element={<CalibrationInfoPage />} />
           
           <Route path="*" element={<Navigate replace to="/auth" />} />
         </Routes>
