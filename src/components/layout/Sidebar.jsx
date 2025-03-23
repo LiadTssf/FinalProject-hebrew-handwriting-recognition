@@ -3,16 +3,16 @@ import { Link, useLocation } from 'react-router-dom';
 import ThemeToggle from '../common/ThemeToggle';
 import { useTheme } from '../../contexts/ThemeContext';
 import LogoutButton from '../auth/LogOutButton'; 
+import SettingsButton from '../common/SettingsButton';
 import { useAuth } from '../../contexts/AuthContext';
+
 const Sidebar = () => {
   const location = useLocation();
   const [infoExpanded, setInfoExpanded] = useState(true);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const { theme } = useTheme();
+  const { theme, toggleTheme } = useTheme();
   const { currentUser } = useAuth();  // get the logged-in user from context
   const isGuest = !currentUser;
-
-
 
   // Close sidebar when route changes on mobile
   useEffect(() => {
@@ -86,14 +86,14 @@ const Sidebar = () => {
     }
   ];
 
+  // Modified filter to keep "Calibrate Model" for guest users
   const filteredNavigationItems = isGuest
-  ? navigationItems.filter(item =>
-      item.title !== 'Calibrate Model' &&
-      item.title !== 'Calibrated Models' &&
-      item.title !== 'My Documents'
-    )
-  : navigationItems;
-
+    ? navigationItems.filter(item =>
+        item.title !== 'Calibrated Models' &&
+        item.title !== 'My Documents'
+      )
+    : navigationItems;
+    
   const infoItems = [
     {
       title: 'Basic Scanning',
@@ -119,6 +119,15 @@ const Sidebar = () => {
       icon: (
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      )
+    },
+    {
+      title: 'Personalized Model',
+      path: '/info/calibration',
+      icon: (
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4" />
         </svg>
       )
     },
@@ -262,7 +271,8 @@ const Sidebar = () => {
             )}
           </div>
         </nav>
-        {/*
+        
+        {/* Border line separation above user profile box */}
         <div className="border-t border-gray-700 p-4">
           <div className="flex items-center mb-4">
             <div className="w-8 h-8 bg-gray-600 rounded-full overflow-hidden mr-3">
@@ -271,52 +281,31 @@ const Sidebar = () => {
               </svg>
             </div>
             <div>
-              <p className="text-sm font-medium">Ilya Vladimirovich</p>
-              <p className="text-xs text-gray-400">Profile Settings</p>
-            </div>
-          </div>
-          */}
-
-          <div className="flex items-center mb-4">
-            <div className="w-8 h-8 bg-gray-600 rounded-full overflow-hidden mr-3">
-              <svg className="w-full h-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
-              </svg>
-            </div>
-            <div>
               <p className="text-sm font-medium">
-                {isGuest ? "Guest" : (currentUser?.displayName || "Unknown User")}
+                {isGuest ? "Guest User" : (currentUser?.displayName || "User")}
               </p>
               <p className="text-xs text-gray-400">Profile Settings</p>
             </div>
           </div>
-
+          
           <div className="border-t border-gray-700 pt-3 space-y-1">
-            <div className="flex items-center px-2 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white rounded-md">
+            {/* Theme toggle with text label */}
+            <button 
+              onClick={toggleTheme}
+              className="w-full flex items-center px-3 py-3 text-sm text-gray-300 hover:bg-gray-700 hover:text-white rounded-md"
+            >
               <ThemeToggle />
               <span className="ml-3">{theme === 'dark' ? 'Dark Mode' : 'Light Mode'}</span>
-            </div>
+            </button>
             
-            <Link
-              to="/settings"
-              className="flex items-center px-2 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white rounded-md"
-            >
-              <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              Settings
-            </Link>
+            {/* Settings button */}
+            <SettingsButton />
             
-           {/* <Link
-              to="/auth"
-              className="flex items-center px-2 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white rounded-md">
-              Log out
-            </Link>*/}
-              <LogoutButton />
+            {/* Logout button */}
+            <LogoutButton />
           </div>
         </div>
-      
+      </div>
       
       {/* Main content padding for mobile */}
       <div className="md:hidden h-16"></div>

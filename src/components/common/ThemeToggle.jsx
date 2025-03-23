@@ -3,15 +3,10 @@ import React from 'react';
 import { useTheme } from '../../contexts/ThemeContext';
 
 const ThemeToggle = () => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
 
   return (
-    <button 
-      onClick={toggleTheme}
-      className="theme-toggle"
-      title={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
-      aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
-    >
+    <div className="inline-flex">
       {theme === 'light' ? (
         // Moon icon for switching to dark mode
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -31,7 +26,7 @@ const ThemeToggle = () => {
           <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
         </svg>
       )}
-    </button>
+    </div>
   );
 };
 
