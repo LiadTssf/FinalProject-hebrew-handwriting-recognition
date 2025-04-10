@@ -1,41 +1,73 @@
-# Project Timeline (8 Weeks)
-
-This timeline outlines the planned phases for developing the Hebrew Handwriting Recognition system, incorporating parallel exploration of recognition models in the initial weeks.
-
-| Week  | Main Focus                                      | Key Tasks & Goals                                                                                                                                                                                                                                                                                                 | Documentation Focus (Project Book Sections unless noted)                                     | Milestones / Goals                                                                                                                                     |
-| :---- | :---------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **1** | **Parallel Setup & Exploration**                | - Setup environments for `TrOCR` & `YOLO` (`RCNN`-based Object Detection).<br>- Prepare minimal datasets for both (line+text for TrOCR, char boxes for YOLO on 1-5 images).<br>- Run basic "does it train?" tests for both pipelines.<br>- Define clear evaluation criteria for comparison.<br>- Meet supervisor.                               | 1. Abstract (Draft), 2. Introduction (Draft), 2.1 Project Background and Goals (Start)          | Basic code runnable for both approaches. Initial small datasets prepared. Decision criteria defined.                                              |
-| **2** | **Evaluation, Decision & Basic End-to-End**     | - Evaluate results/complexity of `TrOCR` vs `YOLO` from Week 1.<br>- **DECIDE** on the primary approach.<br>- **IF NEEDED (Fallback):** Quickly implement classical Segmentation + `CNN` pipeline.<br>- Implement the chosen/fallback pipeline fully (basic inference + sorting/assembly).<br>- Basic integration into the website (upload -> process -> display raw text). | 2.1 Project Background and Goals (Finalize), 2.2 Target Users                                | **Decision Made.** One working end-to-end pipeline (chosen or fallback) integrated with basic website functionality. Low accuracy is acceptable here. |
-| **3** | **Refine Chosen Path & Core System Docs**       | - Add more data (annotate/transcribe) for the chosen path.<br>- Retrain model for initial accuracy improvement.<br>- Debug/improve website integration & basic text output formatting (sorting/spacing/line breaks).<br>- Start documenting the *actual implemented* solution.                                            | 3.1 System Overview, 3.2 System Architecture (High-level), 3.3 Use Case Diagram              | Improved prototype v0.1. Core system documentation started reflecting the chosen path. More data prepared.                                        |
-| **4** | **Achieve Beta & Complete Initial Docs**        | - Significant dataset expansion & model retraining. Aim for best possible accuracy within this phase.<br>- Stabilize the end-to-end website workflow.<br>- Implement core website features (beyond basic display).<br>- Finalize drafts of the initial Project Book sections.                                                 | 3.4 Activity Diagram, 4. Tools and Technologies Used, 5. Development Process (Start Overview) | **Working Beta Version v0.9.** Completed first major block of Project Book (Sections 1, 2.1, 2.2, 3.1-3.4, 4).                               |
-| **5** | **Enhancement & User/Maintenance Guide Start**  | - Polish website UI/UX.<br>- Address bugs found in Beta.<br>- Further model tuning/data addition if needed.<br>- *Plan/Basic Code* for User Adaptation feature (if applicable to chosen model).<br>- Draft core User Guide sections.                                                                                        | 5.1 Implementation Details (Add specifics), 5.2 Testing (Plan/Start), **User Guide** (Start) | Polished Beta. User Guide drafted. Maintenance Guide started. User adaptation plan/structure in place.                                          |
-| **6** | **Testing, Refinement & Doc Review**            | - Conduct more systematic testing.<br>- Fix identified bugs.<br>- Incorporate supervisor feedback on documentation/system.<br>- Refine all existing documentation sections.<br>- Draft sections on challenges & results.                                                                                                | 6. Challenges and Solutions, 7. Results and Evaluation, **Maintenance Guide** (Add detail)   | Stable, tested Beta v1.0. Near-final documentation drafts ready for review.                                                                        |
-| **7** | **Presentation Materials & Final Polish**       | - Create Poster/Presentation slides (English).<br>- Script, record, and edit 2-minute demo video.<br>- Final code cleanup, commenting, `README.md` finalization.<br>- Final proofread of documentation.<br>- Prepare for live demo.                                                                                         | 8. Summary and Conclusions, 9. References. Final review of all docs.                         | Final presentation materials (Poster/PPT, Video). Clean, documented code repository. Final model weights.                                        |
-| **8** | **Final Submission Assembly & Prep**            | - Final proofread and formatting check on all documents.<br>- Organize all deliverables (Code, Weights, Docs, Poster/PPT, Video) in `GIT` structure.<br>- Ensure compliance with all submission requirements.<br>- Submit project.<br>- Prepare for final defense/presentation Q&A.                                          | Final check of all documents.                                                                | Complete, organized submission package in `GIT`. Ready for presentation.                                                                         |
-
 # Project Timeline
 
-| Week | Dates | Main Goals | Tasks | Deliverables |
-|------|-------|------------|-------|-------------|
-| 1 | TBD | Research & Setup | • Investigate trOCR setup<br>• Explore RCNN roboflow setup<br>• Compare initial results | • Research findings document<br>• Initial setups tested |
-| 2 | TBD | Approach Finalization | • Select best performing approach<br>• Implement full pipeline<br>• Fall back to regular segmentation if needed | • Working model prototype<br>• Pipeline architecture diagram |
-| 3 | TBD | Book Writing & System Enhancement | • Write Introduction (2.1, 2.2)<br>• Document System Overview (3.1)<br>• Begin Architecture documentation (3.2)<br>• Refine model and code | • Introduction chapters draft<br>• System overview draft<br>• Initial diagrams |
-| 4 | TBD | End-to-End Beta & Documentation | • Complete Use Case Diagram (3.3)<br>• Complete Activity Diagram (3.4)<br>• Integrate website with model<br>• End-to-end testing | • Working beta version<br>• Complete Project Description section<br>• Architecture diagrams |
-| 5 | TBD | System Refinement & Documentation | • Document Tools and Technologies<br>• Write Development Process section<br>• Enhance UI/UX<br>• Performance optimization | • Tools section draft<br>• Development process draft |
-| 6 | TBD | Testing & Challenges Documentation | • System testing<br>• Document challenges and solutions<br>• Begin user guide<br>• Fix identified issues | • Challenges section draft<br>• Test results<br>• User guide outline |
-| 7 | TBD | Evaluation & Maintenance Guide | • Write Results and Evaluation section<br>• Create maintenance guide<br>• Final system improvements | • Results section draft<br>• Maintenance guide draft |
-| 8 | TBD | Finalization | • Write Conclusions section<br>• Final editing and proofreading<br>• Prepare presentation/poster<br>• Create demo video | • Complete project book<br>• Final system version<br>• Poster/presentation<br>• Demo video |
-## לו"ז מקוצר (עברית)
+| Week | Dates | Main Goals | Tasks | Deliverables | Meeting |
+|------|-------|------------|-------|-------------|---------|
+| 1 | Apr 10-16 | Research & Setup | • Investigate trOCR setup<br>• Explore RCNN roboflow setup<br>• Compare initial results | • Research findings document<br>• Initial setups tested | Apr 10 |
+| 2 | Apr 17-23 | Approach Finalization | • Select best performing approach<br>• Implement full pipeline<br>• Fall back to regular segmentation if needed | • Working model prototype<br>• Pipeline architecture diagram | Apr 17 |
+| 3 | Apr 24-30 | Initial Implementation | • Refine selected approach<br>• Begin website development<br>• Start writing Introduction (2.1, 2.2) | • Improved model<br>• Website skeleton<br>• Introduction draft started | Apr 24 |
+| 4 | May 1-7 | Core Implementation | • Write System Overview (3.1)<br>• Begin Architecture documentation (3.2)<br>• Continue model training and tuning | • System overview draft<br>• Initial architecture diagrams<br>• Model improvements | May 1 |
+| 5 | May 8-14 | Integration & Documentation | • Complete Use Case Diagram (3.3)<br>• Complete Activity Diagram (3.4)<br>• Integrate website with model | • Project Description section<br>• Complete diagrams<br>• Initial integration | May 8 |
+| 6 | May 15-21 | End-to-End Beta | • End-to-end testing<br>• Document Tools and Technologies<br>• UI/UX improvements | • Working beta version<br>• Tools section draft<br>• Enhanced interface | May 15 |
+| 7 | May 22-28 | System Refinement | • Performance optimization<br>• Write Development Process section<br>• Begin testing framework | • Optimized system<br>• Development process draft<br>• Test plan | May 22 |
+| 8 | May 29-Jun 4 | Testing & Documentation | • System testing<br>• Document challenges and solutions<br>• Begin user guide | • Test results<br>• Challenges section draft<br>• User guide outline | May 29 |
+| 9 | Jun 5-11 | Evaluation & Guides | • Write Results and Evaluation section<br>• Complete user guide<br>• Create maintenance guide | • Results section draft<br>• Completed user guide<br>• Maintenance guide draft | Jun 5 |
+| 10 | Jun 12-18 | Finalization | • Write Conclusions section<br>• Final editing and proofreading<br>• Prepare presentation/poster<br>• Create demo video | • Complete project book<br>• Final system version<br>• Poster/presentation<br>• Demo video | Jun 12 |
 
-*   **שבוע 1:** סגירת גישה (`YOLO`), התקנות, אנוטציית פיילוט (5-10 תמונות), הרצת אימון-בדיקה ראשונית.
-*   **שבוע 2:** אנוטציה מוגברת (50-100+), אימון מודל בסיסי (`v0.1`), קוד מיון ראשוני. -> **פרוטוטייפ עובד ראשוני**.
-*   **שבוע 3:** אינטגרציה בסיסית לאתר, המשך אנוטציה, ניתוח תוצאות ראשוני.
-*   **שבוע 4:** הרחבת דאטהסט (150-200+), אימון מודל משופר (`v0.2`), שיפור לוגיקת מיון/ריווח, תכנון `User Adaptation`.
-*   **שבוע 5:** התחלת תיעוד עיקרי (`Project Book`, `User Guide`), בדיקות פונקציונליות.
-*   **שבוע 6:** השלמת טיוטות תיעוד, התחלת `Maintenance Guide`, תכנון/תסריט לווידאו.
-*   **שבוע 7:** יצירת פוסטר/מצגת, הקלטה ועריכת וידאו, אימון סופי (אופציונלי), בדיקות אחרונות.
-*   **שבוע 8:** סיום וליטוש תיעוד, ניקוי קוד ו-`README`, אריזת הגשה סופית ב-`GIT`.
 
+
+# לוז פרויקט
+
+| שבוע | תאריכים | מטרות עיקריות |
+|------|----------|----------------|
+| 1 | 10-16 אפריל | מחקר והתקנת סביבות: בדיקת trOCR ו-RCNN roboflow |
+| 2 | 17-23 אפריל | בחירת הגישה המיטבית ויישום צנרת מלאה |
+| 3 | 24-30 אפריל | יישום ראשוני: פיתוח אתר והתחלת כתיבת ההקדמה |
+| 4 | 1-7 מאי | יישום ליבה: תיעוד סקירת מערכת וארכיטקטורה |
+| 5 | 8-14 מאי | אינטגרציה ותיעוד: השלמת דיאגרמות ואינטגרציה ראשונית |
+| 6 | 15-21 מאי | גרסת בטא: בדיקות מקצה לקצה ושיפור ממשק משתמש |
+| 7 | 22-28 מאי | שיפור המערכת: אופטימיזציה וכתיבת תהליך הפיתוח |
+| 8 | 29 מאי - 4 יוני | בדיקות ותיעוד: תיעוד אתגרים ופתרונות |
+| 9 | 5-11 יוני | הערכה ומדריכים: כתיבת מדריך למשתמש ולתחזוקה |
+| 10 | 12-18 יוני | סיום: עריכה סופית, הכנת מצגת/פוסטר וסרטון הדגמה |
+
+# Project Book Structure
+
+## 1. Abstract
+
+## 2. Introduction
+- ### 2.1 Project Background and Goals
+- ### 2.2 Target Users
+
+## 3. Project Description
+- ### 3.1 System Overview
+- ### 3.2 System Architecture
+- ### 3.3 Use Case Diagram
+- ### 3.4 Activity Diagram
+
+## 4. Tools and Technologies Used
+
+## 5. Development Process
+- ### 5.1 Implementation Details
+- ### 5.2 Testing
+
+## 6. Challenges and Solutions
+
+## 7. Results and Evaluation
+
+## 8. Summary and Conclusions
+
+## 9. References
+
+# User Guide
+- System Description
+- User Interface
+- Main Features and Operations
+
+# Maintenance Guide
+- Hardware and Software Requirements
+- Installation Instructions
+- System Configuration
+- Package Diagram
 
 
 
