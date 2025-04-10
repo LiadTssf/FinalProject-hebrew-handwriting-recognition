@@ -1,34 +1,24 @@
 # Project Timeline
 
-| Week | Dates | Main Goals | Tasks | Deliverables | Meeting |
-|------|-------|------------|-------|-------------|---------|
-| 1 | Apr 10-16 | Research & Setup | • Investigate trOCR setup<br>• Explore RCNN roboflow setup<br>• Compare initial results | • Research findings document<br>• Initial setups tested | Apr 10 |
-| 2 | Apr 17-23 | Approach Finalization | • Select best performing approach<br>• Implement full pipeline<br>• Fall back to regular segmentation if needed | • Working model prototype<br>• Pipeline architecture diagram | Apr 17 |
-| 3 | Apr 24-30 | Initial Implementation | • Refine selected approach<br>• Begin website development<br>• Start writing Introduction (2.1, 2.2) | • Improved model<br>• Website skeleton<br>• Introduction draft started | Apr 24 |
-| 4 | May 1-7 | Core Implementation | • Write System Overview (3.1)<br>• Begin Architecture documentation (3.2)<br>• Continue model training and tuning | • System overview draft<br>• Initial architecture diagrams<br>• Model improvements | May 1 |
-| 5 | May 8-14 | Integration & Documentation | • Complete Use Case Diagram (3.3)<br>• Complete Activity Diagram (3.4)<br>• Integrate website with model | • Project Description section<br>• Complete diagrams<br>• Initial integration | May 8 |
-| 6 | May 15-21 | End-to-End Beta | • End-to-end testing<br>• Document Tools and Technologies<br>• UI/UX improvements | • Working beta version<br>• Tools section draft<br>• Enhanced interface | May 15 |
-| 7 | May 22-28 | System Refinement | • Performance optimization<br>• Write Development Process section<br>• Begin testing framework | • Optimized system<br>• Development process draft<br>• Test plan | May 22 |
-| 8 | May 29-Jun 4 | Testing & Documentation | • System testing<br>• Document challenges and solutions<br>• Begin user guide | • Test results<br>• Challenges section draft<br>• User guide outline | May 29 |
-| 9 | Jun 5-11 | Evaluation & Guides | • Write Results and Evaluation section<br>• Complete user guide<br>• Create maintenance guide | • Results section draft<br>• Completed user guide<br>• Maintenance guide draft | Jun 5 |
-| 10 | Jun 12-18 | Finalization | • Write Conclusions section<br>• Final editing and proofreading<br>• Prepare presentation/poster<br>• Create demo video | • Complete project book<br>• Final system version<br>• Poster/presentation<br>• Demo video | Jun 12 |
-
-
+| Weeks | Dates | Main Goals | Tasks | Deliverables | Meeting |
+|-------|-------|------------|-------|-------------|---------|
+| 1-2 | Apr 10-17 | Research, Setup & Approach Finalization | • Investigate trOCR setup<br>• Explore RCNN roboflow setup<br>• Compare results<br>• Select best approach<br>• Implement full pipeline | • Research findings<br>• Working model prototype<br>• Pipeline architecture | Apr 10 |
+| 3-4 | Apr 18-24 | Initial Implementation | • Refine selected approach<br>• Begin website development<br>• Start writing Introduction (2.1, 2.2) | • Improved model<br>• Website skeleton<br>• Introduction draft | Apr 24 |
+| 5-6 | Apr 25-May 8 | Core Implementation & Documentation | • Write System Overview (3.1)<br>• Architecture documentation (3.2)<br>• Complete Use Case (3.3) & Activity Diagrams (3.4)<br>• Continue model tuning | • System documentation<br>• Complete diagrams<br>• Enhanced model | May 8 |
+| 7-8 | May 9-22 | End-to-End Beta & Documentation | • Integrate website with model<br>• End-to-end testing<br>• Document Tools and Technologies<br>• Write Development Process section | • Working beta version<br>• Tools section<br>• Development process | May 22 |
+| 9-10 | May 23-Jun 5 | Testing, Evaluation & Guides | • System testing<br>• Document challenges and solutions<br>• Complete user guide<br>• Create maintenance guide<br>• Write Results and Evaluation | • Test results<br>• User & maintenance guides<br>• Results section | Jun 5 |
+| 11 | Jun 6-12 | Finalization | • Write Conclusions section<br>• Final editing and proofreading<br>• Prepare presentation/poster<br>• Create demo video | • Complete project book<br>• Final system<br>• Poster/presentation<br>• Demo video | Jun 12 |
 
 # לוז פרויקט
 
-| שבוע | תאריכים | מטרות עיקריות |
-|------|----------|----------------|
-| 1 | 10-16 אפריל | מחקר והתקנת סביבות: בדיקת trOCR ו-RCNN roboflow |
-| 2 | 17-23 אפריל | בחירת הגישה המיטבית ויישום צנרת מלאה |
-| 3 | 24-30 אפריל | יישום ראשוני: פיתוח אתר והתחלת כתיבת ההקדמה |
-| 4 | 1-7 מאי | יישום ליבה: תיעוד סקירת מערכת וארכיטקטורה |
-| 5 | 8-14 מאי | אינטגרציה ותיעוד: השלמת דיאגרמות ואינטגרציה ראשונית |
-| 6 | 15-21 מאי | גרסת בטא: בדיקות מקצה לקצה ושיפור ממשק משתמש |
-| 7 | 22-28 מאי | שיפור המערכת: אופטימיזציה וכתיבת תהליך הפיתוח |
-| 8 | 29 מאי - 4 יוני | בדיקות ותיעוד: תיעוד אתגרים ופתרונות |
-| 9 | 5-11 יוני | הערכה ומדריכים: כתיבת מדריך למשתמש ולתחזוקה |
-| 10 | 12-18 יוני | סיום: עריכה סופית, הכנת מצגת/פוסטר וסרטון הדגמה |
+| שבועות | תאריכים | מטרות עיקריות | משימות | תוצרים | פגישה |
+|--------|----------|----------------|--------|---------|--------|
+| 1-2 | 10-17 אפריל | מחקר, התקנה וגיבוש גישה | • בדיקת מערכת trOCR<br>• חקירת RCNN roboflow<br>• השוואת תוצאות<br>• בחירת הגישה המיטבית<br>• יישום צנרת מלאה | • מסמך ממצאי מחקר<br>• אב-טיפוס עובד<br>• תרשים ארכיטקטורה | 10 אפריל |
+| 3-4 | 18-24 אפריל | יישום ראשוני | • שיפור הגישה הנבחרת<br>• התחלת פיתוח אתר<br>• התחלת כתיבת ההקדמה | • שיפור המודל<br>• שלד האתר<br>• טיוטת הקדמה | 24 אפריל |
+| 5-6 | 25 אפריל-8 מאי | יישום ליבה ותיעוד | • כתיבת סקירת מערכת<br>• תיעוד ארכיטקטורה<br>• השלמת דיאגרמות שימוש ופעילות<br>• המשך כיוון המודל | • תיעוד מערכת<br>• דיאגרמות מלאות<br>• מודל משופר | 8 מאי |
+| 7-8 | 9-22 מאי | גרסת בטא ותיעוד | • אינטגרציה של האתר והמודל<br>• בדיקות מקצה לקצה<br>• תיעוד כלים וטכנולוגיות<br>• כתיבת תהליך הפיתוח | • גרסת בטא עובדת<br>• תיעוד כלים<br>• תיאור תהליך פיתוח | 22 מאי |
+| 9-10 | 23 מאי-5 יוני | בדיקות, הערכה ומדריכים | • בדיקות מערכת<br>• תיעוד אתגרים ופתרונות<br>• השלמת מדריך למשתמש<br>• יצירת מדריך תחזוקה<br>• כתיבת תוצאות והערכה | • תוצאות בדיקות<br>• מדריכי משתמש ותחזוקה<br>• פרק תוצאות | 5 יוני |
+| 11 | 6-12 יוני | סיום | • כתיבת מסקנות<br>• עריכה סופית והגהה<br>• הכנת מצגת/פוסטר<br>• יצירת סרטון הדגמה | • ספר פרויקט מלא<br>• מערכת סופית<br>• פוסטר/מצגת<br>• סרטון הדגמה | 12 יוני |
 
 # Project Book Structure
 
