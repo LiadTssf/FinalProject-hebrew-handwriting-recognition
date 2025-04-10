@@ -13,7 +13,18 @@ This timeline outlines the planned phases for developing the Hebrew Handwriting 
 | **7** | **Presentation Materials & Final Polish**       | - Create Poster/Presentation slides (English).<br>- Script, record, and edit 2-minute demo video.<br>- Final code cleanup, commenting, `README.md` finalization.<br>- Final proofread of documentation.<br>- Prepare for live demo.                                                                                         | 8. Summary and Conclusions, 9. References. Final review of all docs.                         | Final presentation materials (Poster/PPT, Video). Clean, documented code repository. Final model weights.                                        |
 | **8** | **Final Submission Assembly & Prep**            | - Final proofread and formatting check on all documents.<br>- Organize all deliverables (Code, Weights, Docs, Poster/PPT, Video) in `GIT` structure.<br>- Ensure compliance with all submission requirements.<br>- Submit project.<br>- Prepare for final defense/presentation Q&A.                                          | Final check of all documents.                                                                | Complete, organized submission package in `GIT`. Ready for presentation.                                                                         |
 
+# Project Timeline
 
+| Week | Dates | Main Goals | Tasks | Deliverables |
+|------|-------|------------|-------|-------------|
+| 1 | TBD | Research & Setup | • Investigate trOCR setup<br>• Explore RCNN roboflow setup<br>• Compare initial results | • Research findings document<br>• Initial setups tested |
+| 2 | TBD | Approach Finalization | • Select best performing approach<br>• Implement full pipeline<br>• Fall back to regular segmentation if needed | • Working model prototype<br>• Pipeline architecture diagram |
+| 3 | TBD | Book Writing & System Enhancement | • Write Introduction (2.1, 2.2)<br>• Document System Overview (3.1)<br>• Begin Architecture documentation (3.2)<br>• Refine model and code | • Introduction chapters draft<br>• System overview draft<br>• Initial diagrams |
+| 4 | TBD | End-to-End Beta & Documentation | • Complete Use Case Diagram (3.3)<br>• Complete Activity Diagram (3.4)<br>• Integrate website with model<br>• End-to-end testing | • Working beta version<br>• Complete Project Description section<br>• Architecture diagrams |
+| 5 | TBD | System Refinement & Documentation | • Document Tools and Technologies<br>• Write Development Process section<br>• Enhance UI/UX<br>• Performance optimization | • Tools section draft<br>• Development process draft |
+| 6 | TBD | Testing & Challenges Documentation | • System testing<br>• Document challenges and solutions<br>• Begin user guide<br>• Fix identified issues | • Challenges section draft<br>• Test results<br>• User guide outline |
+| 7 | TBD | Evaluation & Maintenance Guide | • Write Results and Evaluation section<br>• Create maintenance guide<br>• Final system improvements | • Results section draft<br>• Maintenance guide draft |
+| 8 | TBD | Finalization | • Write Conclusions section<br>• Final editing and proofreading<br>• Prepare presentation/poster<br>• Create demo video | • Complete project book<br>• Final system version<br>• Poster/presentation<br>• Demo video |
 ## לו"ז מקוצר (עברית)
 
 *   **שבוע 1:** סגירת גישה (`YOLO`), התקנות, אנוטציית פיילוט (5-10 תמונות), הרצת אימון-בדיקה ראשונית.
