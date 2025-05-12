@@ -1521,3 +1521,6 @@ color: #a5b4fc !important; /* Bright indigo for icons */
   stroke-width: 2.5px !important;
 }
 
+.dark .p-4.bg-white.rounded-lg.shadow-sm.border.border-gray-100.text-center {
+  border-color: rgb(72, 85, 105) !important; /* This is equivalent to gray-200 in dark mode */
+}
