@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+python-multipart
+opencv-python-headless
+numpy
+matplotlib
+torch
+torchvision
+torchaudio
+transformers
+Pillow
+google-generativeai
+python-dotenv
+inference-sdk
