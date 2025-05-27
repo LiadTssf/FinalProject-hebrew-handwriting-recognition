@@ -25,5 +25,6 @@ dist-ssr
 
 # Environment files
 .env
-
-venv/
+backend/venv/      
+backend/__pycache__/
+*.pyc
