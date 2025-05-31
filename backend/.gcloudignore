@@ -1,0 +1,16 @@
+# .gcloudignore
+
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+.env 
+.git/
+.gitignore
+debug_output/
+test_images/
+vit-hebrew-final/  # we are using the zip, not folder
+# Make sure "vit-hebrew-final.zip" is NOT listed here. (ignored)

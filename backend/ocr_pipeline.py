@@ -429,24 +429,25 @@ def load_models():
         print(f"  Local ViT model not loaded (path not found: {actual_vit_model_path}).")
 
     # --- Gemini Model Loading ---
-    print(f"DEBUG [load_models]: GEMINI_API_KEY is '{GEMINI_API_KEY[:5]}...{GEMINI_API_KEY[-5:] if GEMINI_API_KEY else 'None'}'")
-    print(f"DEBUG [load_models]: GEMINI_API_KEY_FALLBACK is '{GEMINI_API_KEY_FALLBACK}'")
+    # The global GEMINI_API_KEY is already set from os.getenv at the top of the script
+    print(f"DEBUG [load_models]: Value of global GEMINI_API_KEY before attempting load: '{GEMINI_API_KEY}'") # Print the full key here
 
-    if not GEMINI_API_KEY or GEMINI_API_KEY == GEMINI_API_KEY_FALLBACK:
-        print("  DEBUG [load_models]: Condition (not GEMINI_API_KEY or GEMINI_API_KEY == GEMINI_API_KEY_FALLBACK) is TRUE. Skipping Gemini load.")
-        print("  Gemini API Key not set or is placeholder. Gemini model will not be loaded.")
+    if not GEMINI_API_KEY:
+        print("  Gemini API Key is NOT effectively set (None or empty). Gemini model will not be loaded.")
     else:
-        print("  DEBUG [load_models]: Condition (not GEMINI_API_KEY or GEMINI_API_KEY == GEMINI_API_KEY_FALLBACK) is FALSE. Attempting Gemini load.")
+        print("  Gemini API Key IS SET. Attempting Gemini load.")
         try:
-            print("  Configuring Gemini API...")
-            genai.configure(api_key=GEMINI_API_KEY) # <--- Potential point of failure if key is invalid
+            print(f"  Configuring Gemini API with key: '{GEMINI_API_KEY[:7]}...{GEMINI_API_KEY[-7:]}'") # Print snippets for confirmation
+            genai.configure(api_key=GEMINI_API_KEY) # <--- This is where it uses the key
             print("  Gemini API configured successfully.")
-            gemini_model_g = genai.GenerativeModel("models/gemini-1.5-flash-latest") # <--- Another potential point of failure
+            gemini_model_g = genai.GenerativeModel("models/gemini-1.5-flash-latest")
             print("  Gemini model (gemini-1.5-flash-latest) created successfully.")
         except Exception as e:
-            print(f"  Error during Gemini API configuration or model creation: {e}") # More specific error
+            print(f"  Error during Gemini API configuration or model creation: {e}")
+            if "API key not valid" in str(e) or "API_KEY_INVALID" in str(e):
+                print(f"  DETAILS: The provided Gemini API Key ('{GEMINI_API_KEY[:7]}...{GEMINI_API_KEY[-7:]}') was rejected by Google as invalid.")
             traceback.print_exc()
-            gemini_model_g = None # Ensure it's None on any failure within this block
+            gemini_model_g = None
 
     models_loaded_flag = True
     return True

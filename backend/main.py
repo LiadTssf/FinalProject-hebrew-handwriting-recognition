@@ -19,9 +19,9 @@ app = FastAPI()
 # --- CORS Configuration ---
 # Adjust origins to match your React development server and production frontend URL
 origins = [
-    "http://localhost:5173",  # Default Vite dev server port
-    "http://localhost:3000",  # Common React dev server port
-    # "https://your-deployed-frontend.com", # Example for production
+    "http://localhost:5173",    # Your local React dev server (if you use vite)
+    "http://localhost:3000",    # Another common local React dev server port
+    "https://your-digi-ktav-frontend.vercel.app"  # <<< YOUR ACTUAL VERCEL FRONTEND URL
 ]
 
 app.add_middleware(

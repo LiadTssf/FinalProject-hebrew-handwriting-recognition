@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.env 
+.git/
+.gitignore
+debug_output/
+test_images/
+vit-hebrew-final/
