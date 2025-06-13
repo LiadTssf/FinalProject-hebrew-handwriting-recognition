@@ -1,32 +1,18 @@
 import React, { useState } from 'react';
 import { InfoPageLayout, FadeInSection } from '../../components/info/InfoPageLayout';
 import { Link } from 'react-router-dom';
+import { ScanLine} from 'lucide-react';
 
 const ModelsDescriptionPage = () => {
   const [showFullImage, setShowFullImage] = useState(false);
   
   const modelCards = [
           {
-      title: "Basic Scanning",
+      title: "How Digi-Ktav Works",
       description: "Turns handwriting into text using computer vision technology",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-        </svg>
-      ),
+      icon: <ScanLine className="w-8 h-8" />,
       color: "blue",
       link: "/info/basic-scanning"
-    },
-    {
-      title: "Advanced Scanning",
-      description: "Uses AI to correct errors and improve accuracy",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-        </svg>
-      ),
-      color: "purple",
-      link: "/info/advanced-scanning"
     },
     {
       title: "Gemini Helper",
@@ -76,7 +62,7 @@ const ModelsDescriptionPage = () => {
           >
             <div className="absolute inset-0 flex items-center justify-center">
               <img 
-                src="/images/3-phase-architecture.png" 
+                src="/images/digiktav_arch_diagram.png" 
                 alt="System Architecture" 
                 className="max-w-full max-h-full object-contain"
               />
@@ -110,7 +96,7 @@ const ModelsDescriptionPage = () => {
                   </svg>
                 </button>
                 <img 
-                  src="/images/3-phase-architecture.png"
+                  src="/images/digiktav_arch_diagram.png"
                   alt="System Architecture (Enlarged)" 
                   className="max-w-full max-h-[90vh] object-contain"
                 />
@@ -122,7 +108,7 @@ const ModelsDescriptionPage = () => {
         <FadeInSection delay={0.2}>
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Core Components</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {modelCards.map((card, index) => (
               <Link
                 key={card.title}
@@ -162,7 +148,7 @@ const ModelsDescriptionPage = () => {
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">The Recognition Pipeline</h3>
                 <p className="text-gray-700">
-                  Our step-by-step process transforms your handwritten documents into digital text:
+                  Our 5-stage process transforms your handwritten documents into digital text:
                 </p>
               </div>
               
@@ -173,9 +159,9 @@ const ModelsDescriptionPage = () => {
                   <div className="absolute left-4 -translate-x-1/2 w-7 h-7 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold">
                     1
                   </div>
-                  <h4 className="text-lg font-medium text-gray-900">Personal Calibration (Optional)</h4>
+                  <h4 className="text-lg font-medium text-gray-900">Document Upload & Preprocessing</h4>
                   <p className="mt-1 text-gray-600">
-                    For better results, you can train a personalized model that learns your unique handwriting style. Like teaching a friend to read your handwriting, this significantly improves accuracy for your documents.
+                    Upload your handwritten Hebrew document (PNG or JPG). We resize it to 4500x3000 pixels and apply noise reduction to prepare it for accurate recognition.
                   </p>
                 </div>
                 
@@ -183,9 +169,9 @@ const ModelsDescriptionPage = () => {
                   <div className="absolute left-4 -translate-x-1/2 w-7 h-7 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold">
                     2
                   </div>
-                  <h4 className="text-lg font-medium text-gray-900">Document Upload</h4>
+                  <h4 className="text-lg font-medium text-gray-900">Line Detection</h4>
                   <p className="mt-1 text-gray-600">
-                    Upload one or multiple pages of handwritten content - our system handles documents of any length, from a quick note to a full manuscript.
+                    Using horizontal projection profiles, we identify and separate each line of text in your document - like drawing invisible lines between rows of handwriting.
                   </p>
                 </div>
                 
@@ -193,9 +179,9 @@ const ModelsDescriptionPage = () => {
                   <div className="absolute left-4 -translate-x-1/2 w-7 h-7 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold">
                     3
                   </div>
-                  <h4 className="text-lg font-medium text-gray-900">Image Preparation & Letter Detection</h4>
+                  <h4 className="text-lg font-medium text-gray-900">Character Separation</h4>
                   <p className="mt-1 text-gray-600">
-                    We clean up the image and identify each letter, similar to how you might trace over words to make them clearer before reading.
+                    We identify individual Hebrew letters and spaces using contour detection. This is the trickiest part - Hebrew cursive often connects letters, and some letters like ל (Lamed) can overlap others.
                   </p>
                 </div>
                 
@@ -203,9 +189,9 @@ const ModelsDescriptionPage = () => {
                   <div className="absolute left-4 -translate-x-1/2 w-7 h-7 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold">
                     4
                   </div>
-                  <h4 className="text-lg font-medium text-gray-900">Smart Letter Recognition</h4>
+                  <h4 className="text-lg font-medium text-gray-900">AI Letter Recognition</h4>
                   <p className="mt-1 text-gray-600">
-                    Our computer vision system (what experts call a "CNN") examines each letter and identifies it - like having a digital expert who's studied thousands of handwriting samples.
+                    Our Vision Transformer model (a type of AI that's especially good at understanding images) examines each letter and identifies it with 94% accuracy - like having a Hebrew expert look at each character.
                   </p>
                 </div>
                 
@@ -213,9 +199,9 @@ const ModelsDescriptionPage = () => {
                   <div className="absolute left-4 -translate-x-1/2 w-7 h-7 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold">
                     5
                   </div>
-                  <h4 className="text-lg font-medium text-gray-900">Language Understanding & Correction</h4>
+                  <h4 className="text-lg font-medium text-gray-900">Smart Text Correction</h4>
                   <p className="mt-1 text-gray-600">
-                    The Gemini AI reads through the text and fixes mistakes, just like how a human editor would catch and correct errors by understanding the context of what you're trying to say.
+                    Google's Gemini AI reviews the recognized text and fixes common OCR mistakes using Hebrew language understanding. This crucial step improves accuracy from about 55% to 85% at the word level.
                   </p>
                 </div>
               </div>
@@ -234,26 +220,26 @@ const ModelsDescriptionPage = () => {
               <div className="md:w-3/4 md:pl-8">
                 <h2 className="text-2xl font-bold text-blue-900 mb-4">Technical Architecture</h2>
                 <p className="text-blue-700 mb-4">
-                  Our three-stage architecture combines advanced technologies to tackle the unique challenges of Hebrew handwriting recognition:
+                  Our multi-stage architecture combines advanced technologies to tackle the unique challenges of Hebrew handwriting recognition:
                 </p>
                 <div className="space-y-3">
                   <div className="flex">
                     <div className="flex-shrink-0 h-6 w-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm font-bold mr-3 mt-0.5">1</div>
-                    <p className="text-blue-700"><span className="font-semibold">Preprocessing:</span> OpenCV enhances document quality through noise reduction, adaptive thresholding for binarization, and aspect ratio-preserving resizing—crucial for maintaining Hebrew character proportions.</p>
+                    <p className="text-blue-700"><span className="font-semibold">Image Processing:</span> OpenCV handles document preprocessing including resizing, binarization, and line removal. We use horizontal projection profiles for line segmentation and contour detection for character isolation.</p>
                   </div>
                   <div className="flex">
                     <div className="flex-shrink-0 h-6 w-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm font-bold mr-3 mt-0.5">2</div>
-                    <p className="text-blue-700"><span className="font-semibold">Recognition:</span> Custom CNN models built with TensorFlow/Keras identify characters by extracting spatial features. For complex cursive text, we implement lightweight Transformer models to capture character relationships while maintaining computational efficiency.</p>
+                    <p className="text-blue-700"><span className="font-semibold">Vision Transformer Recognition:</span> We use a fine-tuned ViT model (google/vit-base-patch16-224) that processes character images as patches with self-attention mechanisms. This approach outperforms traditional CNNs for Hebrew characters with disconnected components.</p>
                   </div>
                   <div className="flex">
                     <div className="flex-shrink-0 h-6 w-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm font-bold mr-3 mt-0.5">3</div>
-                    <p className="text-blue-700"><span className="font-semibold">Contextual Refinement:</span> Google's Gemini API interprets context to correct ambiguities—particularly critical for Hebrew text, which typically lacks vowel markings (diacritics) and can have multiple interpretations.</p>
+                    <p className="text-blue-700"><span className="font-semibold">Gemini Contextual Refinement:</span> Google's Gemini API corrects character-level OCR errors using Hebrew language context. It's specifically prompted to handle common Hebrew OCR mistakes like ל+letter combinations misread as ט.</p>
                   </div>
                 </div>
                 <div className="mt-4 bg-white bg-opacity-50 p-3 rounded-lg border border-blue-200">
-                  <h3 className="font-semibold text-blue-800 mb-2">Adaptive Learning</h3>
+                  <h3 className="font-semibold text-blue-800 mb-2">Current Limitations & Future Work</h3>
                   <p className="text-blue-700 text-sm">
-                    Our unique personalization system allows the model to calibrate to your handwriting style. By collecting samples through calibration sheets, we enhance accuracy by either oversampling your data during training or applying higher loss penalties to errors in your specific handwriting patterns.
+                    The main bottleneck is character segmentation, especially for cursive Hebrew where letters connect. While our ViT model achieves 94% accuracy on isolated characters, segmentation errors reduce overall system accuracy to about 65% character-level and 85% word-level after Gemini correction. Future improvements could include machine learning-based segmentation methods like YOLO.
                   </p>
                 </div>
               </div>

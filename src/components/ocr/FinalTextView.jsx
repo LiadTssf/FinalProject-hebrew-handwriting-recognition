@@ -1,95 +1,496 @@
-// src/components/info/FinalTextView.jsx
-import React from 'react';
-// You'll need libraries for DOCX and TXT download if you implement them
-// For DOCX: import { Packer } from 'docx'; import { saveAs } from 'file-saver';
-// For TXT: Just a simple anchor tag trick
+// src/components/ocr/FinalTextView.jsx
+import React, { useState } from 'react';
+import { Download, ArrowLeft, Edit, Copy, Check, Save, Cloud, AlertCircle } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
+import { saveDocument } from '../../services/firebaseService';
+import SaveDocumentModal from '../documents/SaveDocumentModal';
 
-const FinalTextView = ({ originalImageSrc, enhancedText, filename, onBackToUpload }) => {
+const FinalTextView = ({
+  originalImageSrc,
+  enhancedText,
+  parsedResult,
+  originalText,
+  appliedOptions,
+  filename,
+  onBackToUpload,
+  onBackToCorrection
+}) => {
+  const { currentUser } = useAuth();
+  const [activeTab, setActiveTab] = useState(() => {
+    // Start with combined view if multiple enhancements are selected
+    const enhancementCount = [
+      appliedOptions?.enableSummarization,
+      appliedOptions?.enableTranslation, 
+      appliedOptions?.enableSpellingCorrection,
+      appliedOptions?.enableStructuring
+    ].filter(Boolean).length;
+    
+    return enhancementCount > 1 ? 'combined' : 'enhanced';
+  });
+  const [copiedSection, setCopiedSection] = useState('');
+  const [showSaveModal, setShowSaveModal] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+  const [saveMessage, setSaveMessage] = useState({ type: '', text: '' });
 
-  const handleDownloadTxt = () => {
-    const element = document.createElement("a");
-    const file = new Blob([enhancedText], {type: 'text/plain;charset=utf-8'});
-    element.href = URL.createObjectURL(file);
-    element.download = `${filename}_enhanced.txt`;
-    document.body.appendChild(element); // Required for this to work in FireFox
-    element.click();
-    document.body.removeChild(element);
+  // Check how many enhancements are applied
+  const enhancementCount = [
+    appliedOptions?.enableSummarization,
+    appliedOptions?.enableTranslation, 
+    appliedOptions?.enableSpellingCorrection,
+    appliedOptions?.enableStructuring
+  ].filter(Boolean).length;
+
+  const isGuest = !currentUser;
+
+  // Create combined text from the final pipeline result
+  const createCombinedText = () => {
+    // Return only the FINAL result after all processing
+    if (parsedResult?.finalTranslation) {
+      // If translation was selected, show the final English result
+      return parsedResult.finalTranslation;
+    } else if (parsedResult?.afterSummarization) {
+      // If summarization was the last step, show the summary
+      return parsedResult.afterSummarization;
+    } else if (parsedResult?.afterRestructuring) {
+      // If restructuring was the last step, show the restructured text
+      return parsedResult.afterRestructuring;
+    } else if (parsedResult?.afterSpelling) {
+      // If spelling correction was the last step, show the corrected text
+      return parsedResult.afterSpelling;
+    }
+    
+    // Fallback to raw response if parsing failed
+    return enhancedText || originalText;
   };
 
-  // DOCX download is more complex and requires a library like 'docx'
-  const handleDownloadDocx = () => {
-    alert("DOCX download functionality to be implemented using a library like 'docx'.");
-    // Example using 'docx' (requires installation and more setup):
-    // const doc = new Document({
-    //   sections: [{
-    //     properties: {},
-    //     children: [new Paragraph({ children: [new TextRun(enhancedText)] })],
-    //   }],
-    // });
-    // Packer.toBlob(doc).then(blob => {
-    //   saveAs(blob, `${filename}_enhanced.docx`);
-    // });
+  // Create pipeline steps text for individual view
+  const createPipelineStepsText = () => {
+    let stepsText = '';
+    
+    // Show each step of the pipeline
+    if (parsedResult?.original) {
+      stepsText += `=== STEP 0: ORIGINAL TEXT ===\n${parsedResult.original}\n\n`;
+    }
+    
+    if (parsedResult?.afterSpelling) {
+      stepsText += `=== STEP 1: AFTER SPELLING CORRECTION ===\n${parsedResult.afterSpelling}\n\n`;
+    }
+    
+    if (parsedResult?.afterRestructuring) {
+      stepsText += `=== STEP 2: AFTER RESTRUCTURING ===\n${parsedResult.afterRestructuring}\n\n`;
+    }
+    
+    if (parsedResult?.afterSummarization) {
+      stepsText += `=== STEP 3: AFTER SUMMARIZATION ===\n${parsedResult.afterSummarization}\n\n`;
+    }
+    
+    if (parsedResult?.finalTranslation) {
+      stepsText += `=== STEP 4: FINAL ENGLISH TRANSLATION ===\n${parsedResult.finalTranslation}\n\n`;
+    }
+    
+    // If no parsed sections, use the raw response
+    if (!stepsText && enhancedText) {
+      stepsText = enhancedText;
+    }
+    
+    return stepsText.trim();
   };
 
+  const handleCopy = async (text, sectionName) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopiedSection(sectionName);
+      setTimeout(() => setCopiedSection(''), 2000);
+    } catch (err) {
+      console.error('Failed to copy text:', err);
+    }
+  };
+
+  const handleSaveDocument = async (title) => {
+    if (!currentUser) {
+      setSaveMessage({ type: 'error', text: 'You must be logged in to save documents.' });
+      return;
+    }
+
+    setIsSaving(true);
+    setSaveMessage({ type: '', text: '' });
+
+    try {
+      const documentData = {
+        title: title,
+        originalText: originalText,
+        enhancedText: enhancedText,
+        parsedResult: parsedResult,
+        appliedOptions: appliedOptions,
+        originalImageSrc: originalImageSrc, // This will be handled by the service
+        filename: filename,
+        finalResult: createCombinedText()
+      };
+
+      console.log('Saving document with image upload...');
+      const documentId = await saveDocument(currentUser.uid, documentData);
+      
+      setSaveMessage({ 
+        type: 'success', 
+        text: 'Document saved successfully!' 
+      });
+      
+      setShowSaveModal(false);
+      
+      // Clear success message after 3 seconds
+      setTimeout(() => {
+        setSaveMessage({ type: '', text: '' });
+      }, 3000);
+      
+    } catch (error) {
+      console.error('Error saving document:', error);
+      setSaveMessage({ 
+        type: 'error', 
+        text: 'Failed to save document. Please try again.' 
+      });
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  const handleDownload = () => {
+    let content, filename_suffix;
+    
+    if (activeTab === 'combined') {
+      content = createCombinedText();
+      filename_suffix = 'final_result';
+    } else if (activeTab === 'enhanced') {
+      content = createPipelineStepsText();
+      filename_suffix = 'pipeline_steps';
+    } else {
+      content = originalText;
+      filename_suffix = 'original';
+    }
+    
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${filename}_${filename_suffix}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  const CopyButton = ({ text, sectionName, className = "" }) => (
+    <button
+      onClick={() => handleCopy(text, sectionName)}
+      className={`flex items-center px-2 py-1 text-xs bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 rounded transition-colors ${className}`}
+      title="Copy to clipboard"
+    >
+      {copiedSection === sectionName ? (
+        <>
+          <Check className="w-3 h-3 mr-1 text-green-600" />
+          <span className="text-green-600">Copied!</span>
+        </>
+      ) : (
+        <>
+          <Copy className="w-3 h-3 mr-1" />
+          Copy
+        </>
+      )}
+    </button>
+  );
+
+  const SectionHeader = ({ title, children }) => (
+    <div className="flex items-center justify-between mb-3">
+      <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{title}</h3>
+      {children}
+    </div>
+  );
+
+  const TextSection = ({ content, placeholder }) => (
+    <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 max-h-64 overflow-y-auto">
+      <pre className="whitespace-pre-wrap text-sm text-gray-800 dark:text-gray-200 font-mono leading-relaxed">
+        {content || placeholder}
+      </pre>
+    </div>
+  );
 
   return (
-    <div className="container mx-auto p-4">
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-2xl font-semibold text-gray-700 dark:text-gray-200">Enhanced Document: {filename}</h2>
-        {onBackToUpload && (
-          <button 
-            onClick={onBackToUpload}
-            className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded hover:bg-gray-300 dark:hover:bg-gray-600"
-          >
-            Process Another
-          </button>
+    <div className="max-w-7xl mx-auto space-y-6">
+      {/* Header */}
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700">
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Enhancement Results</h1>
+            <p className="text-gray-600 dark:text-gray-300 mt-1">
+              Review your enhanced text with applied AI features
+            </p>
+          </div>
+          <div className="flex space-x-3">
+            {!isGuest && (
+              <button
+                onClick={() => setShowSaveModal(true)}
+                className="flex items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md transition-colors"
+              >
+                <Cloud className="w-4 h-4 mr-2" />
+                Save to My Documents
+              </button>
+            )}
+            <button
+              onClick={onBackToUpload}
+              className="flex items-center px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-md transition-colors"
+            >
+              <Edit className="w-4 h-4 mr-2" />
+              Upload New File
+            </button>
+            <button
+              onClick={handleDownload}
+              className="flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors"
+            >
+              <Download className="w-4 h-4 mr-2" />
+              Download
+            </button>
+          </div>
+        </div>
+
+        {/* Save Message */}
+        {saveMessage.text && (
+          <div className={`mt-4 p-3 rounded-md flex items-center ${
+            saveMessage.type === 'success' 
+              ? 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400' 
+              : 'bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400'
+          }`}>
+            {saveMessage.type === 'success' ? (
+              <Check className="w-4 h-4 mr-2 flex-shrink-0" />
+            ) : (
+              <AlertCircle className="w-4 h-4 mr-2 flex-shrink-0" />
+            )}
+            <span className="text-sm">{saveMessage.text}</span>
+          </div>
         )}
+
+        {/* Guest Save Notice */}
+        {isGuest && (
+          <div className="mt-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4">
+            <div className="flex items-start">
+              <Cloud className="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5 mr-2 flex-shrink-0" />
+              <div className="text-sm text-blue-800 dark:text-blue-300">
+                <p className="font-medium mb-1">Want to save your documents?</p>
+                <p>Create an account to save your processed documents and access them anytime from "My Documents".</p>
+                <div className="mt-2 space-x-2">
+                  <Link to="/signup" className="text-blue-600 dark:text-blue-400 hover:underline font-medium">
+                    Sign Up
+                  </Link>
+                  <span>or</span>
+                  <Link to="/login" className="text-blue-600 dark:text-blue-400 hover:underline font-medium">
+                    Log In
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Applied Enhancements Summary */}
+        <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4">
+          <h3 className="font-medium text-blue-900 dark:text-blue-200 mb-2">Applied Enhancements:</h3>
+          <div className="flex flex-wrap gap-2">
+            {appliedOptions?.enableSummarization && (
+              <span className="px-3 py-1 bg-blue-100 dark:bg-blue-800 text-blue-800 dark:text-blue-200 rounded-full text-sm">
+                Summarization ({appliedOptions.summaryLength}%)
+              </span>
+            )}
+            {appliedOptions?.enableTranslation && (
+              <span className="px-3 py-1 bg-green-100 dark:bg-green-800 text-green-800 dark:text-green-200 rounded-full text-sm">
+                Translation ({appliedOptions.translationStyle})
+              </span>
+            )}
+            {appliedOptions?.enableSpellingCorrection && (
+              <span className="px-3 py-1 bg-purple-100 dark:bg-purple-800 text-purple-800 dark:text-purple-200 rounded-full text-sm">
+                Spelling Correction
+              </span>
+            )}
+            {appliedOptions?.enableStructuring && (
+              <span className="px-3 py-1 bg-orange-100 dark:bg-orange-800 text-orange-800 dark:text-orange-200 rounded-full text-sm">
+                Text Restructuring
+              </span>
+            )}
+            {(!appliedOptions?.enableSummarization && !appliedOptions?.enableTranslation && 
+              !appliedOptions?.enableSpellingCorrection && !appliedOptions?.enableStructuring) && (
+              <span className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm">
+                No enhancements applied
+              </span>
+            )}
+          </div>
+          
+          {/* Debug info - remove this after testing */}
+          {process.env.NODE_ENV === 'development' && (
+            <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+              Debug: {appliedOptions ? JSON.stringify(appliedOptions) : 'No appliedOptions'}
+            </div>
+          )}
+        </div>
       </div>
-      
-      <div className="flex flex-col md:flex-row gap-4">
-        <div className="md:w-1/2 border border-gray-300 dark:border-gray-700 rounded-lg p-4 shadow bg-white dark:bg-gray-800">
-          <h3 className="text-lg font-medium text-gray-600 dark:text-gray-300 mb-2">Original Document</h3>
-          <div className="overflow-auto" style={{ maxHeight: '75vh' }}>
-            <img 
-              src={originalImageSrc} 
-              alt={filename || "Original Document"} 
-              className="w-full h-auto object-contain"
+
+      {/* Main Content */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        
+        {/* Original Image */}
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700">
+          <SectionHeader title="Original Document" />
+          <div className="flex justify-center">
+            <img
+              src={originalImageSrc}
+              alt="Original document"
+              className="max-w-full h-auto rounded-lg shadow-sm border border-gray-200 dark:border-gray-600"
+              style={{ maxHeight: '400px' }}
             />
           </div>
         </div>
 
-        <div className="md:w-1/2 border border-gray-300 dark:border-gray-700 rounded-lg p-4 shadow bg-white dark:bg-gray-800">
-          <h3 className="text-lg font-medium text-gray-600 dark:text-gray-300 mb-2">Final Enhanced Text</h3>
-          <div 
-            className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 overflow-y-auto"
-            style={{ 
-              height: 'calc(75vh - 50px)', 
-              minHeight: '300px',
-              fontFamily: 'Arial, sans-serif',
-              fontSize: '16px',
-              whiteSpace: 'pre-wrap',
-              direction: 'rtl',
-              textAlign: 'right'
-            }}
-          >
-            {enhancedText}
-          </div>
-          <div className="mt-4 flex gap-2">
-            <button 
-                onClick={handleDownloadTxt}
-                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+        {/* Text Results */}
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700">
+          
+          {/* Tab Navigation */}
+          <div className="flex space-x-1 mb-4 bg-gray-100 dark:bg-gray-700 rounded-lg p-1">
+            {enhancementCount > 1 && (
+              <button
+                onClick={() => setActiveTab('combined')}
+                className={`flex-1 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  activeTab === 'combined'
+                    ? 'bg-white dark:bg-gray-600 text-gray-900 dark:text-white shadow-sm'
+                    : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
+                }`}
+              >
+                Final Result
+              </button>
+            )}
+            <button
+              onClick={() => setActiveTab('enhanced')}
+              className={`flex-1 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                activeTab === 'enhanced'
+                  ? 'bg-white dark:bg-gray-600 text-gray-900 dark:text-white shadow-sm'
+                  : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
+              }`}
             >
-                Download as .txt
+              {enhancementCount > 1 ? 'Individual Sections' : 'Enhanced Text'}
             </button>
-            <button 
-                onClick={handleDownloadDocx}
-                className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+            <button
+              onClick={() => setActiveTab('original')}
+              className={`flex-1 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                activeTab === 'original'
+                  ? 'bg-white dark:bg-gray-600 text-gray-900 dark:text-white shadow-sm'
+                  : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
+              }`}
             >
-                Download as .docx (WIP)
+              Your Edited Text
             </button>
           </div>
+
+          {activeTab === 'combined' ? (
+            <div>
+              <SectionHeader title="Final Result">
+                <CopyButton text={createCombinedText()} sectionName="combined" />
+              </SectionHeader>
+              <TextSection content={createCombinedText()} />
+            </div>
+          ) : activeTab === 'enhanced' ? (
+            <div className="space-y-6">
+              
+              {/* Show each pipeline step individually */}
+              {parsedResult?.afterSpelling && (
+                <div>
+                  <SectionHeader title="Step 1: After Spelling Correction">
+                    <CopyButton text={parsedResult.afterSpelling} sectionName="spelling" />
+                  </SectionHeader>
+                  <TextSection content={parsedResult.afterSpelling} />
+                </div>
+              )}
+
+              {parsedResult?.afterRestructuring && (
+                <div>
+                  <SectionHeader title="Step 2: After Text Restructuring">
+                    <CopyButton text={parsedResult.afterRestructuring} sectionName="restructuring" />
+                  </SectionHeader>
+                  <TextSection content={parsedResult.afterRestructuring} />
+                </div>
+              )}
+
+              {parsedResult?.afterSummarization && (
+                <div>
+                  <SectionHeader title="Step 3: After Summarization">
+                    <CopyButton text={parsedResult.afterSummarization} sectionName="summary" />
+                  </SectionHeader>
+                  <TextSection content={parsedResult.afterSummarization} />
+                </div>
+              )}
+
+              {parsedResult?.finalTranslation && (
+                <div>
+                  <SectionHeader title="Step 4: Final English Translation">
+                    <CopyButton text={parsedResult.finalTranslation} sectionName="translation" />
+                  </SectionHeader>
+                  <TextSection content={parsedResult.finalTranslation} />
+                </div>
+              )}
+
+              {/* Show full pipeline steps for copying */}
+              {enhancementCount > 1 && (
+                <div>
+                  <SectionHeader title="Complete Pipeline Steps">
+                    <CopyButton text={createPipelineStepsText()} sectionName="pipeline" />
+                  </SectionHeader>
+                  <TextSection content={createPipelineStepsText()} />
+                </div>
+              )}
+
+              {/* Fallback if no parsed sections */}
+              {!parsedResult?.afterSpelling && !parsedResult?.afterRestructuring && 
+               !parsedResult?.afterSummarization && !parsedResult?.finalTranslation && (
+                <div>
+                  <SectionHeader title="AI Enhanced Text">
+                    <CopyButton text={enhancedText} sectionName="full" />
+                  </SectionHeader>
+                  <TextSection 
+                    content={enhancedText} 
+                    placeholder="No enhancements were applied to the text."
+                  />
+                </div>
+              )}
+
+            </div>
+          ) : (
+            <div>
+              <SectionHeader title="Your Original Edited Text">
+                <CopyButton text={originalText} sectionName="original" />
+              </SectionHeader>
+              <TextSection content={originalText} />
+            </div>
+          )}
         </div>
       </div>
+
+      {/* Navigation */}
+      <div className="flex justify-between">
+        <button
+          onClick={onBackToCorrection}
+          className="flex items-center px-4 py-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+        >
+          <ArrowLeft className="w-4 h-4 mr-2" />
+          Back to Text Editor
+        </button>
+        
+        <div className="text-sm text-gray-500 dark:text-gray-400 flex items-center">
+          <span>✨ Processed with AI enhancements</span>
+        </div>
+      </div>
+
+      {/* Save Document Modal */}
+      <SaveDocumentModal
+        isOpen={showSaveModal}
+        onClose={() => setShowSaveModal(false)}
+        onSave={handleSaveDocument}
+        isLoading={isSaving}
+      />
     </div>
   );
 };

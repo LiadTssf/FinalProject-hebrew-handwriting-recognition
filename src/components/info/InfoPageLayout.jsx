@@ -1,4 +1,6 @@
-import React, { useEffect } from 'react';
+import { ChevronDown, ChevronUp } from 'lucide-react';
+import React, { useState , useEffect } from 'react';
+
 import Sidebar from '../layout/Sidebar';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -110,4 +112,37 @@ const InfoCard = ({ title, description, icon, delay = 0 }) => {
   );
 };
 
-export { InfoPageLayout, FadeInSection, InfoCard };
+
+
+const AdaptiveInfoCard = ({ title, easyText, description, icon, delay = 0 }) => {
+  const [showAdvanced, setShowAdvanced] = useState(false);
+
+  return (
+    <FadeInSection delay={delay}>
+      <div className="relative bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 h-full border border-gray-100 overflow-hidden">
+        <div className="text-blue-500 mb-4">{icon}</div>
+        <h3 className="text-lg font-semibold text-gray-900 mb-2 flex justify-between items-center">
+          {title}
+          <button
+            onClick={() => setShowAdvanced(!showAdvanced)}
+            className="text-gray-600 hover:text-blue-500 transition-colors duration-200"
+            aria-label="Toggle details"
+          >
+            {showAdvanced ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+          </button>
+        </h3>
+
+        <div className="overflow-hidden transition-all duration-500 ease-in-out">
+          {showAdvanced ? (
+            <p className="text-gray-600 mt-2">{description}</p>
+          ) : (
+            <p className="text-gray-700 mt-2">{easyText}</p>
+          )}
+        </div>
+      </div>
+    </FadeInSection>
+  );
+};
+
+
+export { InfoPageLayout, FadeInSection, InfoCard, AdaptiveInfoCard };

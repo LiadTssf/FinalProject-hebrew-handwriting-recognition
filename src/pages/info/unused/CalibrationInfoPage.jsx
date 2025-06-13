@@ -1,5 +1,5 @@
 import React from 'react';
-import { InfoPageLayout, FadeInSection } from '../../components/info/InfoPageLayout';
+import { InfoPageLayout, FadeInSection } from '../../../components/info/InfoPageLayout';
 import { Link } from 'react-router-dom';
 
 const CalibrationInfoPage = () => {

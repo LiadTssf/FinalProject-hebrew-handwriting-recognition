@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext'; // Import auth context
-import Sidebar from '../components/layout/Sidebar';
+import { useAuth } from '../../../contexts/AuthContext'; // Import auth context
+import Sidebar from '../../../components/layout/Sidebar';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const CalibrationPage = () => {

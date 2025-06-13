@@ -1,18 +1,16 @@
-
-
 import React, { useState } from 'react';
-import { InfoPageLayout, FadeInSection, InfoCard } from '../../components/info/InfoPageLayout';
-
+import { InfoPageLayout, FadeInSection, InfoCard, AdaptiveInfoCard} from '../../components/info/InfoPageLayout';
+import { Link } from 'react-router-dom';
 const BasicScanningPage = () => {
   const [showFullImage, setShowFullImage] = useState(false);
 
   return (
     <InfoPageLayout
-      title="Basic Scanning"
-      subtitle="Efficient handwriting recognition using neural networks and preprocessing"
+      title="How Digi-Ktav Works"
+      subtitle="Advanced Hebrew handwriting recognition powered by Vision Transformers and AI"
       icon={
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
         </svg>
       }
       color="blue"
@@ -21,7 +19,9 @@ const BasicScanningPage = () => {
         <FadeInSection>
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Overview</h2>
           <p className="text-lg text-gray-700 mb-6">
-            Our advanced scanning technology converts handwritten Hebrew documents into editable digital text through a multi-stage process. In the basic scanning mode, we utilize two out of three key stages: image preprocessing and specialized neural networks trained specifically for Hebrew handwriting recognition. This process operates without contextual analysis, focusing solely on accurate text extraction.
+            Digi-Ktav converts handwritten Hebrew documents into editable digital text through a sophisticated three-stage pipeline. 
+            Our system combines advanced image processing, state-of-the-art Vision Transformer technology, and AI-powered contextual 
+            correction to achieve industry-leading accuracy in Hebrew handwriting recognition.
           </p>
           
           <div 
@@ -30,7 +30,7 @@ const BasicScanningPage = () => {
           >
             <div className="absolute inset-0 flex items-center justify-center">
               <img 
-                src="/images/basic_scanning2phase.png" 
+                src="/images/digiktav_arch_diagram.png" 
                 alt="OCR Process Diagram" 
                 className="max-w-full max-h-full object-contain"
               />
@@ -41,7 +41,7 @@ const BasicScanningPage = () => {
               </div>
             </div>
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-gray-100 to-transparent p-4 text-center">
-              <p className="text-sm text-gray-600">Diagram: End-to-end handwriting recognition workflow (Click to enlarge)</p>
+              <p className="text-sm text-gray-600">Diagram: Complete handwriting recognition pipeline (Click to enlarge)</p>
             </div>
           </div>
           
@@ -64,7 +64,7 @@ const BasicScanningPage = () => {
                   </svg>
                 </button>
                 <img 
-                  src="/images/3-phase-architecture.png"
+                  src="/images/digiktav_arch_diagram.png"
                   alt="OCR Process Diagram (Enlarged)" 
                   className="max-w-full max-h-[90vh] object-contain"
                 />
@@ -74,259 +74,286 @@ const BasicScanningPage = () => {
         </FadeInSection>
         
         <FadeInSection delay={0.2}>
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Our 3-Step Digitization Process</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-6">
-            <InfoCard
-              title="1. Image Preprocessing"
-              description="Documents undergo noise reduction, binarization, and resizing with padding to maintain aspect ratios, producing clean black-and-white images optimized for recognition."
-              icon={
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                </svg>
-              }
-              delay={0.1}
-            />
-            <InfoCard
-              title="2. Character Segmentation"
-              description="Our system separates individual characters using contour detection, watershed segmentation, and pixel density analysis, even when characters are connected or curved in handwritten text."
-              icon={
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-              }
-              delay={0.2}
-            />
-            <InfoCard
-              title="3. CNN Recognition"
-              description="Preprocessed images are analyzed by our specialized Convolutional Neural Networks to identify individual Hebrew characters with high accuracy across various handwriting styles."
-              icon={
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
-                </svg>
-              }
-              delay={0.3}
-            />
-          </div>
-        </FadeInSection>
+  <h2 className="text-2xl font-bold text-gray-900 mb-4">Our 3-Stage Recognition Pipeline</h2>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-6">
+
+    <AdaptiveInfoCard
+      title="1. Image Preprocessing"
+      easyText="We clean and prepare each document image so it’s sharp and simple for the computer to understand."
+      description="Documents are resized to 4500x3000 pixels, undergo noise reduction, line removal, and binarization to create clean black-and-white images optimized for character segmentation."
+      icon={
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+      }
+      delay={0.1}
+    />
+
+    <AdaptiveInfoCard
+      title="2. Line Segmentation"
+      easyText="We cut the document into rows so each line of text stands alone and is easier to read."
+      description="Horizontal Projection Profiles (HPP) identify text lines. Boundaries are refined using inter-line gap midpoints and top/bottom extensions, followed by content-aware re-cropping for tight line images."
+      icon={
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" />
+        </svg>
+      }
+      delay={0.15}
+    />
+
+    <AdaptiveInfoCard
+      title="3. Letter & Space Segmentation"
+      easyText="We carefully split each line into individual letters and the spaces between them."
+      description="Each line is segmented into individual characters and spaces using contour analysis, advanced filtering (including top fragment and Lamed overhang rules), and component merging."
+      icon={
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.964 2.364a2 2 0 010 2.828l-3.535 3.536a2 2 0 01-2.828 0L6.066 5.192a2 2 0 112.828-2.828l3.535 3.535m2.475-2.475l-3.536 3.536m0 0L6.066 16.192M19.5 9.481l-3.308 3.308M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      }
+      delay={0.2}
+    />
+
+    <AdaptiveInfoCard
+      title="4. Vision Transformer Recognition"
+      easyText="Our AI reads each letter and understands even tricky Hebrew writing styles with high accuracy."
+      description="Our fine-tuned ViT model (google/vit-base-patch16-224) analyzes segmented characters with 94.4% accuracy, using self-attention mechanisms to understand complex Hebrew letter patterns."
+      icon={
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+      }
+      delay={0.2}
+    />
+
+    <AdaptiveInfoCard
+      title="5. AI-Powered Correction"
+      easyText="Our AI double-checks everything and fixes mistakes to make the Hebrew text more accurate and readable."
+      description="Google's Gemini API analyzes the recognized text contextually, correcting OCR errors and improving word accuracy from ~60% up to ~90%, ensuring meaningful Hebrew output."
+      icon={
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+        </svg>
+      }
+      delay={0.3}
+    />
+
+  </div>
+</FadeInSection>
+
         
         <FadeInSection delay={0.3}>
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Advanced Character Segmentation</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Character Segmentation Challenge</h2>
           <div className="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl p-6 border border-purple-100 mb-6">
-            <h3 className="text-xl font-semibold text-purple-800 mb-3">Solving the Curved Text Challenge</h3>
+            <h3 className="text-xl font-semibold text-purple-800 mb-3">The Bottleneck in Hebrew Recognition</h3>
             <p className="text-gray-700 mb-4">
-              A significant challenge in handwritten Hebrew recognition is accurately segmenting connected or curved letters. We employ specialized techniques to address this complex problem:
+              While our Vision Transformer achieves 94% accuracy on isolated characters, the main challenge lies in accurately 
+              segmenting handwritten Hebrew text into individual characters. This segmentation stage currently limits our 
+              end-to-end system performance.
             </p>
             <ul className="space-y-3 text-gray-700">
               <li className="flex items-start">
                 <svg className="w-5 h-5 text-purple-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span><strong>Contour Detection</strong>: Our system identifies the outer edges of characters, defining their shapes and boundaries for precise recognition.</span>
+                <span><strong>Lamed (ל) Overhang Issue</strong>: The tall Lamed character often extends over adjacent letters, causing segmentation to merge multiple characters into one box, frequently misrecognized as Tet (ט).</span>
               </li>
               <li className="flex items-start">
                 <svg className="w-5 h-5 text-purple-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span><strong>Watershed Segmentation</strong>: We simulate a water-filling process to effectively outline boundaries between connected characters.</span>
+                <span><strong>Connected Characters</strong>: Cursive Hebrew writing often connects letters, making boundary detection difficult with traditional contour analysis.</span>
               </li>
               <li className="flex items-start">
                 <svg className="w-5 h-5 text-purple-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span><strong>Pixel Density Analysis</strong>: We analyze the density distribution of pixels to determine probable character boundaries.</span>
-              </li>
-              <li className="flex items-start">
-                <svg className="w-5 h-5 text-purple-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span><strong>CTC (Connectionist Temporal Classification)</strong>: For particularly challenging texts, we employ CTC to recognize character sequences without explicit segmentation.</span>
+                <span><strong>Variable Spacing</strong>: Inconsistent spacing between words and characters in handwritten text complicates proper text reconstruction.</span>
               </li>
             </ul>
-          </div>
-          <div className="relative h-64 bg-gray-50 rounded-xl overflow-hidden border border-gray-200">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <img 
-                src="/api/placeholder/800/320" 
-                alt="Character Segmentation Visualization" 
-                className="max-w-full max-h-full object-contain"
-              />
-            </div>
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-gray-100 to-transparent p-4 text-center">
-              <p className="text-sm text-gray-600">Visualization: Character segmentation in curved Hebrew handwriting</p>
-            </div>
           </div>
         </FadeInSection>
         
         <FadeInSection delay={0.4}>
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Neural Network Recognition</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Vision Transformer Technology</h2>
           <p className="text-gray-700 mb-6">
-            Our custom Convolutional Neural Network (CNN) has been trained on thousands of handwritten Hebrew samples to achieve high recognition accuracy across different handwriting styles. After character recognition, our contextual refinement system analyzes the text using sophisticated language models.
+            Unlike traditional CNNs that process images locally, our Vision Transformer divides character images into patches 
+            and uses self-attention mechanisms to understand global relationships. This approach proved superior for Hebrew 
+            character recognition, especially for letters with disconnected components.
           </p>
           
           <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
-            <h3 className="text-xl font-semibold text-blue-800 mb-3">Technical Specifications</h3>
+            <h3 className="text-xl font-semibold text-blue-800 mb-3">Performance Metrics</h3>
             <ul className="space-y-2 text-blue-700">
               <li className="flex items-start">
                 <svg className="w-5 h-5 text-blue-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span>75-79% accuracy on standard Hebrew handwriting</span>
+                <span><strong>94.4%</strong> character recognition accuracy (on isolated characters)</span>
               </li>
               <li className="flex items-start">
                 <svg className="w-5 h-5 text-blue-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span>Support for cursive Hebrew characters</span>
+                <span><strong>~75%</strong> character accuracy after full pipeline processing</span>
               </li>
               <li className="flex items-start">
                 <svg className="w-5 h-5 text-blue-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span>Support uploading multiple documents at once.</span>
+                <span><strong>~90%</strong> word accuracy after Gemini correction</span>
               </li>
               <li className="flex items-start">
                 <svg className="w-5 h-5 text-blue-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span>Processing time of approximately 0.8 seconds per page</span>
+                <span><strong>~40 seconds</strong> average processing time per page</span>
+              </li>
+              <li className="flex items-start">
+                <svg className="w-5 h-5 text-blue-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>Support for <strong>PNG and JPG</strong> image formats</span>
               </li>
             </ul>
           </div>
         </FadeInSection>
         
         <FadeInSection delay={0.5}>
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">Basic Scanning Output</h2>
-        <p className="text-gray-700 mb-6">
-          The final step in our basic scanning process combines the recognized characters directly to form the output text without additional AI processing:
-        </p>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Gemini-Powered Contextual Correction</h2>
+          <p className="text-gray-700 mb-6">
+            Every recognition result is automatically enhanced by Google's Gemini API, which applies contextual understanding 
+            to correct OCR errors. This crucial step improves accuracy by 20-25 percentage points.
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-gradient-to-r from-green-50 to-teal-50 rounded-xl p-6 border border-green-100">
+              <h3 className="text-lg font-semibold text-green-800 mb-3">What Gemini Corrects</h3>
+              <ul className="space-y-3 text-green-700">
+                <li className="flex items-start">
+                  <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center mt-0.5">
+                    <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <span className="ml-2">Common character confusion: ו→י, נ→כ, ר↔כ, ט↔ל</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center mt-0.5">
+                    <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <span className="ml-2">Lamed overhang errors where ל + another letter is misread as ט</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center mt-0.5">
+                    <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <span className="ml-2">Missing or extra characters based on Hebrew language context</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center mt-0.5">
+                    <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <span className="ml-2">Incorrect spacing and punctuation</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div className="bg-gradient-to-r from-amber-50 to-yellow-50 rounded-xl p-6 border border-amber-100">
+              <h3 className="text-lg font-semibold text-amber-800 mb-3">Correction Principles</h3>
+              <ul className="space-y-3 text-amber-700">
+                <li className="flex items-start">
+                  <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center mt-0.5">
+                    <svg className="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <span className="ml-2">Preserves original text structure and intent</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center mt-0.5">
+                    <svg className="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <span className="ml-2">No paraphrasing or content modification</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center mt-0.5">
+                    <svg className="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <span className="ml-2">Removes all Hebrew diacritics (nikkud)</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center mt-0.5">
+                    <svg className="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <span className="ml-2">Focused on character-level OCR error correction only</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </FadeInSection>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-gradient-to-r from-green-50 to-teal-50 rounded-xl p-6 border border-green-100">
-            <h3 className="text-lg font-semibold text-green-800 mb-3">How It Works</h3>
-            <ul className="space-y-3 text-green-700">
+        <FadeInSection delay={0.6}>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Getting Started</h2>
+          <p className="text-gray-700 mb-6">
+            Using Digi-Ktav is simple: upload your handwritten Hebrew document, wait for processing, and receive your 
+            digitized text ready for editing and enhancement.
+          </p>
+          
+          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100 mb-8">
+            <h3 className="text-xl font-semibold text-blue-800 mb-3">Quick Start Guide</h3>
+            <ol className="space-y-4 text-blue-700">
               <li className="flex items-start">
-                <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center mt-0.5">
-                  <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+                <span className="flex-shrink-0 w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center text-blue-200 font-semibold mr-3">1</span>
+                <div>
+                  <span className="font-semibold">Upload Your Document</span>
+                  <p className="text-sm text-gray-600 mt-1">Select a PNG or JPG image of your handwritten Hebrew text</p>
                 </div>
-                <span className="ml-2">Direct character assembly from CNN recognition results without contextual analysis</span>
               </li>
               <li className="flex items-start">
-                <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center mt-0.5">
-                  <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+                <span className="flex-shrink-0 w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center text-blue-200 font-semibold mr-3">2</span>
+                <div>
+                  <span className="font-semibold">Wait for Processing</span>
+                  <p className="text-sm text-gray-600 mt-1">Our AI pipeline processes your document (~40 seconds per page)</p>
                 </div>
-                <span className="ml-2">Preserves original structure and character sequences exactly as written</span>
               </li>
               <li className="flex items-start">
-                <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center mt-0.5">
-                  <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+                <span className="flex-shrink-0 w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center text-blue-200 font-semibold mr-3">3</span>
+                <div>
+                  <span className="font-semibold">Review & Edit</span>
+                  <p className="text-sm text-gray-600 mt-1">Check the recognized text and make any necessary corrections</p>
                 </div>
-                <span className="ml-2">Fastest processing time (approximately 0.8 seconds per page)</span>
               </li>
               <li className="flex items-start">
-                <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center mt-0.5">
-                  <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+                <span className="flex-shrink-0 w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center text-blue-200 font-semibold mr-3">4</span>
+                <div>
+                  <span className="font-semibold">Apply Enhancements (Optional)</span>
+                  <p className="text-sm text-gray-600 mt-1">Use our advanced features for translation, summarization, or formatting</p>
                 </div>
-                <span className="ml-2">Best suited for well-written, clear handwriting or when preserving exact character recognition is preferred over text correctness</span>
               </li>
-            </ul>
+            </ol>
           </div>
           
-          <div className="bg-gradient-to-r from-amber-50 to-yellow-50 rounded-xl p-6 border border-amber-100">
-            <h3 className="text-lg font-semibold text-amber-800 mb-3">Limitations</h3>
-            <ul className="space-y-3 text-amber-700">
-              <li className="flex items-start">
-                <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center mt-0.5">
-                  <svg className="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <span className="ml-2">CNN recognition errors remain uncorrected in the final output</span>
-              </li>
-              <li className="flex items-start">
-                <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center mt-0.5">
-                  <svg className="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <span className="ml-2">No text cleanup, restructuring, or error correction</span>
-              </li>
-              <li className="flex items-start">
-                <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center mt-0.5">
-                  <svg className="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <span className="ml-2">Lower overall accuracy (75-79%) compared to enhanced modes</span>
-              </li>
-            </ul>
+          <div className="flex justify-center">
+            <Link to="/home" className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-lg transition-colors duration-200 flex items-center text-lg">
+              <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+              </svg>
+              Start Digitizing Now
+            </Link>
           </div>
-        </div>
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100 mb-8 mt-8">
-          <h3 className="text-xl font-semibold text-blue-800 mb-3">Ideal For</h3>
-          <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-blue-700">
-            <li className="flex items-start">
-              <svg className="w-5 h-5 text-blue-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span><strong>Clear Handwriting</strong>: Documents with neat, consistent handwriting</span>
-            </li>
-            <li className="flex items-start">
-              <svg className="w-5 h-5 text-blue-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span><strong>Speed Priority</strong>: When fast processing is essential</span>
-            </li>
-            <li className="flex items-start">
-              <svg className="w-5 h-5 text-blue-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span><strong>Original Preservation</strong>: When maintaining original text structure is critical</span>
-            </li>
-            <li className="flex items-start">
-              <svg className="w-5 h-5 text-blue-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span><strong>Batch Processing</strong>: Converting multiple documents quickly</span>
-            </li>
-          </ul>
-        </div>
-      </FadeInSection>
-        
-      <FadeInSection delay={0.6}>
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">How to Use Basic Scanning</h2>
-        <h3 className="text-xl text-gray-900 mb-4">Video Tutorial - Watch our step-by-step demonstration of the Basic Scanning process:</h3>
-  
-        <div className="relative h-96 bg-gray-900 rounded-xl overflow-hidden my-6 flex items-center justify-center">
-          <div className="text-white text-center">
-            <svg className="w-20 h-20 mx-auto mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <p className="text-xl">Basic Scanning Video Tutorial</p>
-          </div>
-        </div>
-                
-        <p className="text-sm text-gray-500 italic text-center mb-4">
-          This tutorial demonstrates uploading documents, selecting the Basic Scanning mode, and reviewing results.
-        </p>
-        
-        <div className="flex justify-center">
-          <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition-colors duration-200 flex items-center">
-            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-            Try Basic Scanning Now
-          </button>
-        </div>
-      </FadeInSection>
+        </FadeInSection>
       </div>
     </InfoPageLayout>
   );

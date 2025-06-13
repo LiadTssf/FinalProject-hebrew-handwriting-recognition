@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { InfoPageLayout, FadeInSection, InfoCard } from '../../components/info/InfoPageLayout';
 import InteractiveSummarySlider from '../../components/info/InteractiveSummarySlider';
+import { Link } from 'react-router-dom';
 
 const EnhancedFeaturesPage = () => {
   const [showFullImage, setShowFullImage] = useState(false);
@@ -398,12 +399,12 @@ const EnhancedFeaturesPage = () => {
           </div>
           
           <div className="flex justify-center">
-            <button className="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg transition-colors duration-200 flex items-center">
+            <Link to="/home" className="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-6 rounded-lg transition-colors duration-200 flex items-center">
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
               Try Enhanced Features Now
-            </button>
+            </Link>
           </div>
         </FadeInSection>
       </div>

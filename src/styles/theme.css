@@ -1524,3 +1524,55 @@ color: #a5b4fc !important; /* Bright indigo for icons */
 .dark .p-4.bg-white.rounded-lg.shadow-sm.border.border-gray-100.text-center {
   border-color: rgb(72, 85, 105) !important; /* This is equivalent to gray-200 in dark mode */
 }
+
+
+/* Dark mode fix for the numbered circle */
+.dark .bg-blue-200 {
+  background-color: rgba(153, 198, 250, 0.15); /* soft blue background */
+}
+
+.dark .text-blue-800 {
+  color: rgb(147, 197, 253); /* lightened text color */
+}
+
+
+/* Fix for document card button icons in dark mode */
+.dark .bg-blue-100.dark\:bg-blue-900 svg,
+.dark .bg-blue-900 svg {
+  stroke: rgb(219, 234, 254) !important; /* light blue for visibility on dark blue bg */
+}
+
+.dark .bg-gray-100.dark\:bg-gray-700 svg,
+.dark .bg-gray-700 svg {
+  stroke: rgb(209, 213, 219) !important; /* light gray for visibility on dark gray bg */
+}
+
+/* Fix for header title and user name in light mode */
+.text-2xl.font-bold,
+h1.text-2xl.font-bold {
+  color: rgba(17, 24, 39, 0.836); /* gray-900 for strong contrast in light mode */
+}
+
+.text-base.font-medium {
+  color: rgba(55, 65, 81, 0.822); /* gray-700 for good contrast in light mode */
+}
+
+
+/* Dark mode overrides for the new light mode fixes */
+.dark .text-2xl.font-bold,
+.dark h1.text-2xl.font-bold {
+  color: rgb(243, 244, 246); /* gray-100 for dark mode */
+}
+
+.dark .text-base.font-medium {
+  color: rgb(209, 213, 219); /* gray-300 for dark mode */
+}
+
+/* More specific targeting for the message icon next to title */
+.flex.items-center svg[viewBox="0 0 24 24"] {
+  stroke: rgb(55, 65, 81) !important; /* Force gray color in light mode */
+}
+
+.dark .flex.items-center svg[viewBox="0 0 24 24"] {
+  stroke: rgb(209, 213, 219) !important; /* Force light gray in dark mode */
+}
