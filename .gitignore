@@ -25,7 +25,23 @@ dist-ssr
 
 # Environment files
 .env
+.env.*
+!.env.example
+
+# Backend specific
 backend/venv/      
 backend/__pycache__/
 *.pyc
 docker_test/
+
+# 🔒 SECURITY: Deployment scripts with API keys
+backend/deploy.ps1
+backend/.env
+backend/.env.*
+
+# 🔒 SECURITY: Never commit API keys or secrets
+**/secrets/
+**/*secret*
+**/*key*
+!package-lock.json
+!*.key.pub
