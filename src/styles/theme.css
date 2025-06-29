@@ -1576,3 +1576,160 @@ h1.text-2xl.font-bold {
 .dark .flex.items-center svg[viewBox="0 0 24 24"] {
   stroke: rgb(209, 213, 219) !important; /* Force light gray in dark mode */
 }
+
+/* ===== PHOTO INSTRUCTION PAGE DARK MODE STYLES ===== */
+
+/* Red warning box styling - following your theme system */
+[data-theme='dark'] .bg-red-50 {
+  background-color: rgba(220, 38, 38, 0.1);
+  border-color: rgba(248, 113, 113, 0.3);
+}
+
+[data-theme='dark'] .border-red-400 {
+  border-color: rgba(248, 113, 113, 0.4);
+}
+
+[data-theme='dark'] .text-red-800 {
+  color: var(--text-primary);
+}
+
+[data-theme='dark'] .text-red-700 {
+  color: var(--text-secondary);
+}
+
+/* Yellow warning box for homepage - using your variable system */
+[data-theme='dark'] .bg-yellow-50 {
+  background-color: rgba(245, 158, 11, 0.1);
+  border-color: rgba(251, 191, 36, 0.3);
+}
+
+[data-theme='dark'] .border-yellow-300 {
+  border-color: rgba(251, 191, 36, 0.4);
+}
+
+[data-theme='dark'] .text-yellow-800 {
+  color: var(--text-primary);
+}
+
+[data-theme='dark'] .text-yellow-700 {
+  color: var(--text-secondary);
+}
+
+[data-theme='dark'] .text-yellow-600 {
+  color: var(--text-secondary);
+}
+
+/* Blue instruction cards - consistent with your theme */
+[data-theme='dark'] .border-blue-200 {
+  border-color: var(--accent-primary);
+}
+
+[data-theme='dark'] .bg-blue-100 {
+  background-color: rgba(99, 179, 237, 0.15);
+}
+
+[data-theme='dark'] .text-blue-600 {
+  color: var(--accent-primary);
+}
+
+/* Green/Red example boxes - subtle like your existing styles */
+[data-theme='dark'] .bg-green-50 {
+  background-color: rgba(34, 197, 94, 0.1);
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+[data-theme='dark'] .border-green-200 {
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+[data-theme='dark'] .text-green-800 {
+  color: var(--text-primary);
+}
+
+[data-theme='dark'] .text-green-700 {
+  color: var(--text-secondary);
+}
+
+/* Gray background sections - using your existing variables */
+[data-theme='dark'] .bg-gray-50 {
+  background-color: var(--bg-secondary);
+}
+
+/* Text improvements using your color system */
+[data-theme='dark'] .text-gray-700 {
+  color: var(--text-secondary);
+}
+
+[data-theme='dark'] .text-gray-600 {
+  color: var(--text-tertiary);
+}
+
+[data-theme='dark'] .text-gray-900 {
+  color: var(--text-primary);
+}
+
+/* Border colors using your system */
+[data-theme='dark'] .border-gray-200 {
+  border-color: var(--border-color);
+}
+
+/* SVG icons - clean approach like your existing styles */
+[data-theme='dark'] svg {
+  stroke: var(--text-secondary);
+}
+
+/* Specific colored SVG overrides - minimal like your approach */
+[data-theme='dark'] .text-red-400 svg {
+  stroke: #f87171;
+}
+
+[data-theme='dark'] .text-yellow-600 svg,
+[data-theme='dark'] .text-yellow-400 svg {
+  stroke: #fbbf24;
+}
+
+[data-theme='dark'] .text-green-500 svg {
+  stroke: #10b981;
+}
+
+[data-theme='dark'] .text-blue-600 svg,
+[data-theme='dark'] .text-blue-400 svg {
+  stroke: var(--accent-primary);
+}
+
+/* Button styling - consistent with your theme */
+[data-theme='dark'] .bg-blue-600 {
+  background-color: var(--accent-primary);
+}
+
+[data-theme='dark'] .bg-blue-600:hover {
+  background-color: var(--accent-secondary);
+}
+
+/* Card shadows - using your shadow variable */
+[data-theme='dark'] .shadow-sm,
+[data-theme='dark'] .shadow-md {
+  box-shadow: 0 1px 3px var(--shadow-color);
+}
+
+/* Ensure proper text hierarchy using your variables */
+[data-theme='dark'] .font-medium {
+  color: var(--text-primary);
+}
+
+[data-theme='dark'] .font-semibold {
+  color: var(--text-primary);
+}
+
+[data-theme='dark'] .text-sm {
+  color: var(--text-tertiary);
+}
+
+/* Links - using your accent color system */
+[data-theme='dark'] a {
+  color: var(--accent-primary);
+}
+
+[data-theme='dark'] a:hover {
+  color: var(--accent-secondary);
+}

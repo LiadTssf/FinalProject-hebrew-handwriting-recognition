@@ -6,7 +6,9 @@ import {
   doc, 
   updateDoc, 
   deleteDoc, 
-  query, 
+  query,
+  getDoc,    
+  setDoc, 
   where, 
   orderBy,
   serverTimestamp 
@@ -253,6 +255,60 @@ export const uploadImage = async (userId, file, documentId) => {
     return downloadURL;
   } catch (error) {
     console.error('Error uploading image: ', error);
+    throw error;
+  }
+};
+
+
+
+// Get user preferences
+export const getUserPreferences = async (userId) => {
+  try {
+    const userDocRef = doc(db, 'userPreferences', userId);
+    const userDoc = await getDoc(userDocRef);
+    
+    if (userDoc.exists()) {
+      return userDoc.data();
+    } else {
+      // Return default preferences for new users
+      return {
+        hasSeenPhotoInstructions: false,
+        createdAt: serverTimestamp()
+      };
+    }
+  } catch (error) {
+    console.error('Error fetching user preferences: ', error);
+    return {
+      hasSeenPhotoInstructions: false
+    };
+  }
+};
+
+// Update user preferences
+export const updateUserPreferences = async (userId, preferences) => {
+  try {
+    const userDocRef = doc(db, 'userPreferences', userId);
+    await setDoc(userDocRef, {
+      ...preferences,
+      updatedAt: serverTimestamp()
+    }, { merge: true });
+    
+    console.log('User preferences updated successfully');
+  } catch (error) {
+    console.error('Error updating user preferences: ', error);
+    throw error;
+  }
+};
+
+// Mark photo instructions as seen/acknowledged
+export const markPhotoInstructionsAsSeen = async (userId) => {
+  try {
+    await updateUserPreferences(userId, {
+      hasSeenPhotoInstructions: true
+    });
+    console.log('Photo instructions marked as seen for user:', userId);
+  } catch (error) {
+    console.error('Error marking photo instructions as seen: ', error);
     throw error;
   }
 };

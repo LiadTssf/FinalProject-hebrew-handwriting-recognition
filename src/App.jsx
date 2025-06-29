@@ -13,6 +13,7 @@ import BasicScanningPage from './pages/info/BasicScanningPage';
 import ExtraFeaturesPage from './pages/info/ExtraFeaturesPage';
 import GeminiApiPage from './pages/info/GeminiApiPage';
 import SettingsPage from './pages/SettingsPage';
+import PhotoInstructionPage from './pages/info/PhotoInstruction';
 
 function App() {
   return (
@@ -34,6 +35,8 @@ function App() {
           <Route path="/info/basic-scanning" element={<BasicScanningPage />} />
           <Route path="/info/extra-features" element={<ExtraFeaturesPage />} />
           <Route path="/info/gemini-api" element={<GeminiApiPage />} />
+          <Route path="/info/photo-instructions" element={<PhotoInstructionPage />} />
+
           
           <Route path="*" element={<Navigate replace to="/auth" />} />
         </Routes>

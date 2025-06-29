@@ -1,5 +1,5 @@
-// src/pages/HomePage.jsx
-import React, { useState } from 'react';
+// Updated HomePage.jsx with user preferences
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import Sidebar from '../components/layout/Sidebar';
@@ -8,6 +8,7 @@ import ProcessingOptionsModal from '../components/home/ProcessingOptionsModal';
 import OCRCorrectionView from '../components/ocr/OCRCorrectionView';
 import FinalTextView from '../components/ocr/FinalTextView';
 import { callServerForEnhancements, parseServerResponse } from '../services/enhancementService';
+import { getUserPreferences, markPhotoInstructionsAsSeen } from '../services/firebaseService';
 
 const HomePage = () => {
   const { currentUser } = useAuth();
@@ -21,6 +22,39 @@ const HomePage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [loadingMessage, setLoadingMessage] = useState('');
   const [processingError, setProcessingError] = useState('');
+  
+  // User preferences state
+  const [userPreferences, setUserPreferences] = useState({ hasSeenPhotoInstructions: false });
+  const [showInstructionCheckbox, setShowInstructionCheckbox] = useState(false);
+
+  // Load user preferences on component mount
+  useEffect(() => {
+    const loadUserPreferences = async () => {
+      if (currentUser) {
+        try {
+          const preferences = await getUserPreferences(currentUser.uid);
+          setUserPreferences(preferences);
+        } catch (error) {
+          console.error('Failed to load user preferences:', error);
+        }
+      }
+    };
+
+    loadUserPreferences();
+  }, [currentUser]);
+
+  // Handle marking instructions as seen
+  const handleMarkInstructionsAsSeen = async () => {
+    if (currentUser) {
+      try {
+        await markPhotoInstructionsAsSeen(currentUser.uid);
+        setUserPreferences(prev => ({ ...prev, hasSeenPhotoInstructions: true }));
+        setShowInstructionCheckbox(false);
+      } catch (error) {
+        console.error('Failed to mark instructions as seen:', error);
+      }
+    }
+  };
 
   const handleProcessingStart = () => {
     setIsLoading(true);
@@ -68,7 +102,7 @@ const HomePage = () => {
         rawResponse: enhancedText,
         parsed: parsedResult,
         originalText: userCorrectedText,
-        appliedOptions: selectedOptions // Make sure this is set correctly
+        appliedOptions: selectedOptions
       });
       
       console.log("✅ Enhancement complete, applied options:", selectedOptions);
@@ -103,6 +137,9 @@ const HomePage = () => {
     setAppState('correcting');
   };
 
+  // Determine which version of the photo instructions to show
+  const showAggressiveWarning = !userPreferences.hasSeenPhotoInstructions;
+
   return (
     <div className="flex h-screen bg-gray-100 dark:bg-gray-900">
       <Sidebar />
@@ -119,6 +156,92 @@ const HomePage = () => {
                   Digi-Ktav transforms your handwritten Hebrew documents into editable digital text using AI. 
                 </p>
               </div>
+
+              {/* Photo Instructions - Conditional Styling */}
+              {showAggressiveWarning ? (
+                // Aggressive warning for first-time users
+                <div className="bg-yellow-50 dark:bg-yellow-900/20 border-2 border-yellow-300 dark:border-yellow-700 rounded-lg p-4 mb-6">
+                  <div className="flex items-start">
+                    <div className="flex-shrink-0">
+                      <svg className="w-6 h-6 text-yellow-600 dark:text-yellow-400 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 15.5c-.77.833.192 2.5 1.732 2.5z" />
+                      </svg>
+                    </div>
+                    <div className="ml-3 flex-1">
+                      <h3 className="text-lg font-semibold text-yellow-800 dark:text-yellow-200">
+                        📸 IMPORTANT: Photo Requirements
+                      </h3>
+                      <p className="text-yellow-700 dark:text-yellow-300 mt-1 font-medium">
+                        You MUST photograph the <strong>entire A4 paper</strong> - not just the written text. 
+                        The system won't work properly otherwise.
+                      </p>
+                      <Link 
+                        to="/info/photo-instructions" 
+                        className="inline-flex items-center mt-2 text-sm font-medium text-yellow-800 dark:text-yellow-200 hover:text-yellow-900 dark:hover:text-yellow-100 underline"
+                      >
+                        See detailed instructions
+                        <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </Link>
+                      
+                      {/* Checkbox to mark as read */}
+                      {!isGuest && (
+                        <div className="mt-3 pt-3 border-t border-yellow-300 dark:border-yellow-600">
+                          <button
+                            onClick={() => setShowInstructionCheckbox(!showInstructionCheckbox)}
+                            className="text-sm text-yellow-700 dark:text-yellow-300 hover:text-yellow-800 dark:hover:text-yellow-200 underline"
+                          >
+                            I understand these requirements
+                          </button>
+                          
+                          {showInstructionCheckbox && (
+                            <div className="mt-2 p-3 bg-yellow-100 dark:bg-yellow-800/30 rounded-md">
+                              <div className="flex items-start">
+                                <input
+                                  type="checkbox"
+                                  id="understand-instructions"
+                                  className="mt-1 mr-2"
+                                  onChange={(e) => {
+                                    if (e.target.checked) {
+                                      handleMarkInstructionsAsSeen();
+                                    }
+                                  }}
+                                />
+                                <label htmlFor="understand-instructions" className="text-xs text-yellow-800 dark:text-yellow-200">
+                                  I have read and understand that I must photograph the entire A4 page. 
+                                  Don't show this warning again.
+                                </label>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                // Subtle reminder for returning users
+                <div className="bg-white dark:bg-gray-800 p-3 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 mb-6">
+                  <Link 
+                    to="/info/photo-instructions" 
+                    className="flex items-center justify-between group hover:bg-gray-50 dark:hover:bg-gray-750 p-2 rounded-md transition-colors duration-200"
+                  >
+                    <div className="flex items-center">
+                      <svg className="w-4 h-4 mr-2 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                      <span className="text-sm text-gray-700 dark:text-gray-300">
+                        Photo Guidelines: Full A4 page required
+                      </span>
+                    </div>
+                    <svg className="w-4 h-4 text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                </div>
+              )}
               
               <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 mb-6">
                  <div className="flex items-center text-blue-700 dark:text-blue-400 mb-4">
@@ -128,7 +251,7 @@ const HomePage = () => {
                     <span className="font-medium">How it works:</span>
                     </div>
                     <ol className="space-y-1 text-sm text-gray-600 dark:text-gray-400 ml-7 list-decimal mb-2">
-                    <li>Upload your handwritten Hebrew document</li>
+                    <li>Upload your handwritten Hebrew document (following the photo guidelines above)</li>
                     <li>Review and correct the recognized text</li>
                     <li>Choose AI enhancements (summarization, translation, etc.)</li>
                     <li>Download your enhanced digital text</li>
@@ -167,6 +290,7 @@ const HomePage = () => {
             </>
           )}
 
+          {/* Rest of your existing component code remains the same */}
           {isLoading && (
             <div className="text-center py-10">
               <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-600 dark:border-blue-400"></div>
