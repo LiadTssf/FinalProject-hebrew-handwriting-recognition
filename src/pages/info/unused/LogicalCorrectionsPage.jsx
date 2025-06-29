@@ -1,8 +1,8 @@
 
 
 import React, { useState } from 'react';
-import ComparisonModal from '../../components/info/ComparisonModal';
-import { InfoPageLayout, FadeInSection, InfoCard } from '../../components/info/InfoPageLayout';
+import ComparisonModal from '../../../components/info/ComparisonModal';
+import { InfoPageLayout, FadeInSection, InfoCard } from '../../../components/info/InfoPageLayout';
 
 const LogicalCorrectionsPage = () => {
   const [showFullImage, setShowFullImage] = useState(false);
