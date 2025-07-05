@@ -11,9 +11,9 @@ const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
  */
 export const callServerForEnhancements = async (text, options) => {
   try {
-    console.log("🔄 Calling server for text enhancement...");
-    console.log("📝 Text to enhance:", text.substring(0, 100) + "...");
-    console.log("⚙️ With options:", options);
+    console.log("Calling server for text enhancement...");
+    console.log("Text to enhance:", text.substring(0, 100) + "...");
+    console.log("With options:", options);
 
     const response = await fetch(`${API_BASE_URL}/enhance-text/`, {
       method: 'POST',

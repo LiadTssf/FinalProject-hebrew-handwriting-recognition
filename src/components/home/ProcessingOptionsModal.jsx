@@ -11,10 +11,6 @@ const ProcessingOptionsModal = ({ onClose, onSubmit }) => {
     
     // Translation options
     translationStyle: 'natural',
-    sideBySideView: true,
-    
-    // Track changes
-    trackChanges: true,
   });
 
   const handleChange = (e) => {
@@ -152,20 +148,6 @@ const ProcessingOptionsModal = ({ onClose, onSubmit }) => {
                         <option value="formal">Formal/Academic</option>
                       </select>
                     </div>
-                    
-                    <div className="flex items-center bg-white p-2 rounded border border-gray-200">
-                      <input
-                        type="checkbox"
-                        id="sideBySideView"
-                        name="sideBySideView"
-                        checked={options.sideBySideView}
-                        onChange={handleChange}
-                        className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-                      />
-                      <label htmlFor="sideBySideView" className="ml-2 block text-sm text-gray-700">
-                        Display side-by-side view
-                      </label>
-                    </div>
                   </div>
                 )}
               </div>
@@ -211,25 +193,6 @@ const ProcessingOptionsModal = ({ onClose, onSubmit }) => {
                   </div>
                   <div className="ml-8 text-xs text-gray-500">Improve document formatting and structure for better readability.</div>
                 </div>
-                
-                {(options.enableSpellingCorrection || options.enableStructuring) && (
-                  <div className="mt-4 ml-8 bg-gray-50 p-3 rounded-md">
-                    <div className="flex items-center">
-                      <input
-                        type="checkbox"
-                        id="trackChanges"
-                        name="trackChanges"
-                        checked={options.trackChanges}
-                        onChange={handleChange}
-                        className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-                      />
-                      <label htmlFor="trackChanges" className="ml-2 block text-sm text-gray-700 font-medium">
-                        Track changes for review
-                      </label>
-                    </div>
-                    <p className="text-xs text-gray-600 mt-1 ml-6">See all modifications made to your document with change tracking.</p>
-                  </div>
-                )}
               </div>
             </div>
           </div>

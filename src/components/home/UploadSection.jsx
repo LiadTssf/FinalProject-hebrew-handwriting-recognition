@@ -202,7 +202,7 @@ const UploadSection = ({ onProcessingComplete, onProcessingStart, onProcessingEr
             <input type="file" className="hidden" onChange={handleFileInput} accept="image/jpeg,image/png,image/gif,application/pdf"/>
           </label>
           <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
-            Supported formats: JPG, PNG, GIF, PDF (up to 10MB)
+            Supported formats: JPG, PNG (up to 10MB)
           </p>
         </>
       )}
