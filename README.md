@@ -20,123 +20,193 @@
 | 7,8 | 23 מאי-5 יוני | בדיקות, הערכה ומדריכים | • בדיקות מערכת<br>• תיעוד אתגרים ופתרונות<br>• השלמת מדריך למשתמש<br>• יצירת מדריך תחזוקה<br>• כתיבת תוצאות והערכה | • תוצאות בדיקות<br>• מדריכי משתמש ותחזוקה<br>• פרק תוצאות | 5 יוני |
 | 9 | 6-12 יוני | סיום | • כתיבת מסקנות<br>• עריכה סופית והגהה<br>• הכנת מצגת/פוסטר<br>• יצירת סרטון הדגמה | • ספר פרויקט מלא<br>• מערכת סופית<br>• פוסטר/מצגת<br>• סרטון הדגמה | 12 יוני |
 showcase and quick explenation of the site https://youtu.be/HmeZhrD8rA4?feature=shared
-9. Maintenance Guide -DIGIKTAV
+📘 Maintenance Guide – Digi-Ktav
 9.1 Hardware and Software Requirements
-To run Digi-Ktav locally or on a server, the following software components are recommended:
-●	OS: Linux (Ubuntu 20.04+) or Windows 10+
-●	Python 3.10+
-●	Node.js (for frontend development) 
-●	Git
-●	Modern web browser (Chrome, Firefox, Edge)
+To run Digi-Ktav locally or on a server, the following are recommended:
+
+✅ Operating System
+Linux (Ubuntu 20.04+) or Windows 10+
+
+✅ Software Dependencies
+Python 3.10+
+
+Node.js (for frontend)
+
+Git
+
+Modern Web Browser (e.g., Chrome, Firefox, Edge)
+
 9.2 Installation Instructions
-1.	Clone the repo:
+🔁 Clone the Repository
+bash
+Copy
+Edit
 git clone https://github.com/LiadTssf/FinalProject-hebrew-handwriting-recognition.git
 cd FinalProject-hebrew-handwriting-recognition
-2.	Backend setup:
+⚙️ Backend Setup
+bash
+Copy
+Edit
 pip install -r backend/requirements.txt
-3.	Frontend setup:
+💻 Frontend Setup
+bash
+Copy
+Edit
 cd src
 npm install
-4.	Start backend server:
+🚀 Start the Servers
+Backend (FastAPI):
+
+bash
+Copy
+Edit
 cd ..
 uvicorn backend.main:app --reload
-5.	Start frontend:
+Frontend (React):
+
+bash
+Copy
+Edit
 cd src
 npm run dev
 9.3 How to Extend or Modify the System
-Add a New OCR Model:
-●	Place model files inside the backend/ directory. For example: backend/my_new_model/ with model weights, config.
-●	Update model path in backend/ocr_pipeline.py: 
-o	VIT_MODEL_PATH = "./my_new_model"
-●	Adjust preprocessing in load_models() to match the model’s expected input size and normalization.
-●	Rebuild and redeploy if you use Docker or Google Cloud (see 9.5).
-To improve segmentation:
-●	Edit segmentation logic in ocr_pipeline.py, particularly the segment_image_to_lines() and segment_line_to_items() functions.
-●	Tune parameters like spacing thresholds or character merge rules.
-●	Optional: Replace the projection/contour-based method with a learned model like CRAFT, MMOCR, or PaddleOCR. 
-To expand the Gemini post-processing logic:
-●	Modify the prompt in text_enhancement.py or ocr_pipeline.py under the function correct_text_gemini().
-●	Add an API route in main.py
-●	Create prompt logic per feature in text_enhancement.py
-To personalize handwriting styles:
-●	Add a calibration flow in the frontend UI.
-●	Store user-specific samples and fine-tune models via a training service.
-To support additional formats (e.g., DOCX, TIFF):
-●	Update the upload handler and file-type parsing logic in both the frontend and backend.
-9.4 Rebuild and Redeploy Guide (Docker & Google Cloud)
-A. Rebuild & Run Locally with Docker
-Step 1: Build the Docker image
-Open terminal in the backend/ folder and run: 
-	docker build -t digiktav-local .
-Step 2: Run the container 
-	docker run -p 8000:8000 -e GEMINI_API_KEY="your_api_key" digiktav-local
-B. Deploy to Google Cloud Run
-Step 1: Submit build to Artifact Registry
-Run this from the root project folder:
-	gcloud builds submit --tag me-west1-docker.pkg.dev/digi-ktav-ocr-project/digiktav-repo/digiktav-backend:latest .
+➕ Add a New OCR Model
+Place model files inside backend/, e.g.:
 
+bash
+Copy
+Edit
+backend/my_new_model/
+Update the model path in ocr_pipeline.py:
 
+python
+Copy
+Edit
+VIT_MODEL_PATH = "./my_new_model"
+Adjust preprocessing in load_models() to fit your model’s input shape and normalization.
 
+✂️ Improve Segmentation
+Modify the functions:
 
-Step 2: Deploy to Cloud Run:
-gcloud run deploy digiktav-backend-service `  
---image me-west1-docker.pkg.dev/digi-ktav-ocr-project/digiktav-repo/digiktav-backend:latest `
-  --platform managed `
-  --region me-west1 `
-  --allow-unauthenticated `
-  --port 8000 `
-  --cpu 1 `
-  --memory 2Gi `
-  --min-instances 0 `
-  --set-env-vars GEMINI_API_KEY="your_api_key" `
-  --timeout=900	
+segment_image_to_lines()
 
-When Should I Rebuild & Redeploy?
-After changing:
-•	ocr_pipeline.py
-•	text_enhancement.py
-•	main.py
-•	Model files
-•	requirements.txt
-•	Dockerfile
+segment_line_to_items()
+
+Adjust parameters: spacing thresholds, character merge rules.
+
+Optional: Integrate learned models like CRAFT, MMOCR, or PaddleOCR.
+
+✨ Expand Gemini Post-Processing
+Update correct_text_gemini() in text_enhancement.py or ocr_pipeline.py.
+
+Add a new API route in main.py.
+
+Implement new prompt logic in text_enhancement.py.
+
+✍️ Personalize Handwriting Styles
+Add a calibration UI flow.
+
+Save user-specific samples.
+
+Fine-tune models using a training service.
+
+🧾 Support Additional Formats (e.g., DOCX, TIFF)
+Update file upload handling and type parsing in:
+
+Frontend
+
+Backend
+
+9.4 Rebuild and Redeploy Guide
+A. 🔧 Rebuild & Run Locally (Docker)
+Build Docker Image (from backend/):
+
+bash
+Copy
+Edit
+docker build -t digiktav-local .
+Run Container:
+
+bash
+Copy
+Edit
+docker run -p 8000:8000 -e GEMINI_API_KEY="your_api_key" digiktav-local
+B. ☁️ Deploy to Google Cloud Run
+Submit Build to Artifact Registry (from root):
+
+bash
+Copy
+Edit
+gcloud builds submit --tag me-west1-docker.pkg.dev/digi-ktav-ocr-project/digiktav-repo/digiktav-backend:latest .
+Deploy to Cloud Run:
+
+bash
+Copy
+Edit
+gcloud run deploy digiktav-backend-service \
+  --image me-west1-docker.pkg.dev/digi-ktav-ocr-project/digiktav-repo/digiktav-backend:latest \
+  --platform managed \
+  --region me-west1 \
+  --allow-unauthenticated \
+  --port 8000 \
+  --cpu 1 \
+  --memory 2Gi \
+  --min-instances 0 \
+  --set-env-vars GEMINI_API_KEY="your_api_key" \
+  --timeout=900
+🔁 When to Rebuild & Redeploy?
+After changing any of the following:
+
+ocr_pipeline.py
+
+text_enhancement.py
+
+main.py
+
+Model files
+
+requirements.txt
+
+Dockerfile
 
 9.5 Package and Architecture Overview
-Backend Packages:
-●	uvicorn, fastapi - API server
-●	torch, transformers, Pillow - Model loading and inference
-●	opencv-python - Image preprocessing
-●	google-generativeai- Post-processing with Gemini API
-Frontend Packages:
-●	react, tailwindcss- UI rendering and styling
-●	axios- Client-server communication
-High-Level Structure:
-FinalProject-hebrew-handwriting-recognition/         // Main project folder
-├── backend/                                         // Backend logic and OCR pipeline
-│   ├── main.py                                      // FastAPI entry point
-│   ├── ocr_pipeline.py                              // Segmentation and recognition logic
-│   ├── text_enhancement.py                          // Gemini post-processing logic
-│   ├── requirements.txt                             // Backend dependencies
-│   └── vit-hebrew-final/                            // Pretrained ViT model weights
+📦 Backend
+Package	Purpose
+uvicorn, fastapi	API Server
+torch, transformers, Pillow	Model Inference
+opencv-python	Image Preprocessing
+google-generativeai	Gemini Text Enhancement
 
-├── src/                                             // Frontend - React app
-│   ├── components/                                  // Reusable UI components
-│   ├── pages/                                       // Main UI pages
-│   ├── services/                                    // API utilities
-│   │   ├── enhancementService.js                    // Sends enhancement requests to backend
-│   │   └── firebaseService.js                       // Manages document saving and Firebase auth
-│   └── main.jsx                                     // Entry point for the React app
+🎨 Frontend
+Package	Purpose
+react, tailwindcss	UI and Styling
+axios	API Communication
 
-├── public/                                          // Static frontend assets
-├── index.html                                       // HTML template for the React app
-├── vite.config.js                                   // Frontend build configuration
-├── package.json                                     // Frontend dependencies and scripts
-└── README.md                                        // Project instructions and documentation
-
-
-
-
-
-
+🗂️ Project Structure
+php
+Copy
+Edit
+FinalProject-hebrew-handwriting-recognition/
+├── backend/
+│   ├── main.py               # FastAPI entry
+│   ├── ocr_pipeline.py       # Segmentation + OCR logic
+│   ├── text_enhancement.py   # Gemini integration
+│   ├── requirements.txt      # Backend dependencies
+│   └── vit-hebrew-final/     # Pretrained ViT model
+│
+├── src/                      # Frontend (React)
+│   ├── components/           # UI Components
+│   ├── pages/                # Main Pages
+│   ├── services/
+│   │   ├── enhancementService.js  # Gemini API calls
+│   │   └── firebaseService.js     # Firebase auth/save
+│   └── main.jsx              # Frontend entry point
+│
+├── public/                   # Static assets
+├── index.html                # HTML shell
+├── vite.config.js            # Frontend config
+├── package.json              # Frontend dependencies
+└── README.md                 # Project docs
 
 
 
