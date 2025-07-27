@@ -38,50 +38,36 @@ Modern Web Browser (e.g., Chrome, Firefox, Edge)
 
 9.2 Installation Instructions
 🔁 Clone the Repository
-bash
-Copy
-Edit
+
 git clone https://github.com/LiadTssf/FinalProject-hebrew-handwriting-recognition.git
 cd FinalProject-hebrew-handwriting-recognition
 ⚙️ Backend Setup
-bash
-Copy
-Edit
+
 pip install -r backend/requirements.txt
 💻 Frontend Setup
-bash
-Copy
-Edit
+
 cd src
 npm install
 🚀 Start the Servers
 Backend (FastAPI):
 
-bash
-Copy
-Edit
+
 cd ..
 uvicorn backend.main:app --reload
 Frontend (React):
 
-bash
-Copy
-Edit
+
 cd src
 npm run dev
 9.3 How to Extend or Modify the System
 ➕ Add a New OCR Model
 Place model files inside backend/, e.g.:
 
-bash
-Copy
-Edit
+
 backend/my_new_model/
 Update the model path in ocr_pipeline.py:
 
-python
-Copy
-Edit
+
 VIT_MODEL_PATH = "./my_new_model"
 Adjust preprocessing in load_models() to fit your model’s input shape and normalization.
 
@@ -121,28 +107,20 @@ Backend
 A. 🔧 Rebuild & Run Locally (Docker)
 Build Docker Image (from backend/):
 
-bash
-Copy
-Edit
+
 docker build -t digiktav-local .
 Run Container:
 
-bash
-Copy
-Edit
+
 docker run -p 8000:8000 -e GEMINI_API_KEY="your_api_key" digiktav-local
 B. ☁️ Deploy to Google Cloud Run
 Submit Build to Artifact Registry (from root):
 
-bash
-Copy
-Edit
+
 gcloud builds submit --tag me-west1-docker.pkg.dev/digi-ktav-ocr-project/digiktav-repo/digiktav-backend:latest .
 Deploy to Cloud Run:
 
-bash
-Copy
-Edit
+
 gcloud run deploy digiktav-backend-service \
   --image me-west1-docker.pkg.dev/digi-ktav-ocr-project/digiktav-repo/digiktav-backend:latest \
   --platform managed \
@@ -183,9 +161,7 @@ react, tailwindcss	UI and Styling
 axios	API Communication
 
 🗂️ Project Structure
-php
-Copy
-Edit
+
 FinalProject-hebrew-handwriting-recognition/
 ├── backend/
 │   ├── main.py               # FastAPI entry
